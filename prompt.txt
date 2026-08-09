@@ -1,0 +1,20 @@
+You are evaluating one proposition in Lean 4 with Mathlib available.
+
+Proposition (a Lean 4 term of type Prop, elaborated at top level after `import Mathlib`):
+
+{{PROPOSITION}}
+
+Decide your stance and, if you take one, supply a proof body.
+
+Rules:
+- "PROVABLE" means you are submitting proof_body as a proof of the proposition exactly as stated.
+- "REFUTABLE" means you are submitting proof_body as a proof of ¬ (the proposition).
+- "UNKNOWN" means you decline to commit either way; proof_body is ignored.
+- proof_body must be a single Lean 4 term: a term-mode expression or a `by` tactic block. It is parsed with Lean's term parser only. No commands, no trailing code after the term.
+- The proof is kernel-checked. `sorry`, `native_decide`, and any axiom outside [propext, Classical.choice, Quot.sound] cause rejection.
+- Toolchain: leanprover/lean4:v4.32.2. Mathlib commit: 905b95818eb32af7874a58b427f50c1711a5e96c.
+- Single shot. There is no repair loop and no follow-up turn.
+
+Respond with a single JSON object and nothing else:
+
+{"stance": "PROVABLE" or "REFUTABLE" or "UNKNOWN", "proof_body": "...", "reasoning": "..."}
