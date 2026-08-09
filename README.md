@@ -2,7 +2,7 @@
 
 See [`basin-spec-v2.md`](basin-spec-v2.md), the authoritative v2 specification.
 
-STATUS: phase=P0 gate=open events=0 spec=v2 updated=2026-08-08
+STATUS: phase=P1 gate=closed events=0 spec=v2 updated=2026-08-08
 
 ## P0 acceptance surface
 
