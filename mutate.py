@@ -220,6 +220,43 @@ def parent_powered_rungs(
     return ()
 
 
+# Leading universal binder group: `∀ {a b : ℤ},` / `∀ (m n : ℕ),` / `∀ x : ℤ,`.
+_BINDER_GROUP = re.compile(r"^\s*∀\s*[({]?\s*([A-Za-z_][\w']*(?:\s+[A-Za-z_][\w']*)*)\s*:\s*(ℤ|ℕ)\s*[)}]?\s*,")
+# Ordered so the likeliest boundary counterexamples compile first.
+_WITNESS_GRID_INT = ((0, 0), (0, 1), (1, 0), (0, -1), (-1, 0), (1, -1), (-1, 1))
+_WITNESS_GRID_NAT = ((0, 0), (0, 1), (1, 0), (1, 1), (2, 0), (0, 2))
+
+
+def witness_grid_rungs(statement: str) -> tuple[str, ...]:
+    """Refutation rungs for a statement whose leading binder group quantifies
+    TWO numeric variables.
+
+    The generic ladder's `push_neg; use 0` supplies exactly one witness, so a
+    two-variable proposition is never given the PAIR it needs, and a mutant
+    that is genuinely false at (0, 1) is receipted as refutation_not_found.
+    Implicit binders compound it: `∀ {a b : ℤ}` cannot be applied positionally,
+    which is why these rungs instantiate through `@h`, correct for implicit and
+    explicit binders alike.
+
+    Deterministic and arity-gated: a statement that does not open with exactly
+    two ℤ/ℕ binders gets no rungs and pays no compiles."""
+    match = _BINDER_GROUP.match(statement)
+    if match is None:
+        return ()
+    names, kind = match.group(1).split(), match.group(2)
+    if len(names) != 2:
+        return ()
+    grid = _WITNESS_GRID_NAT if kind == "ℕ" else _WITNESS_GRID_INT
+    rungs: list[str] = []
+    for a, b in grid:
+        args = f"{a} {b}" if a >= 0 and b >= 0 else f"({a}) ({b})"
+        rungs.append(f"by intro h; have := @h {args}; norm_num at this")
+    for a, b in grid[:3]:
+        args = f"{a} {b}" if a >= 0 and b >= 0 else f"({a}) ({b})"
+        rungs.append(f"by intro h; have := @h {args}; simp at this")
+    return tuple(rungs)
+
+
 def certify_refutable(
     statement: str,
     *,
@@ -237,9 +274,16 @@ def certify_refutable(
     probe = verdict(statement, "REFUTABLE", "sorry",
                     project_dir=project_dir, timeout_seconds=timeout_seconds)
     if probe.reject_reason != "sorry":
+        # A probe that times out says nothing about the statement's shape; it
+        # says the machine ran out of budget. Receipting that as
+        # `malformed_statement` blames the corpus for an infrastructure fact
+        # and makes the two indistinguishable after the fact, which §13's
+        # compile-time-variance note requires us to keep separable.
+        reason = ("probe_timeout" if probe.reject_reason == "timeout"
+                  else "malformed_statement")
         return {
             "certified": False,
-            "reason": "malformed_statement",
+            "reason": reason,
             "attempts": [{"body": "sorry", "reject_reason": probe.reject_reason}],
         }
 
@@ -289,7 +333,7 @@ def mutate_corpus(
                 project_dir=project_dir,
                 extra_rungs=parent_powered_rungs(
                     op_name, parent["proof_body"], parent["statement"]
-                ),
+                ) + witness_grid_rungs(mutant_stmt),
             )
             if outcome["certified"]:
                 number = pair["pair_id"]
