@@ -472,9 +472,20 @@ The first calibration made the ambiguity load-bearing rather than academic. Run 
 
 **The two readings prescribe opposite corpus surgery on the same data.** Acting on either without pinning the term first would have reshaped the instrument on a coin-flip, and the direction of the error would have been invisible afterward, because a wrongly-tuned corpus still produces a plausible number.
 
-**Not resolved here.** Pinning this is a design decision with the authority ordering of §0 behind it, and it is Anthony's. What this entry fixes is that the ambiguity is now named, dated, and impossible to resolve silently by whichever seat runs the next sweep. Until it is pinned, no tuning action is authorised in either direction.
+**RESOLVED FROM THE SPEC'S OWN DOWNSTREAM USAGE, not from taste.** The band governs **CLAIMED** accuracy. Four independent lines in §5 and §7 converge:
 
-**Recorded for whoever pins it:** §5's stated rationale is split structure — "the frequency of 4-1 splits is a function of per-arm accuracy. Too easy and every item is 5-0; too hard and every arm answers UNKNOWN" — and §7's yield model at the same section uses commit rate and accuracy as SEPARATE parameters (`0.85⁵ × 0.41`). Whichever term is pinned, the yield model's `p` and its commit rate must be pinned to the same reading or the projection is incoherent.
+1. §7 designates the two observations explicitly: "**claimed stance** — what the search kernel believes. **Primary**, because the Feb 11 phenomenon was epistemic disagreement" and "**certified stance** — ... **Secondary**." A calibration band that tuned the corpus against the SECONDARY observation would tune the instrument away from the phenomenon it was built for.
+2. §5's rationale for the band is split structure: "the frequency of 4-1 splits is a function of per-arm accuracy. Too easy and every item is 5-0; too hard and every arm answers UNKNOWN." 4-1 splits are E3's eligibility condition, and E3 is the primary estimand.
+3. E3 eligibility is defined over **committed stance**, and §7's primary committed stance is the claimed one.
+4. §7 states the claimed-versus-certified gap is **itself a finding**, not a defect: "the gap between the two is itself a finding: it measures confident assertion without demonstration, which is the VDAC1 failure in miniature." A quantity the spec pre-registers as a finding cannot also be the quantity the corpus is tuned to eliminate.
+
+**CONSEQUENCE, AND IT REVERSES THE READING TAKEN ON THE NIGHT OF 2026-08-11.** Under the resolved term the first calibration reads **0.9242, ABOVE the band**, and §5 prescribes: "add mutations that break a deep invariant rather than a surface inequality." The indicated action is to **HARDEN the mutations**, not to soften the parents. Every seat that night — including the one that ran the sweep — read the band as certified and concluded the corpus was too hard. It is too EASY on the measure the band governs. The arms hold the correct committed stance on 61 of 66 items.
+
+**And the 0.3484 gap stops being a problem to explain.** Four hypotheses were advanced for it on 2026-08-11 and all four died. Under this resolution the gap is not an anomaly requiring explanation — it is the pre-registered VDAC1 signature, measured: confident assertion at 0.9242 without demonstration at 0.5758, on a frontier model, with receipts.
+
+**Residual uncertainty, named rather than buried.** §7 defines E3 eligibility over "committed stance" without repeating which of the two it means; the primary/secondary designation is what carries the reading. If Anthony intends E3 to run on certified stance, this resolution flips and so does the tuning direction. That is the one question worth his ruling, and it is narrower than the one it replaces.
+
+**Binding on whoever tunes:** §7's yield model uses accuracy `p` and commit rate as separate parameters (`0.85⁵ × 0.41`). Both must be pinned to the claimed reading, or the projection is incoherent.
 
 ### 2026-08-11 — §6 and §10: the aggregation rule is already specified
 
