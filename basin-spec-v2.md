@@ -408,6 +408,11 @@ Maintained live. Adding to this list is progress, not an admission.
 - **Compile-time variance under load.** A cluster of timeouts on one night is infrastructure, not model signal. Wall time and reject reason are recorded so the two can be told apart after the fact, but not during.
 - **UNKNOWN as a strategy.** An arm that abstains often is never wrong and never right. Abstention rate is reported alongside accuracy so it cannot hide, but E1 through E3 do not otherwise penalize it.
 - **Anything about the OPEN stratum.** Zero measurements, by design.
+- **Why a rejected proof failed.** Added 2026-08-11. Until `sweep.py` commit `ab5c19e`, `parsed.proof_body` was passed to `verdict()` and discarded; records carried `reject_reason` and nothing of the proof itself. Runs written before that commit — the P2 sweep of 2026-08-09 and the first P4 calibration of 2026-08-11 — are permanently unforensicable at the proof level, and their bodies must never be reconstructed or backfilled, because a regenerated body is not the body that failed. Every hypothesis advanced about the first calibration's 84 compile errors was therefore inferred from metadata about the attempts rather than the attempts; four were advanced and all four died. Runs from `ab5c19e` forward persist `proof_body` and a capped `compile_log_snippet` on every sample, successes included.
+- **The corpus selection rule.** Added 2026-08-11. Parents 0021–0105 were harvested from Mathlib by a tool that was never committed and cannot be reproduced. Each pair remains individually checkable — the certificate, the axioms, the toolchain pin, the source module — but the FILTER that chose these parents and rejected others is unrecoverable. Every arm measured against this corpus inherits a selection rule nobody can inspect, and no amount of per-pair verification recovers it. A reconstruction would be a hypothesis about the filter, never the filter.
+
+  **What inspection of the parents does establish, 2026-08-11:** the rule did NOT implement this section's own recency preference. Parent `added` dates span 2022-12-16 to 2026-06-30, and **68% of the measured REFUTABLE items (45 of 66) derive from parents older than six months**, including sixteen from 2022–2023. §5 prefers "Mathlib lemmas added in the last six months, which are both less memorized and more varied in difficulty"; the P1 twenty honoured that and the uncommitted expansion to 105 did not. This is compositional fact, not inference. What is NOT established is any contamination effect from it: certified accuracy on older parents ran 0.600 versus 0.524 on recent, and claimed 0.933 versus 0.905, both directions consistent with a memorisation advantage and neither remotely significant (two-sided Fisher p = 0.601 and 0.650, n = 45 vs 21). The exposure is real and documented; the effect is unmeasured, and at this corpus size this design cannot measure it.
+- **Whether an operator is weak or merely unreachable.** Added 2026-08-11. Operator yield and admitted-item composition are jointly selected by mutation applicability and certification reachability; zero yield cannot distinguish weak mutation from unreachable proof shape. Demonstrated the same day: `flip_strictness` read as a dead operator across 105 parents and was in fact overdetermined by three independent mechanisms — last position in `OPERATORS` so `per_parent_cap` truncated it, mutants quantifying two variables where the ladder supplied one witness, and applicability. Per-operator analysis of wrong majorities carries this confound; the within-corpus stratification of §7 survives it, cross-operator comparability does not.
 
 ---
 
@@ -447,6 +452,59 @@ Corrections get recorded as corrections. A superseded finding keeps its original
 ---
 
 # Appendix — the review record
+
+## 17. Supersessions
+
+Dated entries against frozen sections, per §0: supersede by adding, never by editing in place. Each entry names what it supersedes and why. A superseded line keeps its original text above; this section governs.
+
+### 2026-08-11 — §5 and §12 P4: WHICH accuracy the calibration band governs
+
+**Supersedes nothing in wording; resolves an ambiguity that reverses the prescribed action.**
+
+§5 says "Target per-arm accuracy of 0.75 to 0.80 on the REFUTABLE stratum. If a calibration pass lands above that, add mutations that break a deep invariant rather than a surface inequality; if below, the parents are too hard." §12 P4 says "accuracy lands in 0.75 to 0.80. If it is higher, harden the mutations; if lower, soften the parents." Neither says whether "accuracy" means CLAIMED or CERTIFIED. §12 P2's gate names both as distinct quantities ("one arm's claimed and certified accuracy are both known"), so the distinction exists in the spec and the P4 band does not pick one.
+
+The first calibration made the ambiguity load-bearing rather than academic. Run `2026-08-11T07:49:50Z`, family-x, 66 REFUTABLE items:
+
+| reading | value | position vs band | §5 prescribes |
+|---|---|---|---|
+| certified | 0.5758 | below | soften the parents |
+| claimed | 0.9242 | above | harden the mutations |
+
+**The two readings prescribe opposite corpus surgery on the same data.** Acting on either without pinning the term first would have reshaped the instrument on a coin-flip, and the direction of the error would have been invisible afterward, because a wrongly-tuned corpus still produces a plausible number.
+
+**Not resolved here.** Pinning this is a design decision with the authority ordering of §0 behind it, and it is Anthony's. What this entry fixes is that the ambiguity is now named, dated, and impossible to resolve silently by whichever seat runs the next sweep. Until it is pinned, no tuning action is authorised in either direction.
+
+**Recorded for whoever pins it:** §5's stated rationale is split structure — "the frequency of 4-1 splits is a function of per-arm accuracy. Too easy and every item is 5-0; too hard and every arm answers UNKNOWN" — and §7's yield model at the same section uses commit rate and accuracy as SEPARATE parameters (`0.85⁵ × 0.41`). Whichever term is pinned, the yield model's `p` and its commit rate must be pinned to the same reading or the projection is incoherent.
+
+### 2026-08-11 — §6 and §10: the aggregation rule is already specified
+
+**No change. Recorded to close a question, not to open one.**
+
+The rule for aggregating four samples into a committed stance was raised as unwritten. It is written, in three places: §6 ("An arm holds a committed stance only if 3 or 4 of its samples agree; anything else is UNKNOWN"), the §8 knobs table ("Commit rule | 3/4 or 4/4"), and §10 ("Committed stance and certified stance are derived by `analyze.py` from the four sample records; they are not stored, so there is one place the aggregation rule lives"). `analyze.py`'s `committed_stance()` implements exactly that and is applied PER ITEM to `stance_claimed` for the claimed figure and to `certified_sample_stance` for the certified figure. Granularity is therefore already per-item throughout; no supersession is required for either.
+
+Verified against the first calibration rather than assumed: 66 items, 61 claimed-correct, 38 certified-correct, and the certified set is a strict SUBSET of the claimed set (checked, not inferred from the definitions).
+
+### 2026-08-11 — §7: conditional certification, computed and available today
+
+**Additive. Frozen estimands unchanged.**
+
+Certification given a correct committed stance, per item, on run `2026-08-11T07:49:50Z`: **38/61 = 0.6230**. Twenty-three items carried a correct committed stance with no checking proof.
+
+This quantity separates the two capabilities the single word "accuracy" fuses: epistemic stance (does the arm know the statement is false) and Lean certification (can it produce a proof that checks, one shot, no repair loop). It required no new sampling. It is reported as a derived diagnostic and is NOT promoted to a frozen estimand here, for the reason in the next entry.
+
+### 2026-08-11 — §7: contamination guard on any stance-only measurement
+
+**Constraint on future amendment, not an amendment.**
+
+If claimed stance is ever split out as a headline measurement, it needs a contamination control before it is reported, because claimed stance is the memorization-vulnerable quantity and certification is what makes it load-bearing. On a corpus built from Mathlib lemmas, an arm that has memorised the parent can produce the correct stance without any reasoning about the mutant. Certification is expensive to fake and stance is not. §5 already gestures at this by preferring lemmas added in the last six months; that is a mitigation, not a control. Do not promote the easier-to-fake number without a guard that is stated before the number is read.
+
+### 2026-08-11 — §16: repository name
+
+**Supersedes §16's "Repo `basin`."**
+
+The repository is **`temple-mathematic-basin`**, remote `https://github.com/templetwo/temple-mathematic-basin` (private). §16 named it `basin` before the working directory existed. The directory, all twelve commits, the Sovereign Stack chronicle domain, and every cross-reference written to date use `temple-mathematic-basin`; renaming now forks every existing reference to save a word. The metaphor §16 defends — the acceptance basin as the fixed object — is untouched by the longer name.
+
+---
 
 Everything below is prior material, kept for provenance. **It is not authoritative.**
 §0–§16 above wins over anything here, per the authority ordering in §0.
