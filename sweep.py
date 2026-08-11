@@ -56,13 +56,48 @@ def pinned_mathlib_commit() -> str:
 
 
 def load_parents(pairs_path: Path) -> list[dict]:
-    parents = []
+    """TRUE-stratum parents only (P2 default)."""
+    return load_items(pairs_path, stratum="TRUE")
+
+
+def load_items(pairs_path: Path, *, stratum: str = "TRUE") -> list[dict]:
+    """Load sweep items from pairs.jsonl.
+
+    stratum:
+      TRUE      — parent side only (P2 / TRUE calibration)
+      REFUTABLE — certified mutants only (P4); skips unpaired shortfalls
+      BOTH      — parents then mutants for each certified pair; parents
+                  always included even when unpaired
+
+    Each item carries pair_id and mutation_op (None on TRUE side).
+    """
+    if stratum not in ("TRUE", "REFUTABLE", "BOTH"):
+        raise ValueError(f"stratum must be TRUE|REFUTABLE|BOTH, got {stratum!r}")
+    items: list[dict] = []
     with pairs_path.open(encoding="utf-8") as fh:
         for line in fh:
-            if line.strip():
-                pair = json.loads(line)
-                parents.append(pair["parent"] | {"pair_id": pair["pair_id"]})
-    return parents
+            if not line.strip():
+                continue
+            pair = json.loads(line)
+            pair_id = pair["pair_id"]
+            if stratum in ("TRUE", "BOTH"):
+                parent = dict(pair["parent"])
+                parent["pair_id"] = pair_id
+                parent.setdefault("mutation_op", None)
+                items.append(parent)
+            if stratum in ("REFUTABLE", "BOTH"):
+                mutant = pair.get("mutant")
+                if not mutant:
+                    continue
+                item = dict(mutant)
+                item["pair_id"] = pair_id
+                item["mutation_op"] = (
+                    pair.get("mutation_op")
+                    or mutant.get("mutation_op")
+                    or None
+                )
+                items.append(item)
+    return items
 
 
 def spec_commit() -> str:
@@ -168,7 +203,7 @@ def run_sweep(
             "item_id": item["item_id"],
             "pair_id": item["pair_id"],
             "stratum": item["stratum"],
-            "mutation_op": None,
+            "mutation_op": item.get("mutation_op"),
             "ground_truth": item["ground_truth"],
             "arm": arm.arm_name,
             "arm_role": "primary",
@@ -220,6 +255,12 @@ def main() -> int:
         help="environment variable holding the API key for --endpoint",
     )
     parser.add_argument("--pairs", default=str(REPO_ROOT / "corpus" / "pairs.jsonl"))
+    parser.add_argument(
+        "--stratum",
+        choices=("TRUE", "REFUTABLE", "BOTH"),
+        default="TRUE",
+        help="Which side of pairs.jsonl to sweep (P4 uses REFUTABLE)",
+    )
     parser.add_argument("--sample-workers", type=int, default=4)
     parser.add_argument("--lean-workers", type=int, default=4)
     parser.add_argument("--limit", type=int, default=None, help="first N items only (smoke)")
@@ -243,7 +284,7 @@ def main() -> int:
         temperature=args.temperature,
         endpoint=args.endpoint,
     )
-    parents = load_parents(Path(args.pairs))
+    parents = load_items(Path(args.pairs), stratum=args.stratum)
     if args.limit:
         parents = parents[: args.limit]
     template = (REPO_ROOT / "prompt.txt").read_text(encoding="utf-8")
