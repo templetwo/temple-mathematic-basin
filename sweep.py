@@ -8,6 +8,11 @@ MALFORMED internal:<type>, never raised past the slot). The only aborts are
 deliberate: FatalTransportError on auth/endpoint misconfiguration, before
 money is spent on a sweep that measures nothing.
 
+Each record now persists proof_body (when parsed) and a capped
+compile_log_snippet so rejected proofs are forensicable. Runs written
+before this field existed remain permanently unforensicable at the proof
+level — do not invent or backfill bodies for them.
+
 Records are appended incrementally as certification completes, under a lock,
 so a crash mid-sweep loses at most in-flight samples — runs/ is receipts and
 receipts survive. Read-time ordering comes from (item_id, sample_idx) fields.
@@ -168,6 +173,10 @@ def run_sweep(
     def do_certify(entry):
         item, idx, raw, internal_error = entry
         lean_ms = None
+        # Persist proof text on EVERY sample (incl. ACCEPT). Pre-patch runs are
+        # permanently unforensicable at the proof level — do not backfill.
+        proof_body: str | None = None
+        compile_log_snippet: str | None = None
         if internal_error is not None:
             stance_claimed, reject_reason, kernel_result, axioms = (
                 "MALFORMED", internal_error, None, [])
@@ -180,6 +189,7 @@ def run_sweep(
                 stance_claimed, reject_reason, kernel_result, axioms = (
                     "MALFORMED", f"malformed:{parsed.malformed_reason}", None, [])
             else:
+                proof_body = parsed.proof_body
                 try:
                     import time as _time
 
@@ -193,6 +203,9 @@ def run_sweep(
                     kernel_result = result.status.value
                     reject_reason = result.reject_reason
                     axioms = list(result.axioms)
+                    # Cap log so receipts stay small; full log is ephemeral.
+                    if result.compile_log:
+                        compile_log_snippet = result.compile_log[:2000]
                 except Exception as exc:  # certification bug: record, don't drop
                     stance_claimed, reject_reason, kernel_result, axioms = (
                         "MALFORMED", f"internal:{type(exc).__name__}", None, [])
@@ -214,6 +227,8 @@ def run_sweep(
             "stance_claimed": stance_claimed,
             "kernel_result": kernel_result,
             "reject_reason": reject_reason,
+            "proof_body": proof_body,
+            "compile_log_snippet": compile_log_snippet,
             "axioms": axioms,
             "lean_toolchain": lean_toolchain,
             "mathlib_commit": mathlib_commit,
