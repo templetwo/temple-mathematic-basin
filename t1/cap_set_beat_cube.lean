@@ -1,0 +1,9 @@
+import Mathlib
+
+-- Readiness probe only. Not a proof. Not a corpus row.
+#check
+  ∃ (n : ℕ) (A : Finset (Fin n → ZMod 3)),
+    3 ≤ n ∧
+    (∀ a ∈ A, ∀ b ∈ A, ∀ c ∈ A,
+      a ≠ b → b ≠ c → a ≠ c → a + c ≠ (2 : ℕ) • b) ∧
+    A.card > 2 ^ n
