@@ -1,0 +1,16 @@
+[
+ {
+  "name": "poly_valid_proof",
+  "status": "REJECT",
+  "reject_reason": "compile_error",
+  "universe_in_log": true,
+  "log_tail": "'basin_target' depends on axioms: [basin_target, sorryAx]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_j7kiygwu/BasinAttempt_j7kiygwu.lean:9:0: error: (kernel) invalid reference to undefined universe level parameter 'u_1'\n"
+ },
+ {
+  "name": "concrete_valid_proof",
+  "status": "ACCEPT",
+  "reject_reason": null,
+  "universe_in_log": false,
+  "log_tail": "'basin_target' does not depend on any axioms\n"
+ }
+]
