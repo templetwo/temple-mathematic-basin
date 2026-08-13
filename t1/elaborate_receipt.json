@@ -1,0 +1,31 @@
+{
+  "ok": true,
+  "note": "dummy body True.intro must fail; universe_error must be false on cap_set",
+  "results": [
+    {
+      "name": "cap_set_beat_cube",
+      "status": "REJECT",
+      "reject_reason": "compile_error",
+      "compiled": true,
+      "axioms": [
+        "propext",
+        "sorryAx",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "universe_error": false,
+      "sandbox_denied": false,
+      "log_tail": "/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_41w5vdxk/BasinAttempt_41w5vdxk.lean:1:0: error: Type mismatch\n  True.intro\nhas type\n  True\nbut is expected to have type\n  \u2203 n A, 3 \u2264 n \u2227 (\u2200 a \u2208 A, \u2200 b \u2208 A, \u2200 c \u2208 A, a \u2260 b \u2192 b \u2260 c \u2192 a \u2260 c \u2192 a + c \u2260 2 \u2022 b) \u2227 A.card > 2 ^ n\n'basin_target' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_41w5vdxk/BasinAttempt_41w5vdxk.lean:9:0: warning: declaration uses `sorry`\n"
+    },
+    {
+      "name": "universe_control",
+      "status": "REJECT",
+      "reject_reason": "compile_error",
+      "compiled": true,
+      "axioms": [],
+      "universe_error": false,
+      "sandbox_denied": false,
+      "log_tail": "/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_e9ja0s80/BasinAttempt_e9ja0s80.lean:1:0: error: Type mismatch\n  True.intro\nhas type\n  True\nbut is expected to have type\n  \u2200 (a b : \u03b1\u271d), a + b = b + a\nthe following variables have been introduced by the implicit lambda feature\n  \u03b1\u271d : Type u_1\n  inst\u271d : AddCommMonoid \u03b1\u271d\nyou can disable implicit lambdas using `@` or writing a lambda expression with `{}` or `[]` binder annotations.\n"
+    }
+  ]
+}
