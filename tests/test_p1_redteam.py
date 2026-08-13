@@ -55,8 +55,11 @@ def _delete_last_tactic(proof_body: str) -> str:
 
 class P1GateTests(unittest.TestCase):
     def test_pairs_has_twenty_populated_parents(self) -> None:
+        # P1's gate was twenty populated parents. P3 grew the corpus to 105,
+        # which the equality assertion read as a failure — the gate is a
+        # floor, not a census (stale-test fix, V0 2026-08-12).
         pairs = _load_pairs()
-        self.assertEqual(len(pairs), 20)
+        self.assertGreaterEqual(len(pairs), 20)
         seen_ids = set()
         for pair in pairs:
             parent = pair["parent"]
@@ -69,9 +72,13 @@ class P1GateTests(unittest.TestCase):
             self.assertEqual(cert["kernel_result"], "ACCEPT")
             self.assertEqual(cert["lean_toolchain"], LEAN_TOOLCHAIN)
             self.assertEqual(cert["mathlib_commit"], MATHLIB_COMMIT)
-            self.assertIsNone(pair["mutant"])
-            self.assertIsNone(pair["mutation_op"])
-        self.assertEqual(len(seen_ids), 20)
+            # P1-era pairs carried mutant: null; P3 populated 66 of them.
+            # The P1 gate is about parents — mutant validation is the P3
+            # fixture's job (stale-test fix, V0 2026-08-12).
+            if pair["mutant"] is not None:
+                self.assertEqual(pair["mutant"]["stratum"], "REFUTABLE")
+        self.assertGreaterEqual(len(seen_ids), 20)
+        self.assertEqual(len(seen_ids), len(pairs))
 
 
 class P1RedteamFixtureTests(unittest.TestCase):

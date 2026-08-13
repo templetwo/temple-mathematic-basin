@@ -17,6 +17,15 @@ consistency (all four samples agree); malformed / abstention rates.
 
 Model-string discipline: any (run_id, arm) whose served strings drifted is
 excluded from every number and reported (spec §6: invalidated, not patched).
+
+Run identity (V0 debt 1, 2026-08-12): a runs/*.jsonl file may hold several
+run_ids — a smoke run beside the real one. Aggregates pool across run_ids by
+default (the long-standing contract), but the pooling can no longer be
+silent: the output carries a top-level "run_ids" count, and --run-id filters
+to a single run so every number in the record can be reproduced by the tool
+that made it. The recorded P4 gate is `--run-id 2026-08-11T07:49:50Z` on
+runs/2026-08-11.jsonl; without the filter that file reports 68 pooled items,
+a figure that appears nowhere in the record.
 """
 
 from __future__ import annotations
@@ -76,7 +85,9 @@ def report(records: list[dict]) -> dict:
     for r in kept:
         by_run_item[(r["run_id"], r["arm"], r["stratum"], r["item_id"])].append(r)
 
-    out: dict = {"drift_excluded": drifted, "incomplete_groups": [], "arms": {}}
+    run_ids = Counter(r["run_id"] for r in records)
+    out: dict = {"run_ids": dict(sorted(run_ids.items())),
+                 "drift_excluded": drifted, "incomplete_groups": [], "arms": {}}
     per_arm: dict[tuple[str, str], dict] = defaultdict(
         lambda: {"items": 0, "claimed_correct": 0, "certified_correct": 0,
                  "consistent": 0, "samples": 0, "malformed": 0, "abstained": 0,
@@ -123,12 +134,31 @@ def report(records: list[dict]) -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("paths", nargs="*", help="runs/*.jsonl (default: all)")
+    parser.add_argument(
+        "--run-id",
+        help="restrict every number to one run_id; without it, aggregates "
+        "pool across every run_id present and say so on stderr",
+    )
     args = parser.parse_args()
     paths = [Path(p) for p in args.paths] or sorted((REPO_ROOT / "runs").glob("*.jsonl"))
     if not paths:
         print("no run records found", file=sys.stderr)
         return 1
     records = load_records(paths)
+    if args.run_id:
+        records = [r for r in records if r["run_id"] == args.run_id]
+        if not records:
+            print(f"no records for run_id {args.run_id}", file=sys.stderr)
+            return 1
+    else:
+        present = sorted({r["run_id"] for r in records})
+        if len(present) > 1:
+            print(
+                "WARNING: pooling %d run_ids (%s); numbers below match no "
+                "single run — pass --run-id to reproduce a recorded figure"
+                % (len(present), ", ".join(present)),
+                file=sys.stderr,
+            )
     print(json.dumps(report(records), indent=2))
     return 0
 

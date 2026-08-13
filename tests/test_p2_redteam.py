@@ -217,7 +217,12 @@ class SweepRedteamTests(unittest.TestCase):
         }
         fake_verdict = mock.Mock()
         fake_verdict.return_value = mock.Mock(
-            status=mock.Mock(value="ACCEPT"), reject_reason=None, axioms=()
+            status=mock.Mock(value="ACCEPT"), reject_reason=None, axioms=(),
+            # ab5c19e persists compile_log[:2000]; an unmodeled Mock attribute
+            # is unsliceable, and the resulting TypeError was landing the one
+            # well-formed sample as a fourth MALFORMED record
+            # (stale-fixture fix, V0 2026-08-12).
+            compile_log="lean: ok",
         )
         with tempfile.TemporaryDirectory() as tmp:
             out_path = Path(tmp) / "run.jsonl"
