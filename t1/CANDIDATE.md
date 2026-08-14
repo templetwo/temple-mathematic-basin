@@ -1,6 +1,6 @@
-# T1 candidate — cap-set lower bound (not selected)
+# T1 candidate — cap-set lower bound
 
-**Status:** readiness probe, 2026-08-12. Not Anthony's pick. Not a certificate.  
+**Status:** readiness probe 2026-08-12. First *question* written 2026-08-13 in `t1/QUESTION.md`. Still not a run and not a certificate. Anthony still says the word before a witness attempt.  
 **Fence:** universe-monomorphic. Carriers are `ℕ`, `Fin n`, `ZMod 3`, `Finset`.  
 **Partial credit:** any explicit `A` for any `n ≥ 3` with `|A| > 2^n`.  
 **Not a prize wall:** beating the boolean cube is a construction, not an all-or-nothing resolution.
