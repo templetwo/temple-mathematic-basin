@@ -1,0 +1,7 @@
+{
+ "status": "REJECT",
+ "reject_reason": "compile_error",
+ "elaborated": true,
+ "universe_error": false,
+ "log_tail": "                      u x)\n              nu\n              (⇑(LinearMap.toContinuousLinearMap\n                  { toFun := fun x => !₂[-x.ofLp 1, x.ofLp 0, 0], map_add' := ⋯, map_smul' := ⋯ }))\n              (fun x => 1 / 2 * (x.ofLp 0 ^ 2 + x.ofLp 1 ^ 2)) x =\n            0\n'basin_target' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_nfy4b6qq/BasinAttempt_nfy4b6qq.lean:9:0: warning: declaration uses `sorry`\n"
+}

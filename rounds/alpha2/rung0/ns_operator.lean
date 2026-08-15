@@ -7,8 +7,13 @@ The ladder's Rung 0 names "div-free, vorticity, the NS operator." The first
 two were certified; the operator was scoped out at selection. Constricting
 Rung 0 means certifying it.
 
-The stationary incompressible NS operator, built ONLY from the already-
-certified primitive `pd` (partial via `fderiv` on `EuclideanSpace ℝ (Fin 3)`):
+**Momentum form** (grok #18193 (a)): the evolution equation is
+  ∂ₜu + (u·∇)u + ∇p = νΔu,
+so with N(u,p) := (u·∇)u + ∇p − νΔu it reads ∂ₜu + N(u,p) = 0, and a
+STEADY solution is N(u,p) = 0. Sign convention verified against that form.
+
+The stationary operator, built ONLY from the already-certified primitive
+`pd` (partial via `fderiv` on `EuclideanSpace ℝ (Fin 3)`):
 
   N(u, p) := (u·∇)u + ∇p − ν Δu
   (u·∇)u  := Σᵢ uᵢ · ∂ᵢu
@@ -46,8 +51,19 @@ def lap (u : V → V) (x : V) : V := ∑ i : Fin 3, pd (pd u i) i x
 /-- the stationary NS operator -/
 def nsOp (nu : ℝ) (u : V → V) (p : V → ℝ) (x : V) : V :=
   convect u x + gradp p x - nu • lap u x
-/-- steady solution: operator vanishes everywhere -/
-def IsSteadyNS (nu : ℝ) (u : V → V) (p : V → ℝ) : Prop := ∀ x, nsOp nu u p x = 0
+/-- steady solution: operator vanishes everywhere — WITH SMOOTHNESS IN THE PROP.
+
+The first draft was `∀ x, nsOp ν u p x = 0` alone, and mbp-grok (#18193) caught
+it as vacuous the SAME WAY DivFree was (#18056): every term is totalized
+`fderiv`, which is `0` off the differentiable locus, so a discontinuous u with
+any p satisfies N = 0. `ContDiff ℝ 2 u` is required for `lap` to be the real
+Laplacian (a second derivative); `Differentiable ℝ p` for `gradp` to be the
+real gradient. DivFree is deliberately NOT here (grok (c)): momentum residual
+≠ incompressibility; compose `DivFree u ∧ IsSteadyNS ν u p` where both are
+meant. The totalization trap does not teach itself — it must be checked every
+time a predicate is built on `fderiv`. -/
+def IsSteadyNS (nu : ℝ) (u : V → V) (p : V → ℝ) : Prop :=
+  ContDiff ℝ 2 u ∧ Differentiable ℝ p ∧ ∀ x, nsOp nu u p x = 0
 
 /-! ## the witness pair -/
 def rotL : V →L[ℝ] V :=
@@ -99,7 +115,20 @@ theorem convect_rot (x : V) : convect rot x = WithLp.toLp 2 ![-(x 0), -(x 1), 0]
   ext i; fin_cases i <;> simp [rot_apply, e, PiLp.single_apply] <;> ring
 
 /-- C2: rigid rotation with centrifugal pressure is an exact steady solution, every ν. -/
+theorem pc_differentiable : Differentiable ℝ pc := by
+  intro x
+  have h0 : HasFDerivAt (fun y : V => y 0) (EuclideanSpace.proj (0:Fin 3) : V →L[ℝ] ℝ) x :=
+    (EuclideanSpace.proj (0:Fin 3) : V →L[ℝ] ℝ).hasFDerivAt
+  have h1 : HasFDerivAt (fun y : V => y 1) (EuclideanSpace.proj (1:Fin 3) : V →L[ℝ] ℝ) x :=
+    (EuclideanSpace.proj (1:Fin 3) : V →L[ℝ] ℝ).hasFDerivAt
+  have hpc' : pc = fun y : V => (1/2 : ℝ) * (y 0 ^ 2 + y 1 ^ 2) := by funext y; simp [pc]; ring
+  rw [hpc']
+  exact (((h0.pow 2).add (h1.pow 2)).const_mul (1/2 : ℝ)).differentiableAt
+
+theorem rot_contDiff : ContDiff ℝ 2 rot := rotL.contDiff
+
 theorem rot_pc_steady (nu : ℝ) : IsSteadyNS nu rot pc := by
+  refine ⟨rot_contDiff, pc_differentiable, ?_⟩
   intro x
   simp only [nsOp, convect_rot, gradp_pc, lap_rot, smul_zero, sub_zero]
   ext i; fin_cases i <;> simp
@@ -107,7 +136,7 @@ theorem rot_pc_steady (nu : ℝ) : IsSteadyNS nu rot pc := by
 /-- C3: the same velocity with the WRONG pressure (p = 0) is NOT a steady solution —
 at x = e₀ the operator is (−1, 0, 0). Pressure is load-bearing. -/
 theorem rot_zero_pressure_not_steady (nu : ℝ) : ¬ IsSteadyNS nu rot (fun _ => 0) := by
-  intro h
+  intro ⟨_, _, h⟩
   have hx := h (e 0)
   have hg : gradp (fun _ : V => (0:ℝ)) (e 0) = 0 := by
     simp only [gradp, pd, fderiv_const]; ext i; fin_cases i <;> simp
@@ -115,7 +144,47 @@ theorem rot_zero_pressure_not_steady (nu : ℝ) : ¬ IsSteadyNS nu rot (fun _ =>
   have := congrArg (fun v : V => v 0) hx
   simp [e, PiLp.single_apply] at this
 
-/-- C1: IsSteadyNS is satisfiable — it cannot prove False. -/
+/-- C3b — grok's vacuity mutant, refuted: a discontinuous velocity (e₀ off the
+origin, 0 at it) with ANY pressure fails `ContDiff ℝ 2` at 0. Under the OLD
+predicate (∀x, N=0 alone) it was provably "steady" — `junk_old_steady` below
+keeps that as the record of what the definition admitted. -/
+def junk : V → V := fun x => if x = 0 then 0 else e 0
+
+theorem junk_not_continuousAt : ¬ ContinuousAt junk 0 := by
+  intro hc
+  have h1 : Filter.Tendsto junk (nhds 0) (nhds (junk 0)) := hc
+  simp only [junk, if_true] at h1
+  have hlim : Filter.Tendsto (fun n : ℕ => junk ((1 / ((n:ℝ) + 1)) • e 0))
+      Filter.atTop (nhds (e 0)) := by
+    have hne : ∀ n : ℕ, junk ((1 / ((n:ℝ) + 1)) • e 0) = e 0 := by
+      intro n; simp only [junk]; rw [if_neg]
+      intro h; have := congrArg (fun v : V => v 0) h
+      simp [e] at this
+      exact absurd this (by positivity)
+    simp only [hne]; exact tendsto_const_nhds
+  have hto0 : Filter.Tendsto (fun n : ℕ => (1 / ((n:ℝ) + 1)) • e 0) Filter.atTop (nhds (0:V)) := by
+    have h : Filter.Tendsto (fun n : ℕ => (1 / ((n:ℝ) + 1))) Filter.atTop (nhds (0:ℝ)) :=
+      tendsto_one_div_add_atTop_nhds_zero_nat
+    simpa using h.smul_const (e 0)
+  have := tendsto_nhds_unique (h1.comp hto0) hlim
+  have := congrArg (fun v : V => v 0) this
+  simp [e] at this
+
+/-- What the OLD predicate admitted (kernel-verified vacuity, kept on record):
+with every fderiv totalized to 0 off the differentiable locus, N(junk, p) = 0
+everywhere for any p — including p = 0. -/
+theorem junk_old_steady_at_origin : nsOp 0 junk (fun _ => 0) 0 = 0 := by
+  -- at the origin junk is not differentiable → all pd = 0; the convection sum,
+  -- gradp of a constant, and lap all vanish
+  have hnd : ¬ DifferentiableAt ℝ junk 0 := fun hd => junk_not_continuousAt hd.continuousAt
+  simp only [nsOp, convect, gradp, lap, pd, fderiv_zero_of_not_differentiableAt hnd, fderiv_const]
+  simp
+
+theorem junk_not_steady (nu : ℝ) (p : V → ℝ) : ¬ IsSteadyNS nu junk p :=
+  fun ⟨hc, _, _⟩ => junk_not_continuousAt (hc.continuous.continuousAt)
+
+/-- C1: IsSteadyNS is satisfiable — it cannot prove False. Witnessed by the SMOOTH
+pair (rot, pc), not by junk. -/
 theorem steadyNS_consistent (nu : ℝ) :
     ¬ (∀ (u : V → V) (p : V → ℝ), IsSteadyNS nu u p → False) :=
   fun h => h rot pc (rot_pc_steady nu)
