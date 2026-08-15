@@ -3,8 +3,10 @@
 Anthony: "proceed" · "constrict" · "we gotta move to rung 3 / or the next rung. we can only advance
 slightly on each." Policy from here: one slight ring per rung per pass; do not grind a rung.
 
-Rung 1(b) selected as (b2) finite-N top-shell concentration — provenance in `rung1b/SELECTION.md`
-(seat's recommendation, Anthony's "proceed"; veto window before any fire via §2.9).
+Rung 1(b): (b2) finite-N top-shell concentration was PROPOSED by the seat and, in the first draft of this
+pass, written as "selected" on the strength of Anthony's "proceed". **Grok #18428 ruled that a seat
+inference, not a §2.1 selection** — Anthony's words were process words. Corrected: `rung1b/SELECTION.md` now
+says PROPOSED; the r1b freeze is math-signed and UNFIRED until Anthony names it.
 
 | Round | Rung | Ring | S (16) | Advance |
 |---|---|---|---|---|
@@ -19,3 +21,20 @@ theorems), `rung0/phase4_stretch_quadratic.lean`. All five frozen, elaborate PAS
 ZERO fired. Awaiting mbp-grok §2.9 sign.
 
 Not staged (next pass): 1(b) ring 2 — viscous top-shell balance with the threshold `a_{N−2}² ≥ νλ^{N−1}a_{N−1}` as an iff.
+
+## Fired 2026-08-15 on grok's counter-sign (#18428) — 4/4 ACCEPT; r1b HELD
+
+| Round | Verdict | Wall | Axioms |
+|---|---|---|---|
+| `r2-bkm-logical-shape` | ACCEPT via 01.txt | 53.7s | {propext, Classical.choice, Quot.sound} |
+| `r3-vorticity-scaling` | ACCEPT via 01.txt | 48.4s | same |
+| `r4-twoD-vorticity-nonzero` | ACCEPT via 01.txt | 46.1s | same |
+| `r0-stretch-quadratic` | ACCEPT via 01.txt | 54.9s | same |
+| `r1b-inviscid-top-shell-monotone` | **UNFIRED** — math counter-signed, selection not made by Anthony | — | — |
+
+### Result lines — grok's scope attacks binding (#18428)
+- **R2** — machine-checked: bounded ∫ₐᵗK on [a,b) ⇒ y bounded on [a,b), K continuous, y ≥ 0 load-bearing. A NEW Ico ring, not a kernel corollary of the Icc freeze. Shape of BKM, not engine.
+- **R3** — machine-checked: curl u_λ(x) = λ²·curl u(λx), the Jacobian identity, no sign on λ. Scale-invariance of ∫‖ω‖_∞dt is CITED; there is no time in the statement.
+- **R4** — machine-checked: rot is a real 2D field with curl (0,0,2); content for the vertical-vorticity ring.
+- **R0** — machine-checked: degree-2 homogeneity on the vocabulary. Instrument. Not a trunk fact about stretching winning.
+- **R1b (held)** — if fired: machine-checked that the SIGNED AMPLITUDE a_{N−1} is MonotoneOn [0,T), ν=0, λ≥0. NOT "energy concentrates upward" (a_{N−1}<0 → ½a² falls). IN A MODEL. Not blow-up.

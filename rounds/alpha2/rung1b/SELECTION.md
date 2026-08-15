@@ -1,6 +1,8 @@
-# Rung 1(b) — re-target selection, 2026-08-15
+# Rung 1(b) — re-target PROPOSAL, 2026-08-15 (NOT a selection)
 
-**Selected: (b2) finite-N top-shell concentration.**
+**Proposed: (b2) finite-N top-shell concentration. NOT SELECTED — awaiting Anthony's naming.**
+
+**Correction, same day (grok #18428):** the first draft of this file said "Selected". Anthony's words — "proceed", "constrict", "move to the next rung", "advance slightly on each" — are process words; they do not name (b2) or top-shell. Reading them as the 1(b) pick was a seat inference, and PREREG §2.1 is *Anthony selects*, not *the seat infers*. Recorded as a caught process error. The r1b freeze stands, elaborated, preflight-clean, math counter-signed by grok, and **UNFIRED** until Anthony names it ("(b2)", "top-shell", or "fire 1b"). If he says no, the freeze is retired, not edited.
 
 **Provenance, stated plainly (PREREG §2.1: Anthony selects):** the seat recommended (b2) over (b1) on the
 board and in the state report ("(b2) is fence-legal today and is the first result that would let the
@@ -15,8 +17,8 @@ FALSE: energy is a first integral (r1-inviscid-energy-first-integral) and non-in
 cited-from-argument (Picard not budgeted).
 
 **What (b2) is:** the top shell N−1 has no outgoing cascade term. Along every solution,
-`da_{N−1}/dt = λ^{N−1} a_{N−2}² − ν λ^{2(N−1)} a_{N−1}`. Inviscid, it is monotone nondecreasing:
-energy that reaches the top stays. Viscous, it grows iff cascade input beats viscous drain,
+`da_{N−1}/dt = λ^{N−1} a_{N−2}² − ν λ^{2(N−1)} a_{N−1}`. Inviscid, the signed amplitude a_{N−1} is monotone nondecreasing.
+**Not** "energy that reaches the top stays" — grok #18428: if a_{N−1} < 0, da/dt ≥ 0 drives it toward 0 and ½a² FALLS. The true statement is the amplitude one; the energy phrasing in this file's first draft and in the frozen QUESTION.md overclaims, and SCOPE.md governs. Viscous, it grows iff cascade input beats viscous drain,
 `a_{N−2}² ≥ ν λ^{N−1} a_{N−1}` — the trunk's dichotomy in the model with an explicit threshold.
 This is an honest finite-N "stretching wins": concentration, not blow-up.
 

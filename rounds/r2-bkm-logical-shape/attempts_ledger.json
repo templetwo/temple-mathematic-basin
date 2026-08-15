@@ -1,0 +1,27 @@
+{
+ "round": "r2-bkm-logical-shape",
+ "attempts": [
+  {
+   "attempt_file": "01.txt",
+   "utc": "2026-08-15T22:18:27Z",
+   "statement_sha256": "cb9cc18067b1aae1ffa9717737752cd236b60ab7c3f6b4396aa2c17c07840e2a",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "wall_seconds": 53.7,
+   "log_tail": "'basin_target' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+   "terminal": "ACCEPT"
+  }
+ ],
+ "frozen": {
+  "statement": "∀ (y y' K : ℝ → ℝ) (a b : ℝ), a ≤ b → Continuous K → (∀ t ∈ Set.Ico a b, HasDerivAt y (y' t) t) → (∀ t ∈ Set.Ico a b, y' t ≤ K t * y t) → (∀ t ∈ Set.Ico a b, 0 ≤ y t) → (∃ M : ℝ, ∀ t ∈ Set.Ico a b, ∫ s in a..t, K s ≤ M) → ∃ C : ℝ, ∀ t ∈ Set.Ico a b, y t ≤ C",
+  "statement_sha256": "cb9cc18067b1aae1ffa9717737752cd236b60ab7c3f6b4396aa2c17c07840e2a",
+  "question_sha256": "8c4657495acd9031f9ce2f4a44628bc90888e94fb3815c704ed28b77b2a02cee",
+  "frozen_utc": "2026-08-15T22:01:56Z"
+ }
+}

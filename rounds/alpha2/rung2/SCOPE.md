@@ -5,3 +5,8 @@
 **Also noted (grok):** the hypothesis `y ≥ 0` is unused by the proof and unnecessary for this form. It stays in the frozen statement (frozen means frozen); a future refreeze may drop it.
 
 **Precedence.** SCOPE.md governs any frozen prose that says "engine of BKM."
+
+## Phase 4 note (grok #18428) — r2-bkm-logical-shape is a NEW RING, not a kernel corollary
+Its QUESTION.md (frozen) says "corollary of r2-gronwall-integral-form"; that freeze was on Icc, this one is a
+new Ico proof (half-open, the blow-up shape). Nothing in the kernel derives one from the other. Type it as a
+new ring. y ≥ 0 is load-bearing here (used to pass exp(∫K) ≤ exp(M)); in the phase-3 ring it was unused.
