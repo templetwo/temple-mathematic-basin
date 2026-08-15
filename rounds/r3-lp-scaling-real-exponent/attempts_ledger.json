@@ -1,0 +1,35 @@
+{
+ "round": "r3-lp-scaling-real-exponent",
+ "attempts": [
+  {
+   "attempt_file": "01.txt",
+   "utc": "2026-08-15T23:06:46Z",
+   "statement_sha256": "99d6d3031da54c70ca1cba3ac6cd2f9fd5327ebe5c7d17898255d4ffb75c9305",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "wall_seconds": 19.0,
+   "log_tail": "'basin_target' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+   "terminal": "ACCEPT",
+   "provenance": {
+    "body_type": "generated",
+    "generator": "claude subagent (Agent tool, general-purpose), pass 5, brief lean/tmp/AGENT_BRIEF.md",
+    "model_requested": "inherit (no override; Agent tool default = session model)",
+    "model_string_served": "claude-fable-5 (session model; the seat cannot read a finer served string from the Agent tool)",
+    "note": "seat-reviewed: byte-identical lambdas re-asserted, NOTES.md read, no banned tactics; kernel is the court",
+    "agent_dir": "lean/tmp/agent_3"
+   }
+  }
+ ],
+ "frozen": {
+  "statement": "∀ (lam : ℝ), 0 < lam → ∀ (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (p : ℝ), ∫ x, ‖(fun (lam : ℝ) (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (x : EuclideanSpace ℝ (Fin 3)) => lam • u (lam • x)) lam u x‖ ^ p ∂(MeasureTheory.volume : MeasureTheory.Measure (EuclideanSpace ℝ (Fin 3))) = lam ^ p * (lam ^ (3:ℕ))⁻¹ * ∫ x, ‖u x‖ ^ p ∂(MeasureTheory.volume : MeasureTheory.Measure (EuclideanSpace ℝ (Fin 3)))",
+  "statement_sha256": "99d6d3031da54c70ca1cba3ac6cd2f9fd5327ebe5c7d17898255d4ffb75c9305",
+  "question_sha256": "f498632fa71aaa83e5b22ef0138eaebb37c229412eac81b0144e55d794b6537b",
+  "frozen_utc": "2026-08-15T22:52:39Z"
+ }
+}

@@ -43,3 +43,17 @@ Zero UNKNOWNs. Each round dir carries `PROVENANCE.json` (stamped into the ledger
 `AGENT_NOTES.md` (the agent's honest typing, verbatim). Agents touched nothing under `rounds/` or
 `scripts/`; the seat staged all five. Fire waits on mbp-grok's §2.9 sign of the five statements AND
 counter-sign of the round.py v3 diff (PREREG supersession v3).
+
+### Pass 5 fired 2026-08-15 on grok's two signs (#18571: v3 diff + five statements) — 5/5 ACCEPT
+| Round | Verdict | Wall | Ledger provenance |
+|---|---|---|---|
+| `r0-div-of-curl-zero` | ACCEPT 01.txt | 21.4s | generated / claude-fable-5 |
+| `r1-dissipation-stops-only-at-rest` | ACCEPT 01.txt | 22.0s | generated / claude-fable-5 |
+| `r2-vector-gronwall-replication` | ACCEPT 01.txt | 16.4s | generated / claude-fable-5 |
+| `r3-lp-scaling-real-exponent` | ACCEPT 01.txt | 19.0s | generated / claude-fable-5 |
+| `r4-twoD-nonlinear-witness` | ACCEPT 01.txt | 22.3s | generated / claude-fable-5 |
+All axioms {propext, Classical.choice, Quot.sound}; statement sha == FREEZE in every ledger; the `provenance`
+field is the §2.8 receipt. Result lines (grok #18571 binding): R0 Clairaut/instrument, Biot–Savart role CITED ·
+R1 algebraic nondegeneracy, NOT ODE uniqueness (directory name notwithstanding) · R2 replication, ω any curve,
+shape not engine · R3 the rpow identity, Bochner 0=0 without integrability, p≤0 mostly that vacuity, NOT an
+L^p-norm certificate, "p=3 in the real family" is interpretation · R4 non-constant ω is the content, Ladyzhenskaya CITED.

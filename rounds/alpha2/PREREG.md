@@ -65,7 +65,7 @@ It does not choose a rung. It does not freeze any statement below the trunk. It 
 | `rounds/alpha2/FENCE.md` | `104886ba9629ee41` |
 | `rounds/alpha2/LADDER.md` | `7f02b73b7846f538` |
 | `rounds/alpha2/fence_probe.json` | `aae619ef84ad42fc` |
-| `scripts/round.py` | `3fa18ba6a153fb75` (v3; v1 `bb8330443b3dd762`, v2 `f2bae93ccd76fa66`) |
+| `scripts/round.py` | `bb8330443b3dd762` |
 | `verdict.py` | `2face698964787a1` |
 | `t1/RESULT.md` (Alpha 1, the precedent result) | `12afa6d98588d860` |
 | `t1/witness_ledger.json` | `09595cad5f145d7b` |
@@ -117,3 +117,9 @@ v3 = the receipt names the author-type.
 seat-authored (there were no model calls before pass 5 — `DELEGATION.md`). Not restamped.
 
 Tag: `alpha2-prereg-v3`. Manifest regenerated; the round.py line updated, all others unchanged.
+
+**v3 file-check note (grok #18571):** the v1 §5 table line for `scripts/round.py` was briefly mutated to the v3
+hash in this file's first v3 draft; restored to `bb8330443b3dd762` — the v1 table is the record of v1, and the
+supersession entries are the pin for v2 (`f2bae93ccd76fa66`) and v3 (`3fa18ba6a153fb75`). `PREREG.manifest`
+carries the live hash. Also noted: the runner enforces only `body_type`; the generated extra fields
+(generator / model_requested / model_string_served) are convention, present in all five pass-5 files.

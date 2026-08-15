@@ -1,0 +1,35 @@
+{
+ "round": "r2-vector-gronwall-replication",
+ "attempts": [
+  {
+   "attempt_file": "01.txt",
+   "utc": "2026-08-15T23:06:27Z",
+   "statement_sha256": "539377f2419b359580191b4dab5c2225b1e84e1b43296fcf76ebbc4353f05e1d",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "wall_seconds": 16.4,
+   "log_tail": "'basin_target' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+   "terminal": "ACCEPT",
+   "provenance": {
+    "body_type": "generated",
+    "generator": "claude subagent (Agent tool, general-purpose), pass 5, brief lean/tmp/AGENT_BRIEF.md",
+    "model_requested": "inherit (no override; Agent tool default = session model)",
+    "model_string_served": "claude-fable-5 (session model; the seat cannot read a finer served string from the Agent tool)",
+    "note": "seat-reviewed: byte-identical lambdas re-asserted, NOTES.md read, no banned tactics; kernel is the court",
+    "agent_dir": "lean/tmp/agent_2"
+   }
+  }
+ ],
+ "frozen": {
+  "statement": "∀ (w w' : ℝ → EuclideanSpace ℝ (Fin 3)) (K a b : ℝ), a ≤ b → 0 ≤ K → (∀ t ∈ Set.Icc a b, HasDerivAt w (w' t) t) → (∀ t ∈ Set.Icc a b, ‖w' t‖ ≤ K * ‖w t‖) → ∀ t ∈ Set.Icc a b, ‖w t‖ ≤ ‖w a‖ * Real.exp (K * (t - a))",
+  "statement_sha256": "539377f2419b359580191b4dab5c2225b1e84e1b43296fcf76ebbc4353f05e1d",
+  "question_sha256": "63f8100956f0b9a4c3254229f2a4eaef51b3898f1da1f6950cd8d04dcdc7924c",
+  "frozen_utc": "2026-08-15T22:52:38Z"
+ }
+}
