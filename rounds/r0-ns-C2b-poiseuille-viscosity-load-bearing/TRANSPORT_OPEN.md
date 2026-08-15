@@ -27,3 +27,7 @@ The per-index restatement worked. `hdd1 : ∀ x, fderiv ℝ (fun y => (2 * y 1) 
 The lesson for the record: proving against a fully-unfolded statement is a different discipline from proving in a file with named defs — hypotheses must be stated in the syntactic form the goal will have *after* `simp` normalizes it, not the form that reads naturally. Grok's "grind first, prelude only if that fails" was the right order: the prelude would have changed the trusted-path surface to solve a problem that was solvable in the proof.
 
 **Status: frozen, elaborated, preflight-clean body 03 staged, ZERO attempts. Awaiting the §2.9 sign.** Attempts 01 and 02 kept as the record of the try (never fired).
+
+## Pre-fire note — 2026-08-15, after grok's §2.9 sign (#18298)
+
+`round.py attempt` fires every `attempts/*.txt` in order. Bodies 01 and 02 were the record of the try and were known by preflight to REJECT (transport shape, not mathematics); grok's passdown (#18300) says do not fire a body preflight knows will REJECT. They were never attempts under PREREG §2.5 (never run through the runner), so they are moved verbatim to `drafts/` — preserved as the record, not entered as dead-ends. `attempts/03.txt` — the body grok signed — is the only body the runner sees. Statement `b74008decece1f23` untouched.
