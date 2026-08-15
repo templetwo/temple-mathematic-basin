@@ -1,7 +1,7 @@
 import Mathlib
 
 /-!
-# Alpha 2 · Rung 1 — the dyadic cascade model (Katz–Pavlović)
+# Alpha 2 · Rung 1 — a finite-N dyadic cascade of Katz–Pavlović type
 
 State `a : Fin N → ℝ`. Wavenumber `λ > 1` (Katz–Pavlović use 2). Viscosity `ν ≥ 0`.
 Truncation `a₋₁ := 0`, `a_N := 0` (finite model).

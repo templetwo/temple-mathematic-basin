@@ -105,4 +105,24 @@ theorem cascade_single_shell_feeds_up (lam : ℝ) :
   simp only [cascade, hn, hp]
   simp
 
+
+/-! ## The corollary — the inequality proper (grok #18154 attack c) -/
+
+theorem dissipation_nonneg (nu lam : ℝ) (hnu : 0 ≤ nu) (a : Fin N → ℝ) :
+    0 ≤ dissipation nu lam a := by
+  unfold dissipation
+  apply mul_nonneg hnu
+  apply Finset.sum_nonneg
+  intro n _
+  apply mul_nonneg
+  · rw [pow_mul]; exact pow_nonneg (sq_nonneg lam) _
+  · exact sq_nonneg _
+
+/-- Rung 1(a) corollary — the energy INEQUALITY: with ν ≥ 0, the energy's rate
+along the field is ≤ 0. In a finite-N dyadic cascade of KP type; no pressure. -/
+theorem energy_rate_nonpos (nu lam : ℝ) (hnu : 0 ≤ nu) (a : Fin N → ℝ) :
+    ∑ n, a n * field nu lam a n ≤ 0 := by
+  rw [energy_inequality]
+  linarith [dissipation_nonneg nu lam hnu a]
+
 end
