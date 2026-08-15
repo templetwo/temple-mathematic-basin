@@ -1,0 +1,1 @@
+∀ (w w' : ℝ → EuclideanSpace ℝ (Fin 3)) (K a b : ℝ), a ≤ b → 0 ≤ K → (∀ t ∈ Set.Icc a b, HasDerivAt w (w' t) t) → (∀ t ∈ Set.Icc a b, ‖w' t‖ ≤ K * ‖w t‖) → ∀ t ∈ Set.Icc a b, ‖w t‖ ≤ ‖w a‖ * Real.exp (K * (t - a))

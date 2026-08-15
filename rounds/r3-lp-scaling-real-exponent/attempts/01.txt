@@ -1,0 +1,9 @@
+by
+  intro lam hlam u p
+  have hpt : ∀ x : EuclideanSpace ℝ (Fin 3), ‖lam • u (lam • x)‖ ^ p = lam ^ p * ‖u (lam • x)‖ ^ p := by
+    intro x
+    rw [norm_smul, Real.norm_eq_abs, abs_of_pos hlam, Real.mul_rpow hlam.le (norm_nonneg _)]
+  simp only [hpt]
+  rw [MeasureTheory.integral_const_mul]
+  have h := (MeasureTheory.volume : MeasureTheory.Measure (EuclideanSpace ℝ (Fin 3))).integral_comp_smul (fun x => ‖u x‖ ^ p) lam
+  rw [h, finrank_euclideanSpace_fin, abs_of_pos (inv_pos.mpr (pow_pos hlam 3)), smul_eq_mul, mul_assoc]

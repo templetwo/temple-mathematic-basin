@@ -1,0 +1,7 @@
+{
+ "status": "REJECT",
+ "reject_reason": "compile_error",
+ "elaborated": true,
+ "universe_error": false,
+ "log_tail": " ∀ (lam : ℝ),\n    0 < lam →\n      ∀ (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (p : ℝ),\n        ∫ (x : EuclideanSpace ℝ (Fin 3)), ‖(fun lam u x => lam • u (lam • x)) lam u x‖ ^ p =\n          lam ^ p * (lam ^ 3)⁻¹ * ∫ (x : EuclideanSpace ℝ (Fin 3)), ‖u x‖ ^ p\n'basin_target' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_ejjg1c3s/BasinAttempt_ejjg1c3s.lean:9:0: warning: declaration uses `sorry`\n"
+}

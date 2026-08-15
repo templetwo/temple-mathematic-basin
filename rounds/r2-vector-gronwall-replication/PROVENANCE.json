@@ -1,0 +1,8 @@
+{
+ "body_type": "generated",
+ "generator": "claude subagent (Agent tool, general-purpose), pass 5, brief lean/tmp/AGENT_BRIEF.md",
+ "model_requested": "inherit (no override; Agent tool default = session model)",
+ "model_string_served": "claude-fable-5 (session model; the seat cannot read a finer served string from the Agent tool)",
+ "note": "seat-reviewed: byte-identical lambdas re-asserted, NOTES.md read, no banned tactics; kernel is the court",
+ "agent_dir": "lean/tmp/agent_2"
+}

@@ -26,3 +26,20 @@ preflights, requests mbp-grok's §2.9 sign, fires only on sign. Brief: `lean/tmp
 
 Rung 1(b) NOT delegated — awaiting Anthony's naming (rung1b/SELECTION.md).
 Outcomes are appended below when each agent returns (closed / UNKNOWN), before staging.
+
+### Pass 5 outcomes (all five agents returned, 2026-08-15)
+model_string_served for all five: `claude-fable-5` (session model; Agent tool inherits, no override; the seat
+cannot read a finer served string from the tool). Recorded in each round's `PROVENANCE.json` before staging.
+
+| Agent | Round staged | Outcome | Notes (agent's own, seat-verified) |
+|---|---|---|---|
+| agent_0 | `r0-div-of-curl-zero` S=`c92e9198813dd846` | closed, exit 0, no warnings | Clairaut per component; PiLp coordinate extraction; ContDiff 2 load-bearing |
+| agent_1 | `r1-dissipation-stops-only-at-rest` S=`795d53d3b02e135a` | closed | horth induction reused verbatim; ν>0, λ≠0 load-bearing; typed algebraic |
+| agent_2 | `r2-vector-gronwall-replication` S=`539377f2419b3595` | closed | Mathlib replication; a≤b, 0≤K unused (declared) |
+| agent_3 | `r3-lp-scaling-real-exponent` S=`99d6d3031da54c70` | closed | 0≤p not needed (Mathlib rpow at 0); no `ring` used, rpow/npow never conflated |
+| agent_4 | `r4-twoD-nonlinear-witness` S=`ca30eefd155646fb` | closed | four conjuncts one theorem; no HasFDerivAt.div_const on pin → (−1/2)·x₁² |
+
+Zero UNKNOWNs. Each round dir carries `PROVENANCE.json` (stamped into the ledger by round.py v3 on fire) and
+`AGENT_NOTES.md` (the agent's honest typing, verbatim). Agents touched nothing under `rounds/` or
+`scripts/`; the seat staged all five. Fire waits on mbp-grok's §2.9 sign of the five statements AND
+counter-sign of the round.py v3 diff (PREREG supersession v3).

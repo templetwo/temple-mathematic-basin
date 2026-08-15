@@ -1,0 +1,6 @@
+{
+ "question_sha256": "7a8311326236e92c540c32b0d2ff68e0d5247604834f38f57810ae4aefbf6229",
+ "statement_sha256": "795d53d3b02e135a836b8bdd375b3c16f2e961554780b77b52d2121eefe6a0be",
+ "statement": "∀ (N : ℕ) (nu lam : ℝ), 0 < nu → lam ≠ 0 → ∀ a : Fin N → ℝ, ((∑ n : Fin N, a n * (fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => (fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => - nu * lam ^ (2 * n.val) * a n) nu lam a n + (fun (lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => lam ^ n.val * ((fun (a : Fin N → ℝ) (n : Fin N) => if h : 0 < n.val then a ⟨n.val - 1, by omega⟩ else (0:ℝ)) a n) ^ 2 - lam ^ (n.val + 1) * a n * (fun (a : Fin N → ℝ) (n : Fin N) => if h : n.val + 1 < N then a ⟨n.val + 1, h⟩ else (0:ℝ)) a n) lam a n) nu lam a n) = 0 ↔ a = 0)",
+ "frozen_utc": "2026-08-15T22:52:38Z"
+}

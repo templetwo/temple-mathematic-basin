@@ -1,0 +1,6 @@
+{
+ "question_sha256": "f498632fa71aaa83e5b22ef0138eaebb37c229412eac81b0144e55d794b6537b",
+ "statement_sha256": "99d6d3031da54c70ca1cba3ac6cd2f9fd5327ebe5c7d17898255d4ffb75c9305",
+ "statement": "∀ (lam : ℝ), 0 < lam → ∀ (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (p : ℝ), ∫ x, ‖(fun (lam : ℝ) (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (x : EuclideanSpace ℝ (Fin 3)) => lam • u (lam • x)) lam u x‖ ^ p ∂(MeasureTheory.volume : MeasureTheory.Measure (EuclideanSpace ℝ (Fin 3))) = lam ^ p * (lam ^ (3:ℕ))⁻¹ * ∫ x, ‖u x‖ ^ p ∂(MeasureTheory.volume : MeasureTheory.Measure (EuclideanSpace ℝ (Fin 3)))",
+ "frozen_utc": "2026-08-15T22:52:39Z"
+}

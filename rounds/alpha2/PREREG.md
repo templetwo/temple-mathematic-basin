@@ -65,7 +65,7 @@ It does not choose a rung. It does not freeze any statement below the trunk. It 
 | `rounds/alpha2/FENCE.md` | `104886ba9629ee41` |
 | `rounds/alpha2/LADDER.md` | `7f02b73b7846f538` |
 | `rounds/alpha2/fence_probe.json` | `aae619ef84ad42fc` |
-| `scripts/round.py` | `bb8330443b3dd762` |
+| `scripts/round.py` | `3fa18ba6a153fb75` (v3; v1 `bb8330443b3dd762`, v2 `f2bae93ccd76fa66`) |
 | `verdict.py` | `2face698964787a1` |
 | `t1/RESULT.md` (Alpha 1, the precedent result) | `12afa6d98588d860` |
 | `t1/witness_ledger.json` | `09595cad5f145d7b` |
@@ -90,3 +90,30 @@ Tag: `alpha2-prereg-v1` on `9006b757…` + this file. Any commit that changes a 
 **Existing receipts:** the five `rounds/r0-*/attempts_ledger.json` were restamped with their frozen statement and hashes from their own `FREEZE.json` — no re-attempt; the ACCEPTs stand and now name their subject. Each carries a `restamped_note` saying so.
 
 Tag: `alpha2-prereg-v2`. Manifest: `PREREG.manifest` regenerated; the round.py line updated, all others unchanged.
+
+---
+
+## Supersession — v3, 2026-08-15
+
+**Trigger:** §1.4 — a registered instrument artifact changed. `scripts/round.py` was amended so that
+every `attempts_ledger.json` entry carries a `provenance` object, per mbp-grok #18503 reading §2.8:
+"generated bodies are typed *generated* in the LEDGER — stamp that on fire, not only QUESTION.md."
+Anthony's "deligate agents" (2026-08-15) opened pass 5, the first pass in Alpha 2 whose proof bodies are
+produced by delegated Claude subagents; until then every body was seat-authored in-conversation.
+
+**What changed:** `scripts/round.py` sha256 `f2bae93ccd76fa66…` → `3fa18ba6a153fb75…`. `attempt` now
+reads an optional `<round>/PROVENANCE.json` (must carry `body_type`: `seat-authored` | `generated`; for
+generated: `generator`, `model_requested`, `model_string_served`, optional `note`) and copies it onto
+every attempt entry as `provenance`. Absent file ⇒ `{"body_type": "seat-authored"}`. Nothing else in the
+runner changed: freeze semantics, byte-level drift check, allowlist, banned-tactic refusal, attempt
+ordering, v2 `frozen{…}` receipt — behaviour byte-identical. Self-test on a copy of an accepted round:
+ACCEPT with the generated stamp, ACCEPT with the default stamp; the copy was deleted, it is not a round.
+
+**What did not change:** every rule in §2, every kill criterion in §3, the trunk question, the ladder,
+the fence, `verdict.py`, the toolchain, the corpus. v1 = rules; v2 = the receipt names the theorem;
+v3 = the receipt names the author-type.
+
+**Existing receipts:** the 41 ACCEPTed ledgers before v3 have no `provenance` field; absence means
+seat-authored (there were no model calls before pass 5 — `DELEGATION.md`). Not restamped.
+
+Tag: `alpha2-prereg-v3`. Manifest regenerated; the round.py line updated, all others unchanged.

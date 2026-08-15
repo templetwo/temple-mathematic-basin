@@ -130,6 +130,13 @@ def cmd_attempt(a) -> int:
                         "statement_sha256": fz["statement_sha256"],
                         "question_sha256": fz["question_sha256"],
                         "frozen_utc": fz["frozen_utc"]}
+    # PREREG §2.8 (mbp-grok #18503): a generated body is typed "generated" IN THE
+    # LEDGER, not only in prose. Optional <round>/PROVENANCE.json is copied onto
+    # every attempt entry; absent means the seat wrote the body in-conversation.
+    prov_path = d / "PROVENANCE.json"
+    provenance = json.loads(prov_path.read_text()) if prov_path.exists() else {"body_type": "seat-authored"}
+    if "body_type" not in provenance:
+        sys.exit("PROVENANCE.json must carry body_type (seat-authored | generated)")
     accepted = None
     for b in bodies:
         body = b.read_text()
@@ -145,7 +152,8 @@ def cmd_attempt(a) -> int:
                  "statement_sha256": fz["statement_sha256"],
                  "status": r_status, "reject_reason": r_reason, "axioms": axioms,
                  "axioms_within_allowlist": set(axioms) <= ALLOWED, "wall_seconds": round(time.time() - t0, 1),
-                 "log_tail": log[-500:], "terminal": "ACCEPT" if clean else "not accepted — recorded"}
+                 "log_tail": log[-500:], "terminal": "ACCEPT" if clean else "not accepted — recorded",
+                 "provenance": provenance}
         ledger["attempts"].append(entry)
         lp.write_text(json.dumps(ledger, indent=1, ensure_ascii=False))
         print(f"  {b.name}: {r_status} {r_reason or ''} axioms={axioms} {entry['wall_seconds']}s")

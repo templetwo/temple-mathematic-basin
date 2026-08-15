@@ -1,0 +1,41 @@
+by
+  intro N nu lam hnu hlam
+  have horth : ∀ (b : Fin N → ℝ), ∑ n : Fin N, b n * (fun (lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => lam ^ n.val * ((fun (a : Fin N → ℝ) (n : Fin N) => if h : 0 < n.val then a ⟨n.val - 1, by omega⟩ else (0:ℝ)) a n) ^ 2 - lam ^ (n.val + 1) * a n * (fun (a : Fin N → ℝ) (n : Fin N) => if h : n.val + 1 < N then a ⟨n.val + 1, h⟩ else (0:ℝ)) a n) lam b n = 0 := by
+    induction N with
+    | zero => intro b; simp
+    | succ M ih =>
+      intro b
+      simp only [mul_sub, Finset.sum_sub_distrib]
+      rw [Fin.sum_univ_succ, Fin.sum_univ_castSucc]
+      have hbot : (fun (a : Fin (M+1) → ℝ) (n : Fin (M+1)) => if h : 0 < n.val then a ⟨n.val - 1, by omega⟩ else (0:ℝ)) b (0 : Fin (M+1)) = 0 := by simp
+      have htop : (fun (a : Fin (M+1) → ℝ) (n : Fin (M+1)) => if h : n.val + 1 < M+1 then a ⟨n.val + 1, h⟩ else (0:ℝ)) b (Fin.last M) = 0 := by simp
+      have hp : ∀ i : Fin M, (fun (a : Fin (M+1) → ℝ) (n : Fin (M+1)) => if h : 0 < n.val then a ⟨n.val - 1, by omega⟩ else (0:ℝ)) b i.succ = b i.castSucc := by
+        intro i; simp only [Fin.val_succ, Nat.add_sub_cancel]
+        rw [dif_pos (Nat.succ_pos _)]; rfl
+      have hn : ∀ i : Fin M, (fun (a : Fin (M+1) → ℝ) (n : Fin (M+1)) => if h : n.val + 1 < M+1 then a ⟨n.val + 1, h⟩ else (0:ℝ)) b i.castSucc = b i.succ := by
+        intro i; simp only [Fin.val_castSucc]
+        rw [dif_pos (by omega)]; rfl
+      simp only [hbot, htop, hp, hn, mul_zero, zero_pow (two_ne_zero), zero_add, add_zero]
+      rw [sub_eq_zero]
+      apply Finset.sum_congr rfl
+      intro i _
+      simp only [Fin.val_succ, Fin.val_castSucc]
+      ring
+  intro a
+  have h1 : ∑ n : Fin N, a n * (fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => (fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => - nu * lam ^ (2 * n.val) * a n) nu lam a n + (fun (lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => lam ^ n.val * ((fun (a : Fin N → ℝ) (n : Fin N) => if h : 0 < n.val then a ⟨n.val - 1, by omega⟩ else (0:ℝ)) a n) ^ 2 - lam ^ (n.val + 1) * a n * (fun (a : Fin N → ℝ) (n : Fin N) => if h : n.val + 1 < N then a ⟨n.val + 1, h⟩ else (0:ℝ)) a n) lam a n) nu lam a n = ∑ n : Fin N, a n * (- nu * lam ^ (2 * n.val) * a n) + ∑ n : Fin N, a n * (fun (lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => lam ^ n.val * ((fun (a : Fin N → ℝ) (n : Fin N) => if h : 0 < n.val then a ⟨n.val - 1, by omega⟩ else (0:ℝ)) a n) ^ 2 - lam ^ (n.val + 1) * a n * (fun (a : Fin N → ℝ) (n : Fin N) => if h : n.val + 1 < N then a ⟨n.val + 1, h⟩ else (0:ℝ)) a n) lam a n := by
+    rw [← Finset.sum_add_distrib]; apply Finset.sum_congr rfl; intro n _; ring
+  rw [h1, horth a, add_zero]
+  have h2 : ∑ n : Fin N, a n * (- nu * lam ^ (2 * n.val) * a n) = - ∑ n : Fin N, nu * (lam ^ n.val * a n) ^ 2 := by
+    rw [← Finset.sum_neg_distrib]; apply Finset.sum_congr rfl; intro n _; ring
+  rw [h2, neg_eq_zero]
+  constructor
+  · intro h
+    have hnn : ∀ n ∈ (Finset.univ : Finset (Fin N)), 0 ≤ nu * (lam ^ n.val * a n) ^ 2 := fun n _ => mul_nonneg hnu.le (sq_nonneg _)
+    rw [Finset.sum_eq_zero_iff_of_nonneg hnn] at h
+    funext n
+    have hn := h n (Finset.mem_univ n)
+    have hl : lam ^ n.val ≠ 0 := pow_ne_zero _ hlam
+    simpa [hnu.ne', hl] using hn
+  · intro h
+    subst h
+    simp
