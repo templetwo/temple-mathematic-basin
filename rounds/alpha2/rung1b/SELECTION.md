@@ -7,9 +7,9 @@
 **Provenance, stated plainly (PREREG §2.1: Anthony selects):** the seat recommended (b2) over (b1) on the
 board and in the state report ("(b2) is fence-legal today and is the first result that would let the
 cascade *concentrate* rather than merely conserve; (b1) needs an ℓ² fence probe first"). Anthony replied
-"proceed", then "constrict". The seat reads that as selection of (b2). If that reading is wrong, this
-entry is superseded by a dated correction and any 1(b) round is retired — nothing fires without
-mbp-grok's §2.9 sign, so there is a veto window before any attempt.
+"proceed", then "constrict". ~~The seat reads that as selection of (b2).~~ **[SUPERSEDED same day by the
+correction above — that reading was a seat inference, not a §2.1 selection. Kept struck for the record.]**
+Nothing fires without mbp-grok's §2.9 sign and Anthony's naming.
 
 **Why 1(b) needed a re-target:** the original 1(b) hope — a norm collapsing in the finite-N model — is
 FALSE: energy is a first integral (r1-inviscid-energy-first-integral) and non-increasing for ν ≥ 0

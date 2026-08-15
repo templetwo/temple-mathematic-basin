@@ -1,4 +1,4 @@
-# Alpha 2 — Constriction phase 4 (one slight ring per rung, incl. 1(b) selected), 2026-08-15
+# Alpha 2 — Constriction phase 4 (one slight ring per rung; 1(b) PROPOSED, held), 2026-08-15
 
 Anthony: "proceed" · "constrict" · "we gotta move to rung 3 / or the next rung. we can only advance
 slightly on each." Policy from here: one slight ring per rung per pass; do not grind a rung.
@@ -10,7 +10,7 @@ says PROPOSED; the r1b freeze is math-signed and UNFIRED until Anthony names it.
 
 | Round | Rung | Ring | S (16) | Advance |
 |---|---|---|---|---|
-| `r1b-inviscid-top-shell-monotone` | 1(b) | top shell `MonotoneOn` [0,T), ν=0, 0≤λ, every solution | `18941c383dd7edfc` | first (b2) ring: energy concentrates upward |
+| `r1b-inviscid-top-shell-monotone` | 1(b) | top shell `MonotoneOn` [0,T), ν=0, 0≤λ, every solution | `18941c383dd7edfc` | first (b2) ring: the SIGNED top-shell amplitude does not decrease (not energy — grok #18428) |
 | `r2-bkm-logical-shape` | 2 | bounded ∫ₐᵗK on [a,b) ⇒ y bounded on [a,b) | `cb9cc18067b1aae1` | BKM's contrapositive shape: blow-up needs ∫K = ∞ |
 | `r3-vorticity-scaling` | 3 | curl u_λ (x) = λ²·curl u (λx) | `4e99ff340f35ba54` | vorticity exponent 2 (R0↔R3 bridge; ∫‖ω‖_∞dt scale-invariance CITED) |
 | `r4-twoD-vorticity-nonzero` | 4 | rot is IsTwoD, differentiable, curl = (0,0,2) ≠ 0 | `20ac12f64fee5026` | vertical-vorticity ring is not vacuous |
