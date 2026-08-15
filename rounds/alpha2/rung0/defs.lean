@@ -1,0 +1,70 @@
+import Mathlib
+
+/-!
+# Alpha 2 · Rung 0 — the definitions the trunk needs and Mathlib lacks
+
+Written 2026-08-15 under alpha2-prereg-v1 §2.7: **definitions are
+statements.** Every definition here is subject to the §18 certificate
+before any theorem stands on it:
+  C1 non-contradiction — the definition does not prove `False`
+  C2 witness            — a kernel-checked term inhabits it (non-vacuous)
+  C3 content/boundary   — a mutant is refuted, so the boundary is where
+                          the author believes it is
+
+Carriers are concrete (`EuclideanSpace ℝ (Fin 3)`, `ℝ`); no universe
+parameters, so `verdict.py`'s fence admits every statement below.
+Nothing here is Navier–Stokes. It is the vocabulary Navier–Stokes is
+written in, certified to mean what it says. Claim-typed: **toward the
+trunk, not the trunk.**
+
+Conventions: `V := EuclideanSpace ℝ (Fin 3)`; a vector field is `V → V`;
+the `i`-th partial of `f` at `x` is `fderiv ℝ f x (e i)` with
+`e i := EuclideanSpace.single i 1`. All definitions are total (Lean's
+`fderiv` is `0` where `f` is not differentiable), which is exactly the
+totalization trap §18.5 warns about — so C2 witnesses are chosen smooth,
+and the `Differentiable` hypothesis is carried explicitly where a
+theorem needs it rather than hidden in the definition.
+-/
+
+noncomputable section
+open scoped Matrix
+
+abbrev V := EuclideanSpace ℝ (Fin 3)
+
+/-- The standard basis direction. -/
+def e (i : Fin 3) : V := EuclideanSpace.single i 1
+
+/-- `i`-th partial derivative of a scalar or vector field at `x`. -/
+def pd {W : Type} [NormedAddCommGroup W] [NormedSpace ℝ W]
+    (f : V → W) (i : Fin 3) (x : V) : W :=
+  fderiv ℝ f x (e i)
+
+/-- **Divergence** of a vector field: `∑ᵢ ∂ᵢ uᵢ`. -/
+def div (u : V → V) (x : V) : ℝ :=
+  ∑ i : Fin 3, pd u i x i
+
+/-- **Divergence-free** (incompressible) on all of `V`. -/
+def DivFree (u : V → V) : Prop :=
+  ∀ x, div u x = 0
+
+/-- **Curl** (vorticity) as a vector field, via the standard cross-product
+formula `(∂₂u₃ − ∂₃u₂, ∂₃u₁ − ∂₁u₃, ∂₁u₂ − ∂₂u₁)`. Built with Mathlib's
+`crossProduct` on the underlying `Fin 3 → ℝ`, treating the partial-derivative
+operator symbolically: `curl u x = ∇ ⨯₃ u` where `∇` is realized as the
+matrix of partials `Jᵢⱼ = ∂ⱼ uᵢ`. -/
+def curl (u : V → V) (x : V) : V :=
+  WithLp.toLp 2
+    ![ pd u 1 x 2 - pd u 2 x 1,
+       pd u 2 x 0 - pd u 0 x 2,
+       pd u 0 x 1 - pd u 1 x 0 ]
+
+/-- **Vorticity** is the curl of the velocity. Named separately because the
+trunk question is *about* it. -/
+def vorticity (u : V → V) : V → V := curl u
+
+/-- **Vortex stretching term** `(ω · ∇) u` — the term the trunk question
+asks whether can win. -/
+def stretch (u : V → V) (x : V) : V :=
+  ∑ i : Fin 3, (vorticity u x i) • pd u i x
+
+end

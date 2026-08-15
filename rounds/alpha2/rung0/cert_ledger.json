@@ -1,0 +1,61 @@
+{
+ "rung": "0",
+ "definition_certified": "DivFree (div/pd/e unfolded into closed props), plus vorticity content on the C2 witness",
+ "instrument": "verdict.py trusted path; CLMs kept named via let; zero unused simp args (linter PANIC otherwise)",
+ "items": [
+  {
+   "name": "C2_divfree_witness_exists",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "within_allowlist": true,
+   "wall_s": 21.1,
+   "errors": []
+  },
+  {
+   "name": "C2_witness_has_vorticity",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "within_allowlist": true,
+   "wall_s": 17.1,
+   "errors": []
+  },
+  {
+   "name": "C3_shear_not_divfree",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "within_allowlist": true,
+   "wall_s": 20.7,
+   "errors": []
+  },
+  {
+   "name": "C1_divfree_consistent",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "within_allowlist": true,
+   "wall_s": 21.7,
+   "errors": []
+  }
+ ],
+ "instrument_finding": "Lean's unusedSimpArgs linter PANICs (String.Slice.pos! UTF-8 boundary in TryThis.getIndentAndColumn) when formatting a hint inside a long single-line body; verdict.py correctly fail-closes on PANIC even with clean axioms. Recorded as an instrument fact, not a proof fact.",
+ "all_accept_within_allowlist": true
+}
