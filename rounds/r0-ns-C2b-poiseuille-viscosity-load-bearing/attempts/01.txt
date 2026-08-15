@@ -1,0 +1,65 @@
+by
+  intro nu
+  let e : Fin 3 → EuclideanSpace ℝ (Fin 3) := fun i => EuclideanSpace.single i 1
+  let pois : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3) := (fun x : EuclideanSpace ℝ (Fin 3) => (WithLp.toLp 2 ![x 1 ^ 2, 0, 0] : EuclideanSpace ℝ (Fin 3)))
+  let pp : EuclideanSpace ℝ (Fin 3) → ℝ := (fun x : EuclideanSpace ℝ (Fin 3) => 2 * (nu) * x 0)
+  let P1 : EuclideanSpace ℝ (Fin 3) →L[ℝ] ℝ := (EuclideanSpace.proj (1:Fin 3) : EuclideanSpace ℝ (Fin 3) →L[ℝ] ℝ)
+  let P0 : EuclideanSpace ℝ (Fin 3) →L[ℝ] ℝ := (EuclideanSpace.proj (0:Fin 3) : EuclideanSpace ℝ (Fin 3) →L[ℝ] ℝ)
+  -- pois = (y1*y1) • e 0
+  have hpf : pois = fun y : EuclideanSpace ℝ (Fin 3) => (y 1 * y 1) • e 0 := by
+    funext y; ext i; fin_cases i <;> simp [pois, e, sq]
+  have hpd : ∀ x : EuclideanSpace ℝ (Fin 3), HasFDerivAt pois (P1.smulRight ((2 * x 1) • e 0)) x := by
+    intro x
+    have hsq := (P1.hasFDerivAt (x := x)).mul (P1.hasFDerivAt (x := x))
+    have hprod : (⇑P1 * ⇑P1 : EuclideanSpace ℝ (Fin 3) → ℝ) = fun y : EuclideanSpace ℝ (Fin 3) => y 1 * y 1 := by funext y; simp [P1]
+    rw [hprod] at hsq
+    rw [hpf]
+    refine (hsq.smul_const (e 0)).congr_fderiv ?_
+    ext v; simp [P1, add_smul, smul_smul, e]; ring
+  -- partials of pois
+  have hpdi : ∀ (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)), fderiv ℝ pois x (e i) = (2 * x 1 * e i 1) • e 0 := by
+    intro i x
+    rw [(hpd x).fderiv]
+    simp [ContinuousLinearMap.smulRight_apply, P1, smul_smul]
+    congr 1; ring
+  have hpp' : pp = fun y : EuclideanSpace ℝ (Fin 3) => (2 * nu) * y 0 := by funext y; simp [pp]; ring
+  have hppd : ∀ (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)), fderiv ℝ pp x (e i) = 2 * nu * e i 0 := by
+    intro i x
+    rw [hpp', ((P0.hasFDerivAt (x := x)).const_mul (2 * nu)).fderiv]
+    simp [P0]
+  -- second partials
+  have hpdd : ∀ (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)), fderiv ℝ (fun y => fderiv ℝ pois y (e i)) x (e i) = (2 * e i 1 * e i 1) • e 0 := by
+    intro i x
+    have hthis : (fun y => fderiv ℝ pois y (e i)) = fun y => (2 * y 1 * e i 1) • e 0 := funext (hpdi i)
+    rw [hthis]
+    have hl : HasFDerivAt (fun y : EuclideanSpace ℝ (Fin 3) => (2 * y 1 * e i 1) • e 0) (P1.smulRight ((2 * e i 1) • e 0)) x := by
+      have := (((P1.hasFDerivAt (x := x)).const_mul 2).mul_const (e i 1)).smul_const (e 0)
+      refine this.congr_fderiv ?_
+      ext v; simp [P1, smul_smul, e, mul_comm, mul_left_comm]
+    rw [hl.fderiv]
+    simp [ContinuousLinearMap.smulRight_apply, P1, smul_smul]
+    congr 1; ring
+  -- now the operator terms, stated over the NAMED objects
+  have hconv : ∀ x : EuclideanSpace ℝ (Fin 3), (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (x : EuclideanSpace ℝ (Fin 3)) => ∑ i : Fin 3, (u x i) • (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u i x) pois x = 0 := by
+    intro x; simp only [Fin.sum_univ_three, hpdi]; ext i; fin_cases i <;> simp [pois, e]
+  have hgrad : ∀ x : EuclideanSpace ℝ (Fin 3), (fun (p : EuclideanSpace ℝ (Fin 3) → ℝ) (x : EuclideanSpace ℝ (Fin 3)) => (WithLp.toLp 2 ![(fun (p : EuclideanSpace ℝ (Fin 3) → ℝ) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ p x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) p 0 x, (fun (p : EuclideanSpace ℝ (Fin 3) → ℝ) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ p x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) p 1 x, (fun (p : EuclideanSpace ℝ (Fin 3) → ℝ) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ p x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) p 2 x] : EuclideanSpace ℝ (Fin 3))) pp x = WithLp.toLp 2 ![2 * nu, 0, 0] := by
+    intro x; simp only [hppd]; ext i; fin_cases i <;> simp [e]
+  have hlap : ∀ x : EuclideanSpace ℝ (Fin 3), (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (x : EuclideanSpace ℝ (Fin 3)) => ∑ i : Fin 3, (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u i) i x) pois x = WithLp.toLp 2 ![2, 0, 0] := by
+    intro x; simp only [Fin.sum_univ_three, hpdd]; ext i; fin_cases i <;> simp [e]
+  refine ⟨⟨?_, ?_, ?_⟩, ?_, ?_⟩
+  · show ContDiff ℝ 2 pois
+    rw [hpf]; exact (P1.contDiff.mul P1.contDiff).smul_const (e 0)
+  · show Differentiable ℝ pp
+    rw [hpp']; exact P0.differentiable.const_mul _
+  · intro x
+    show (fun (nu : ℝ) (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (p : EuclideanSpace ℝ (Fin 3) → ℝ) (x : EuclideanSpace ℝ (Fin 3)) => (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (x : EuclideanSpace ℝ (Fin 3)) => ∑ i : Fin 3, (u x i) • (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u i x) u x + (fun (p : EuclideanSpace ℝ (Fin 3) → ℝ) (x : EuclideanSpace ℝ (Fin 3)) => (WithLp.toLp 2 ![(fun (p : EuclideanSpace ℝ (Fin 3) → ℝ) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ p x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) p 0 x, (fun (p : EuclideanSpace ℝ (Fin 3) → ℝ) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ p x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) p 1 x, (fun (p : EuclideanSpace ℝ (Fin 3) → ℝ) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ p x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) p 2 x] : EuclideanSpace ℝ (Fin 3))) p x - nu • (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (x : EuclideanSpace ℝ (Fin 3)) => ∑ i : Fin 3, (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u i) i x) u x) nu pois pp x = 0
+    simp only [hconv, hgrad, hlap, zero_add]
+    ext i; fin_cases i <;> simp <;> ring
+  · show (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (x : EuclideanSpace ℝ (Fin 3)) => ∑ i : Fin 3, (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u i) i x) pois 0 ≠ 0
+    intro h; have := congrArg (fun v : EuclideanSpace ℝ (Fin 3) => v 0) h; simp [hlap] at this
+  · intro nu' hne ⟨_, _, hs⟩
+    have hx : (fun (nu : ℝ) (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (p : EuclideanSpace ℝ (Fin 3) → ℝ) (x : EuclideanSpace ℝ (Fin 3)) => (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (x : EuclideanSpace ℝ (Fin 3)) => ∑ i : Fin 3, (u x i) • (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u i x) u x + (fun (p : EuclideanSpace ℝ (Fin 3) → ℝ) (x : EuclideanSpace ℝ (Fin 3)) => (WithLp.toLp 2 ![(fun (p : EuclideanSpace ℝ (Fin 3) → ℝ) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ p x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) p 0 x, (fun (p : EuclideanSpace ℝ (Fin 3) → ℝ) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ p x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) p 1 x, (fun (p : EuclideanSpace ℝ (Fin 3) → ℝ) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ p x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) p 2 x] : EuclideanSpace ℝ (Fin 3))) p x - nu • (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (x : EuclideanSpace ℝ (Fin 3)) => ∑ i : Fin 3, (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u i) i x) u x) nu' pois pp 0 = 0 := hs 0
+    simp only [hconv, hgrad, hlap, zero_add] at hx
+    have := congrArg (fun v : EuclideanSpace ℝ (Fin 3) => v 0) hx
+    simp at this
+    exact hne (by linarith)
