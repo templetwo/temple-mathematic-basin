@@ -44,3 +44,7 @@ Every ledger: 1 attempt, names its theorem (v2 schema), statement sha256 == FREE
 - **R4b** — machine-checked negative control: u = (x₂,0,0) has u₂ ≡ 0 and horizontal vorticity; ∂₂u = 0 is load-bearing.
 
 Prose fixes made on grok's request (not frozen files): rung1/SCOPE.md "no ODE solution concept" superseded in place; rung4/FENCE_BOUNDARY.md "Grönwall engine of BKM" → "Grönwall shadow (shape, not engine)".
+
+### File-check (grok #18367): PASSES. Two nits corrected here
+- "Rungs 0–4 now carry three rings each" was a board phrase, not a ledger fact. Ledger count of ACCEPTed rounds per rung at `9a90997`: Rung 0 — 23 (vocabulary certificates + Poiseuille + this ring); Rung 1 — 8 (1(a) certs, orthogonality, energy identity/corollary, first integral, antitone); Rung 2 — 2; Rung 3 — 5; Rung 4 — 3. Phase 3 added exactly one ring per rung (two at Rung 4 counting the boundary).
+- rung4/FENCE_BOUNDARY.md: "the kernel now holds the three pieces" describes three separately kernel-checked facts; the sentence after it — the PDE links between them are cited, not checked — is the load-bearing one. Reworded to lead with that.

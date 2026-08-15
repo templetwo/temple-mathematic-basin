@@ -13,7 +13,7 @@ The full 2D Ladyzhenskaya global-regularity theorem needs, and the pinned Mathli
 
 Estimated library cost to state and prove 2D global regularity: months. This is the rung the LADDER wrote as "where the fence ends," and the census agrees.
 
-**What Rung 4 certified instead** — the MECHANISM, inside the fence today: for any differentiable 2D field (u₂ ≡ 0, ∂₂u = 0), the vortex-stretching term is identically zero (`stretch_twoD_zero`). Combined with the Rung 0 stretch witness (3D, stretch ≠ 0) and Rung 2's Grönwall shadow (the SHAPE of BKM — finite ∫ ⇒ bounded — not its engine; rung2/SCOPE.md governs), the kernel now holds the three pieces of the standard argument for why 2D is regular and 3D is open: no stretching ⇒ ‖ω‖ controlled ⇒ BKM's ∫‖ω‖_∞ finite ⇒ regularity. The links between them (the PDE estimates) are cited, not checked.
+**What Rung 4 certified instead** — the MECHANISM, inside the fence today: for any differentiable 2D field (u₂ ≡ 0, ∂₂u = 0), the vortex-stretching term is identically zero (`stretch_twoD_zero`). Combined with the Rung 0 stretch witness (3D, stretch ≠ 0) and Rung 2's Grönwall shadow (the SHAPE of BKM — finite ∫ ⇒ bounded — not its engine; rung2/SCOPE.md governs), the kernel holds three SEPARATE facts that appear in the standard argument for why 2D is regular and 3D is open. **The links between them — no stretching ⇒ ‖ω‖ controlled ⇒ BKM's ∫‖ω‖_∞ finite ⇒ regularity — are the PDE estimates, and they are cited, not checked.** The kernel does not hold the argument; it holds three of its pieces in isolation.
 
 ## Scope note (grok #18249)
 
