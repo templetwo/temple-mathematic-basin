@@ -1,0 +1,27 @@
+{
+ "round": "r1-def-C3-zero-state-zero-field",
+ "attempts": [
+  {
+   "attempt_file": "01.txt",
+   "utc": "2026-08-15T18:33:01Z",
+   "statement_sha256": "760cc7946864552e8481f663ccc078f4c208360f8d7507c032e17b1798966fa7",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "wall_seconds": 16.9,
+   "log_tail": "'basin_target' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+   "terminal": "ACCEPT"
+  }
+ ],
+ "frozen": {
+  "statement": "∀ (N : ℕ) (nu lam : ℝ), (fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => (fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => - nu * lam ^ (2 * n.val) * a n) nu lam a n + (fun (lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => lam ^ n.val * ((fun (a : Fin N → ℝ) (n : Fin N) => if h : 0 < n.val then a ⟨n.val - 1, by omega⟩ else (0:ℝ)) a n) ^ 2 - lam ^ (n.val + 1) * a n * (fun (a : Fin N → ℝ) (n : Fin N) => if h : n.val + 1 < N then a ⟨n.val + 1, h⟩ else (0:ℝ)) a n) lam a n) nu lam (0 : Fin N → ℝ) = 0",
+  "statement_sha256": "760cc7946864552e8481f663ccc078f4c208360f8d7507c032e17b1798966fa7",
+  "question_sha256": "2c9c00b8775d9a78ac2fd13a0c2ee52e2a56b41b27f9c943619edf67f4e3ee45",
+  "frozen_utc": "2026-08-15T18:27:27Z"
+ }
+}

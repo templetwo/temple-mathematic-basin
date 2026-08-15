@@ -1,0 +1,61 @@
+{
+ "round": "r1a-energy-inequality",
+ "attempts": [
+  {
+   "attempt_file": "01.txt",
+   "utc": "2026-08-15T18:33:51Z",
+   "statement_sha256": "ef0a7a50aeb52b5254373ff8d321f872aa4d6ab6760bf029941f615bed298da8",
+   "status": "REJECT",
+   "reject_reason": "compile_error",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": false,
+   "wall_seconds": 15.2,
+   "log_tail": "/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_nsz3w59p/BasinAttempt_nsz3w59p.lean:6:289: error: invalid 'by' tactic, expected type has not been provided\n'basin_target' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_nsz3w59p/BasinAttempt_nsz3w59p.lean:9:0: warning: declaration uses `sorry`\n",
+   "terminal": "not accepted — recorded"
+  },
+  {
+   "attempt_file": "01.txt",
+   "utc": "2026-08-15T18:34:34Z",
+   "statement_sha256": "ef0a7a50aeb52b5254373ff8d321f872aa4d6ab6760bf029941f615bed298da8",
+   "status": "REJECT",
+   "reject_reason": "compile_error",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": false,
+   "wall_seconds": 16.7,
+   "log_tail": "/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_zerjyv6_/BasinAttempt_zerjyv6_.lean:6:289: error: invalid 'by' tactic, expected type has not been provided\n'basin_target' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_zerjyv6_/BasinAttempt_zerjyv6_.lean:9:0: warning: declaration uses `sorry`\n",
+   "terminal": "not accepted — recorded"
+  },
+  {
+   "attempt_file": "02.txt",
+   "utc": "2026-08-15T18:34:54Z",
+   "statement_sha256": "ef0a7a50aeb52b5254373ff8d321f872aa4d6ab6760bf029941f615bed298da8",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "wall_seconds": 20.2,
+   "log_tail": "/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_9manrvoy/BasinAttempt_9manrvoy.lean:7:595: warning: `Fin.coe_castSucc` has been deprecated: Use `Fin.val_castSucc` instead\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_9manrvoy/BasinAttempt_9manrvoy.lean:7:830: warning: `Fin.coe_castSucc` has been deprecated: Use `Fin.val_castSucc` instead\n'basin_target' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+   "terminal": "ACCEPT"
+  }
+ ],
+ "frozen": {
+  "statement": "∀ (N : ℕ) (nu lam : ℝ) (a : Fin N → ℝ), ∑ n : Fin N, a n * (fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => (fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => - nu * lam ^ (2 * n.val) * a n) nu lam a n + (fun (lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => lam ^ n.val * ((fun (a : Fin N → ℝ) (n : Fin N) => if h : 0 < n.val then a ⟨n.val - 1, by omega⟩ else (0:ℝ)) a n) ^ 2 - lam ^ (n.val + 1) * a n * (fun (a : Fin N → ℝ) (n : Fin N) => if h : n.val + 1 < N then a ⟨n.val + 1, h⟩ else (0:ℝ)) a n) lam a n) nu lam a n = - (fun (nu lam : ℝ) (a : Fin N → ℝ) => nu * ∑ n : Fin N, lam ^ (2 * n.val) * (a n) ^ 2) nu lam a",
+  "statement_sha256": "ef0a7a50aeb52b5254373ff8d321f872aa4d6ab6760bf029941f615bed298da8",
+  "question_sha256": "6442e79bbccd74d38f443d99ae685195ac3f2fa86fd636a69b5a63a1017f0ef4",
+  "frozen_utc": "2026-08-15T18:27:28Z"
+ }
+}
