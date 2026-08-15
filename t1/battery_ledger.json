@@ -1,0 +1,76 @@
+{
+ "run": "char-3 mutation battery, trusted-path",
+ "harness": "verdict.py, PROVABLE stance, term/tactic bodies, Mathlib-only",
+ "items": [
+  {
+   "name": "B1_drop_all_distinctness_false",
+   "proposition": "∀ A : Finset (Fin 3 → ZMod 3), A.Nonempty → ¬ (∀ x ∈ A, ∀ y ∈ A, ∀ z ∈ A, x + y + z ≠ 0)",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "log_tail": "'basin_target' depends on axioms: [propext, Classical.choice, Quot.sound]\n"
+  },
+  {
+   "name": "B2_guards_flipped_to_eq_false",
+   "proposition": "∀ A : Finset (Fin 3 → ZMod 3), A.Nonempty → ¬ (∀ x ∈ A, ∀ y ∈ A, ∀ z ∈ A, x = y → y = z → x = z → x + y + z ≠ 0)",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "log_tail": "'basin_target' depends on axioms: [propext, Classical.choice, Quot.sound]\n"
+  },
+  {
+   "name": "B3_drop_one_inequality_equivalent",
+   "proposition": "∀ A : Finset (Fin 3 → ZMod 3), (∀ x ∈ A, ∀ y ∈ A, ∀ z ∈ A, x ≠ y → y ≠ z → x + y + z ≠ 0) ↔ (∀ x ∈ A, ∀ y ∈ A, ∀ z ∈ A, x ≠ y → y ≠ z → x ≠ z → x + y + z ≠ 0)",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "log_tail": "'basin_target' depends on axioms: [propext, Classical.choice, Quot.sound]\n"
+  },
+  {
+   "name": "B4_sum_form_iff_ap_form",
+   "proposition": "∀ x y z : Fin 3 → ZMod 3, x + y + z = 0 ↔ x + z = (2 : ℕ) • y",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "log_tail": "'basin_target' depends on axioms: [propext, Classical.choice, Quot.sound]\n"
+  }
+ ],
+ "cross_referenced_lake_receipts": [
+  {
+   "name": "S2_not_cap_A",
+   "where": "t1/iscap_a.lean sBad_not_cap + sBad_card",
+   "receipt": "lake @ 348535b"
+  },
+  {
+   "name": "S2_not_cap_B",
+   "where": "t1/iscap_b.lean s2_control",
+   "receipt": "lake @ 348535b"
+  },
+  {
+   "name": "dual_Iff_chain",
+   "where": "t1/iscap_iff.lean a_iff_b / b_iff_frozen",
+   "receipt": "lake @ 348535b"
+  }
+ ],
+ "all_accept_within_allowlist": true
+}
