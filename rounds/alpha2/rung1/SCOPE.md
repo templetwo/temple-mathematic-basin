@@ -19,7 +19,7 @@ The energy inequality reads cleanly enough to steal a trunk headline. This claus
 
 ## What "machine-checked" means here
 
-`Σ aₙ·cascadeₙ = 0` and `Σ aₙ·fieldₙ = −ν Σ λ^{2n} aₙ²` — **equalities**, algebraic, over `Fin N → ℝ`. The inequality `≤ 0` for `ν ≥ 0` is a corollary (r1a-corollary-dissipative, next). No ODE solution concept anywhere in Rung 1(a).
+`Σ aₙ·cascadeₙ = 0` and `Σ aₙ·fieldₙ = −ν Σ λ^{2n} aₙ²` — **equalities**, algebraic, over `Fin N → ℝ`. The inequality `≤ 0` for `ν ≥ 0` is a corollary (r1a-corollary-dissipative, next). No ODE solution concept anywhere in Rung 1(a) *at phase 1*. **Superseded 2026-08-15 (phase 3, grok #18358):** the solution concept `HasDerivAt a (field ν λ (a t)) t` on [0,T) entered with r1-inviscid-energy-first-integral (ν = 0) and r1-viscous-energy-antitone (ν ≥ 0, `AntitoneOn`). Still IN A MODEL: no pressure, no Biot–Savart, no incompressibility geometry. Still not Picard: existence of solutions is not claimed; the theorems quantify over whatever solutions there are.
 
 Toward the trunk, not the trunk.
 

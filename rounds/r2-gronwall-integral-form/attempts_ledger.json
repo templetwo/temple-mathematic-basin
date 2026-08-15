@@ -1,0 +1,27 @@
+{
+ "round": "r2-gronwall-integral-form",
+ "attempts": [
+  {
+   "attempt_file": "01.txt",
+   "utc": "2026-08-15T21:06:04Z",
+   "statement_sha256": "82695011b274e464912c9901889191124af201a2d12319bb206bfb13b20fed9d",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "wall_seconds": 12.5,
+   "log_tail": "'basin_target' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+   "terminal": "ACCEPT"
+  }
+ ],
+ "frozen": {
+  "statement": "∀ (y y' K : ℝ → ℝ) (a b : ℝ), a ≤ b → Continuous K → (∀ t ∈ Set.Icc a b, HasDerivAt y (y' t) t) → (∀ t ∈ Set.Icc a b, y' t ≤ K t * y t) → (∀ t ∈ Set.Icc a b, 0 ≤ y t) → ∀ t ∈ Set.Icc a b, y t ≤ y a * Real.exp (∫ s in a..t, K s)",
+  "statement_sha256": "82695011b274e464912c9901889191124af201a2d12319bb206bfb13b20fed9d",
+  "question_sha256": "e91432ddb733cb8c3cba33134cf914c038edaed6620b453e31e68fe865b267c8",
+  "frozen_utc": "2026-08-15T20:49:43Z"
+ }
+}

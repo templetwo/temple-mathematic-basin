@@ -1,0 +1,27 @@
+{
+ "round": "r3-h1-scaling-identity",
+ "attempts": [
+  {
+   "attempt_file": "01.txt",
+   "utc": "2026-08-15T21:06:18Z",
+   "statement_sha256": "1340bcb06d7332ef157a2461d0994c8430dabf245a8e175ca05fe5f9d9414221",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "wall_seconds": 13.2,
+   "log_tail": "'basin_target' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+   "terminal": "ACCEPT"
+  }
+ ],
+ "frozen": {
+  "statement": "∀ (lam : ℝ), 0 < lam → ∀ (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)), Differentiable ℝ u → ∫ x, ‖fderiv ℝ ((fun (lam : ℝ) (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (x : EuclideanSpace ℝ (Fin 3)) => lam • u (lam • x)) lam u) x‖ ^ 2 ∂(MeasureTheory.volume : MeasureTheory.Measure (EuclideanSpace ℝ (Fin 3))) = lam ^ 4 * (lam ^ 3)⁻¹ * ∫ x, ‖fderiv ℝ u x‖ ^ 2 ∂(MeasureTheory.volume : MeasureTheory.Measure (EuclideanSpace ℝ (Fin 3)))",
+  "statement_sha256": "1340bcb06d7332ef157a2461d0994c8430dabf245a8e175ca05fe5f9d9414221",
+  "question_sha256": "d0dfbf71a673b79b6bcb868bedc7ed8c707aba8d0131ca13b5c3e2593163e4cd",
+  "frozen_utc": "2026-08-15T20:49:44Z"
+ }
+}
