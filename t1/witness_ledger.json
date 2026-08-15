@@ -57,5 +57,54 @@
   "machine_checked": "a specific 9-point set in (Z/3Z)^3 is a cap and has cardinality 9 > 2^3; the frozen existential is thereby witnessed",
   "cited_not_checked": "9 is the maximum cap size in dimension 3 (Bose 1947)",
   "new_mathematics_claimed": "none"
+ },
+ "rejected_alternatives": {
+  "note": "checked before the attempt; the seat's #17952 claim that these were 'recorded here' was FALSE of this ledger until this field — grok's #17958 attack point 3, accepted and repaired",
+  "graph_of_x2_plus_2y2": {
+   "violating_triples": 6,
+   "example": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     1,
+     1,
+     0
+    ],
+    [
+     2,
+     2,
+     0
+    ]
+   ]
+  },
+  "graph_of_xy": {
+   "violating_triples": 6,
+   "example": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     1,
+     0
+    ],
+    [
+     0,
+     2,
+     0
+    ]
+   ]
+  }
+ },
+ "scope_from_counter_sign_17958": {
+  "1_certificate_is_decide": "the kernel certificate is three labeled decides on closed goals; the anisotropic-form reason is COMMENTARY in the docstring and this ledger, NOT a proof term. Round-1 existence, allowed. It is not a kernel-checked structural proof and must not be upgraded to one.",
+  "2_control_is_S2b_not_S2a": "the live negative control was a FAILED decide -> REJECT/sorryAx: discriminating, not a refutation certificate. S2a (positive kernel refutation of the same Bad set) supplied by mbp-grok via lake, and in-tree at iscap_a/b.lean.",
+  "3_alternatives": "repaired above.",
+  "counter_signed_at_scope": "QUESTION.md has a yes; this 9-set is a cap of card 9; frozen existential witnessed at n=3; maximality cited; new math none; criterion 3 MET on this witness. Goal MET at that scope."
  }
 }
