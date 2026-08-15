@@ -1,0 +1,7 @@
+{
+ "status": "REJECT",
+ "reject_reason": "compile_error",
+ "elaborated": true,
+ "universe_error": false,
+ "log_tail": "esktop/temple-mathematic-basin/lean/tmp/BasinAttempt_ncfl4rob/BasinAttempt_ncfl4rob.lean:1:0: error: Type mismatch\n  True.intro\nhas type\n  True\nbut is expected to have type\n  ∃ n A, 3 ≤ n ∧ (∀ a ∈ A, ∀ b ∈ A, ∀ c ∈ A, a ≠ b → b ≠ c → a ≠ c → a + c ≠ 2 • b) ∧ A.card > 2 ^ n\n'basin_target' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_ncfl4rob/BasinAttempt_ncfl4rob.lean:9:0: warning: declaration uses `sorry`\n"
+}

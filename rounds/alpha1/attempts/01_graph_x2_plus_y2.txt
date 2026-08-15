@@ -1,0 +1,4 @@
+⟨3, ({![0,0,0], ![0,1,1], ![0,2,1], ![1,0,1], ![1,1,2], ![1,2,2], ![2,0,1], ![2,1,2], ![2,2,2]} : Finset (Fin 3 → ZMod 3)),
+  by decide,  -- 3 ≤ 3
+  by decide,  -- labeled: no-3-AP over 9 named points, kernel-decided
+  by decide⟩  -- labeled: card > 2^3

@@ -1,0 +1,20 @@
+{
+ "round": "alpha1",
+ "attempts": [
+  {
+   "attempt_file": "01_graph_x2_plus_y2.txt",
+   "utc": "2026-08-15T17:02:41Z",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "wall_seconds": 19.3,
+   "log_tail": "'basin_target' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+   "terminal": "ACCEPT"
+  }
+ ]
+}

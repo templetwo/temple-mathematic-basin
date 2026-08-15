@@ -1,0 +1,6 @@
+{
+ "question_sha256": "9d6032c963d55527869667d4daa56f73df7d8c709461ae9cc0e7f53efc08a112",
+ "statement_sha256": "49f05adc9c2050585eebff4a347278eeec85146a68c51be4b28c9064c22af713",
+ "statement": "∃ (n : ℕ) (A : Finset (Fin n → ZMod 3)),\n  3 ≤ n ∧\n  (∀ a ∈ A, ∀ b ∈ A, ∀ c ∈ A,\n    a ≠ b → b ≠ c → a ≠ c → a + c ≠ (2 : ℕ) • b) ∧\n  A.card > 2 ^ n",
+ "frozen_utc": "2026-08-15T17:00:52Z"
+}
