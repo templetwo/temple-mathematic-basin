@@ -1,0 +1,23 @@
+{
+ "div_free_exists": {
+  "elaborated": true,
+  "unknown_ident": false,
+  "universe": false,
+  "reason": "compile_error",
+  "tail": "_target' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_1pjo7ay6/BasinAttempt_1pjo7ay6.lean:9:0: warning: declaration uses `sorry`\n"
+ },
+ "laplacian_named": {
+  "elaborated": false,
+  "unknown_ident": false,
+  "universe": false,
+  "reason": "compile_error",
+  "tail": "biq_j.lean:9:0: warning: declaration uses `sorry`\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_xbpbiq_j/BasinAttempt_xbpbiq_j.lean:9:0: error: (kernel) declaration has metavariables 'basin_target'\n"
+ },
+ "L3_norm_stated": {
+  "elaborated": true,
+  "unknown_ident": false,
+  "universe": false,
+  "reason": "compile_error",
+  "tail": "_target' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_x7xo63z2/BasinAttempt_x7xo63z2.lean:9:0: warning: declaration uses `sorry`\n"
+ }
+}
