@@ -1,0 +1,7 @@
+{
+ "status": "REJECT",
+ "reject_reason": "compile_error",
+ "elaborated": true,
+ "universe_error": false,
+ "log_tail": ": 0 < ↑n then a ⟨↑n - 1, ⋯⟩ else 0) a n ^ 2 -\n                      lam ^ (↑n + 1) * a n * (fun a n => if h : ↑n + 1 < N then a ⟨↑n + 1, h⟩ else 0) a n)\n                  lam a n)\n            nu lam a n =\n      -(fun nu lam a => nu * ∑ n, lam ^ (2 * ↑n) * a n ^ 2) nu lam a\n'basin_target' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_9xmg5f8i/BasinAttempt_9xmg5f8i.lean:9:0: warning: declaration uses `sorry`\n"
+}

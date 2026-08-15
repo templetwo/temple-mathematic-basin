@@ -1,0 +1,27 @@
+{
+ "round": "r0-curl-C1-consistent",
+ "attempts": [
+  {
+   "attempt_file": "01.txt",
+   "utc": "2026-08-15T18:20:03Z",
+   "statement_sha256": "03ee2c58e35200e5a38700064c49827920bb6725105a8352ba9feacf11e1a218",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "wall_seconds": 18.6,
+   "log_tail": "y̵ ̵a̵x̵i̵o̵m̵s̵\"̵\n  ̵ ̵ ̵e̵l̵s̵e̵\n  ̵ ̵ ̵ ̵ ̵l̵e̵t̵ ̵s̵o̵r̵t̵e̵d̵ ̵:̵=̵ ̵a̵x̵i̵o̵m̵s̵.̵q̵s̵o̵r̵t̵ ̵N̵a̵m̵e̵.̵l̵t̵\n  ̵ ̵ ̵ ̵ ̵l̵e̵t̵ ̵n̵a̵m̵e̵s̵ ̵:̵=̵ ̵\"̵,̵ ̵\"̵.̵i̵n̵t̵e̵r̵c̵a̵l̵a̵t̵e̵ ̵(̵s̵o̵r̵t̵e̵d̵.̵t̵o̵L̵i̵s̵t̵.̵m̵a̵p̵ ̵(̵·̵.̵t̵o̵S̵t̵r̵i̵n̵g̵)̵)̵\n  ̵ ̵ ̵ ̵ ̵l̵o̵g̵I̵n̵f̵o̵ ̵s̵!̵\"̵'̵b̵a̵s̵i̵n̵_̵t̵a̵r̵g̵e̵t̵'̵ ̵d̵e̵p̵e̵n̵d̵s̵ ̵o̵n̵ ̵a̵x̵i̵o̵m̵s̵:̵ ̵[̵{̵n̵a̵m̵e̵s̵}̵]̵\"̵\n  ̵s̲i̲m̲p̲ ̲[̲L̲]̲ ̲a̲t̲\n  ̲ ̲ ̲ ̲ ̲t̲h̲i̲s̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n",
+   "terminal": "ACCEPT"
+  }
+ ],
+ "frozen": {
+  "statement": "¬ (∀ u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3), (∃ x, (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (x : EuclideanSpace ℝ (Fin 3)) => (WithLp.toLp 2 ![ ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 1 x) 2 - ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 2 x) 1, ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 2 x) 0 - ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 0 x) 2, ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 0 x) 1 - ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 1 x) 0 ] : EuclideanSpace ℝ (Fin 3))) u x ≠ 0) → False)",
+  "statement_sha256": "03ee2c58e35200e5a38700064c49827920bb6725105a8352ba9feacf11e1a218",
+  "question_sha256": "8b92e09c3ab34dc57ab13bccb70d78880a3f2e6ac61d71a8e1aa2d96103a669a",
+  "frozen_utc": "2026-08-15T18:05:44Z"
+ }
+}

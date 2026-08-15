@@ -1,0 +1,6 @@
+{
+ "question_sha256": "6dd50eab4453b2f06cbafa2a82eda87e5fcc2f43078abac148b82d130e989be2",
+ "statement_sha256": "9cbac55b3895edb1712d2394717fe1d415bceaf73201ceb5e6092955bbf977a4",
+ "statement": "∀ lam : ℝ, (fun (lam : ℝ) (a : Fin 2 → ℝ) (n : Fin 2) => lam ^ n.val * ((fun (a : Fin 2 → ℝ) (n : Fin 2) => if h : 0 < n.val then a ⟨n.val - 1, by omega⟩ else (0:ℝ)) a n) ^ 2 - lam ^ (n.val + 1) * a n * (fun (a : Fin 2 → ℝ) (n : Fin 2) => if h : n.val + 1 < 2 then a ⟨n.val + 1, h⟩ else (0:ℝ)) a n) lam (![1, 0] : Fin 2 → ℝ) 0 = 0 ∧ (fun (lam : ℝ) (a : Fin 2 → ℝ) (n : Fin 2) => lam ^ n.val * ((fun (a : Fin 2 → ℝ) (n : Fin 2) => if h : 0 < n.val then a ⟨n.val - 1, by omega⟩ else (0:ℝ)) a n) ^ 2 - lam ^ (n.val + 1) * a n * (fun (a : Fin 2 → ℝ) (n : Fin 2) => if h : n.val + 1 < 2 then a ⟨n.val + 1, h⟩ else (0:ℝ)) a n) lam (![1, 0] : Fin 2 → ℝ) 1 = lam",
+ "frozen_utc": "2026-08-15T18:27:28Z"
+}

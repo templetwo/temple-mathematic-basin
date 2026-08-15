@@ -1,0 +1,27 @@
+{
+ "round": "r0-stretch-C3-rotation-has-zero-stretch",
+ "attempts": [
+  {
+   "attempt_file": "01.txt",
+   "utc": "2026-08-15T18:20:39Z",
+   "statement_sha256": "2f6cd732a6cf22f7ebd5fe2c350833ce80d3bd22ec401fb6f662895970ebe33d",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "wall_seconds": 17.3,
+   "log_tail": "'basin_target' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+   "terminal": "ACCEPT"
+  }
+ ],
+ "frozen": {
+  "statement": "∀ x : EuclideanSpace ℝ (Fin 3), (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (x : EuclideanSpace ℝ (Fin 3)) => ∑ i : Fin 3, ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (x : EuclideanSpace ℝ (Fin 3)) => (WithLp.toLp 2 ![ ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 1 x) 2 - ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 2 x) 1, ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 2 x) 0 - ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 0 x) 2, ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 0 x) 1 - ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 1 x) 0 ] : EuclideanSpace ℝ (Fin 3))) u x i) • (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u i x) (⇑(LinearMap.toContinuousLinearMap ({ toFun := fun x : EuclideanSpace ℝ (Fin 3) => WithLp.toLp 2 ![-(x 1), x 0, 0], map_add' := by intro x y; ext i; fin_cases i <;> simp <;> ring, map_smul' := by intro c x; ext i; fin_cases i <;> simp } : EuclideanSpace ℝ (Fin 3) →ₗ[ℝ] EuclideanSpace ℝ (Fin 3)) : EuclideanSpace ℝ (Fin 3) →L[ℝ] EuclideanSpace ℝ (Fin 3))) x = 0",
+  "statement_sha256": "2f6cd732a6cf22f7ebd5fe2c350833ce80d3bd22ec401fb6f662895970ebe33d",
+  "question_sha256": "35050fd1097fa5b49a2244021fc5485d60c93cb56dc141a6894fc7f261979e7f",
+  "frozen_utc": "2026-08-15T18:10:08Z"
+ }
+}

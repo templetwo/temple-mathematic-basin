@@ -1,0 +1,27 @@
+{
+ "round": "r0-curl-C2-rot-has-curl",
+ "attempts": [
+  {
+   "attempt_file": "01.txt",
+   "utc": "2026-08-15T18:19:15Z",
+   "statement_sha256": "20c4698bd2cfb4a9891b2be9cf7d365f4657cacb3c56b0ff1a3340c1909d0b2f",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "wall_seconds": 19.9,
+   "log_tail": "'basin_target' depends on axioms: [propext, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_fdr4dekg/BasinAttempt_fdr4dekg.lean:7:18: warning: This simp argument is unused:\n  PiLp.single_apply\n\nHint: Omit it from the simp argument list.\n  P̵r̵o̵o̵f̵B̵o̵d̵y̵ ̵:̵ ̵S̵t̵r̵i̵n̵g̵ ̵:̵=̵ ̵\"̵b̵y̵\\̵n̵s̲i̲m̲p̲ ̲[̲L̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n",
+   "terminal": "ACCEPT"
+  }
+ ],
+ "frozen": {
+  "statement": "∀ x : EuclideanSpace ℝ (Fin 3), (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (x : EuclideanSpace ℝ (Fin 3)) => (WithLp.toLp 2 ![ ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 1 x) 2 - ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 2 x) 1, ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 2 x) 0 - ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 0 x) 2, ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 0 x) 1 - ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 1 x) 0 ] : EuclideanSpace ℝ (Fin 3))) (⇑(LinearMap.toContinuousLinearMap ({ toFun := fun x : EuclideanSpace ℝ (Fin 3) => WithLp.toLp 2 ![-(x 1), x 0, 0], map_add' := by intro x y; ext i; fin_cases i <;> simp <;> ring, map_smul' := by intro c x; ext i; fin_cases i <;> simp } : EuclideanSpace ℝ (Fin 3) →ₗ[ℝ] EuclideanSpace ℝ (Fin 3)) : EuclideanSpace ℝ (Fin 3) →L[ℝ] EuclideanSpace ℝ (Fin 3))) x = WithLp.toLp 2 ![(0:ℝ), 0, 2]",
+  "statement_sha256": "20c4698bd2cfb4a9891b2be9cf7d365f4657cacb3c56b0ff1a3340c1909d0b2f",
+  "question_sha256": "a82588a5818df09f81ff26a0d4612f6108cde8a9f9af42a0fd9586bf0d924175",
+  "frozen_utc": "2026-08-15T18:05:44Z"
+ }
+}
