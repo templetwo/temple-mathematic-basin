@@ -1,0 +1,27 @@
+{
+ "round": "r1a-corollary-dissipative",
+ "attempts": [
+  {
+   "attempt_file": "01.txt",
+   "utc": "2026-08-15T18:43:09Z",
+   "statement_sha256": "ac289f681b6bed8f6aee1687a10b4536be7600841818b6f1028505723ec8b982",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "wall_seconds": 21.2,
+   "log_tail": "/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_p6soar_1/BasinAttempt_p6soar_1.lean:7:680: warning: `Fin.coe_castSucc` has been deprecated: Use `Fin.val_castSucc` instead\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_p6soar_1/BasinAttempt_p6soar_1.lean:7:913: warning: `Fin.coe_castSucc` has been deprecated: Use `Fin.val_castSucc` instead\n'basin_target' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+   "terminal": "ACCEPT"
+  }
+ ],
+ "frozen": {
+  "statement": "∀ (N : ℕ) (nu lam : ℝ), 0 ≤ nu → ∀ a : Fin N → ℝ, ∑ n : Fin N, a n * (fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => (fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => - nu * lam ^ (2 * n.val) * a n) nu lam a n + (fun (lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => lam ^ n.val * ((fun (a : Fin N → ℝ) (n : Fin N) => if h : 0 < n.val then a ⟨n.val - 1, by omega⟩ else (0:ℝ)) a n) ^ 2 - lam ^ (n.val + 1) * a n * (fun (a : Fin N → ℝ) (n : Fin N) => if h : n.val + 1 < N then a ⟨n.val + 1, h⟩ else (0:ℝ)) a n) lam a n) nu lam a n ≤ 0",
+  "statement_sha256": "ac289f681b6bed8f6aee1687a10b4536be7600841818b6f1028505723ec8b982",
+  "question_sha256": "23150bc110ede95c01474b3ef9ddc7348d3bcc3fbaf9ca4aabc198505a0e88f8",
+  "frozen_utc": "2026-08-15T18:40:51Z"
+ }
+}
