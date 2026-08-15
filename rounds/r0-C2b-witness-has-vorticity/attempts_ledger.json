@@ -1,0 +1,20 @@
+{
+ "round": "r0-C2b-witness-has-vorticity",
+ "attempts": [
+  {
+   "attempt_file": "01.txt",
+   "utc": "2026-08-15T17:47:01Z",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "wall_seconds": 18.8,
+   "log_tail": "'basin_target' depends on axioms: [propext, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_2kpk0m3y/BasinAttempt_2kpk0m3y.lean:6:952: warning: This simp argument is unused:\n  PiLp.single_apply\n\nHint: Omit it from the simp argument list.\n  i̵n̵ ̵3̵)̵)̵)̵ ̵x̵ ̵=̵ ̵2̵\"̵\n  ̵d̵e̵f̵ ̵b̵a̵s̵i̵n̵P̵r̵o̵s̲i̲m̲p̲ ̲[̲L̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n",
+   "terminal": "ACCEPT"
+  }
+ ]
+}

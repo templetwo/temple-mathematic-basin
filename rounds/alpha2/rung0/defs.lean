@@ -19,11 +19,16 @@ trunk, not the trunk.**
 
 Conventions: `V := EuclideanSpace ℝ (Fin 3)`; a vector field is `V → V`;
 the `i`-th partial of `f` at `x` is `fderiv ℝ f x (e i)` with
-`e i := EuclideanSpace.single i 1`. All definitions are total (Lean's
+`e i := EuclideanSpace.single i 1`. All operators are total (Lean's
 `fderiv` is `0` where `f` is not differentiable), which is exactly the
-totalization trap §18.5 warns about — so C2 witnesses are chosen smooth,
-and the `Differentiable` hypothesis is carried explicitly where a
-theorem needs it rather than hidden in the definition.
+totalization trap §18.5 warns about. The first draft of this header said
+the `Differentiable` hypothesis would live on theorems, not in the
+definition — and mbp-grok (board #18056) proved that choice vacuous with
+a discontinuous field that was provably `DivFree`. So `DivFree` now
+carries `Differentiable ℝ u` IN THE PROP; the header is corrected to
+match (grok #18077 caught the stale text). `div`, `curl`, `stretch`
+themselves stay total operators; the Prop-level predicates carry the
+smoothness guard.
 -/
 
 noncomputable section
