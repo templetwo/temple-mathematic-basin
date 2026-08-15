@@ -1,0 +1,61 @@
+{
+ "attempts": [
+  {
+   "attempt_utc": "2026-08-15T16:19:36Z",
+   "authorization": "Anthony, 2026-08-15: 'go'",
+   "proposition": "∃ (n : ℕ) (A : Finset (Fin n → ZMod 3)),\n  3 ≤ n ∧\n  (∀ a ∈ A, ∀ b ∈ A, ∀ c ∈ A,\n    a ≠ b → b ≠ c → a ≠ c → a + c ≠ (2 : ℕ) • b) ∧\n  A.card > 2 ^ n",
+   "witness_points": [
+    "![0,0,0]",
+    "![0,1,1]",
+    "![0,2,1]",
+    "![1,0,1]",
+    "![1,1,2]",
+    "![1,2,2]",
+    "![2,0,1]",
+    "![2,1,2]",
+    "![2,2,2]"
+   ],
+   "witness_construction": "graph of q(x,y)=x^2+y^2 over (Z/3)^2; anisotropic q + identity q(a)+q(b)+q(-a-b)=2q(a-b) mod 3",
+   "body": "⟨3, ({![0,0,0], ![0,1,1], ![0,2,1], ![1,0,1], ![1,1,2], ![1,2,2], ![2,0,1], ![2,1,2], ![2,2,2]} : Finset (Fin 3 → ZMod 3)),\n  by decide,  -- 3 ≤ 3\n  by decide,  -- labeled: no-3-AP over 9 named points, kernel-decided\n  by decide⟩  -- labeled: card > 2^3",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "wall_seconds": 43.8,
+   "log_tail": "'basin_target' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+   "terminal": "ACCEPT"
+  }
+ ],
+ "negative_control": {
+  "description": "identical proof shape against a 9-set containing the line {(0,0,0),(1,0,0),(2,0,0)}",
+  "set": [
+   "![0,0,0]",
+   "![1,0,0]",
+   "![2,0,0]",
+   "![1,0,1]",
+   "![1,1,2]",
+   "![1,2,2]",
+   "![2,0,1]",
+   "![2,1,2]",
+   "![2,2,2]"
+  ],
+  "status": "REJECT",
+  "reject_reason": "compile_error",
+  "axioms": [
+   "propext",
+   "sorryAx",
+   "Classical.choice",
+   "Quot.sound"
+  ],
+  "meaning": "the harness refuses the non-cap; the ACCEPT above is not free"
+ },
+ "claim_typing": {
+  "machine_checked": "a specific 9-point set in (Z/3Z)^3 is a cap and has cardinality 9 > 2^3; the frozen existential is thereby witnessed",
+  "cited_not_checked": "9 is the maximum cap size in dimension 3 (Bose 1947)",
+  "new_mathematics_claimed": "none"
+ }
+}
