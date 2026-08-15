@@ -1,0 +1,6 @@
+{
+ "question_sha256": "fa8267a3668d16046f50340d746faf8126ed2f34671197d010e9eb90e10dfeb9",
+ "statement_sha256": "6d41e49d2e81be3df8b725946f3450b95f7e33ce2d322a4656d419117297e82d",
+ "statement": "¬ (∀ u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3), (Differentiable ℝ (u) ∧ ∀ x, (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (x : EuclideanSpace ℝ (Fin 3)) => ∑ i : Fin 3, (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u i x i) (u) x = 0) → False)",
+ "frozen_utc": "2026-08-15T17:39:46Z"
+}

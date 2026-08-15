@@ -1,0 +1,17 @@
+by
+  intro ⟨hd, _⟩
+  have h1 : Filter.Tendsto (fun x : EuclideanSpace ℝ (Fin 3) => if x = 0 then (0:EuclideanSpace ℝ (Fin 3)) else (fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) 0) (nhds 0) (nhds ((fun x : EuclideanSpace ℝ (Fin 3) => if x = 0 then (0:EuclideanSpace ℝ (Fin 3)) else (fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) 0) 0)) := (hd 0).continuousAt
+  simp only [if_true] at h1
+  have hlim : Filter.Tendsto (fun n : ℕ => (fun x : EuclideanSpace ℝ (Fin 3) => if x = 0 then (0:EuclideanSpace ℝ (Fin 3)) else (fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) 0) ((1 / ((n:ℝ) + 1)) • (fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) 0)) Filter.atTop (nhds ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) 0)) := by
+    have hne : ∀ n : ℕ, (fun x : EuclideanSpace ℝ (Fin 3) => if x = 0 then (0:EuclideanSpace ℝ (Fin 3)) else (fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) 0) ((1 / ((n:ℝ) + 1)) • (fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) 0) = (fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) 0 := by
+      intro n; simp only []; rw [if_neg]
+      intro h; have := congrArg (fun v : EuclideanSpace ℝ (Fin 3) => v 0) h
+      simp at this
+      exact absurd this (by positivity)
+    simp only [hne]; exact tendsto_const_nhds
+  have hto0 : Filter.Tendsto (fun n : ℕ => (1 / ((n:ℝ) + 1)) • (fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) 0) Filter.atTop (nhds (0:EuclideanSpace ℝ (Fin 3))) := by
+    have h : Filter.Tendsto (fun n : ℕ => (1 / ((n:ℝ) + 1))) Filter.atTop (nhds (0:ℝ)) := tendsto_one_div_add_atTop_nhds_zero_nat
+    simpa using h.smul_const ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) 0)
+  have := tendsto_nhds_unique (h1.comp hto0) hlim
+  have := congrArg (fun v : EuclideanSpace ℝ (Fin 3) => v 0) this
+  simp at this

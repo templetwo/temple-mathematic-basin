@@ -1,0 +1,7 @@
+{
+ "status": "REJECT",
+ "reject_reason": "compile_error",
+ "elaborated": true,
+ "universe_error": false,
+ "log_tail": "0: error: Type mismatch\n  True.intro\nhas type\n  True\nbut is expected to have type\n  ∃ u,\n    Differentiable ℝ u ∧\n      ∀ (x : EuclideanSpace ℝ (Fin 3)),\n        (fun u x => ∑ i, ((fun u i x => (fderiv ℝ u x) ((fun i => EuclideanSpace.single i 1) i)) u i x).ofLp i) u x = 0\n'basin_target' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_i6lpd7iq/BasinAttempt_i6lpd7iq.lean:9:0: warning: declaration uses `sorry`\n"
+}

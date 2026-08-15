@@ -43,9 +43,17 @@ def pd {W : Type} [NormedAddCommGroup W] [NormedSpace ℝ W]
 def div (u : V → V) (x : V) : ℝ :=
   ∑ i : Fin 3, pd u i x i
 
-/-- **Divergence-free** (incompressible) on all of `V`. -/
+/-- **Divergence-free** (incompressible) on all of `V`.
+
+Carries `Differentiable ℝ u` IN THE PROP. Without it, Lean's totalized
+`fderiv` (which returns `0` wherever `u` is not differentiable) makes every
+discontinuous or nowhere-differentiable field trivially "divergence-free" —
+kernel-verified by `junk_divFree` in `certs.lean` (mbp-grok's attack,
+board #18056, 2026-08-15). A definition that admits Weierstrass junk does
+not mean incompressible. This is §18.5's totalization trap, caught by the
+other seat before any theorem stood on it. -/
 def DivFree (u : V → V) : Prop :=
-  ∀ x, div u x = 0
+  Differentiable ℝ u ∧ ∀ x, div u x = 0
 
 /-- **Curl** (vorticity) as a vector field, via the standard cross-product
 formula `(∂₂u₃ − ∂₃u₂, ∂₃u₁ − ∂₁u₃, ∂₁u₂ − ∂₂u₁)`. Built with Mathlib's
