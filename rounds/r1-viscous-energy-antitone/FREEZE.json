@@ -1,0 +1,6 @@
+{
+ "question_sha256": "8d22e7a5f505d1f992e1169c93e0160cfe4001732fa48f9681b27119f0d62f07",
+ "statement_sha256": "91e11c34edc7c52904196fc3aa82c7765ae0304c48be864aabf0f5da57d9513e",
+ "statement": "∀ (N : ℕ) (nu lam : ℝ) (a : ℝ → (Fin N → ℝ)) (T : ℝ), 0 ≤ nu → (fun (nu lam : ℝ) (a : ℝ → (Fin N → ℝ)) (T : ℝ) => ∀ t ∈ Set.Ico (0:ℝ) T, HasDerivAt a ((fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => (fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => - nu * lam ^ (2 * n.val) * a n) nu lam a n + (fun (lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => lam ^ n.val * ((fun (a : Fin N → ℝ) (n : Fin N) => if h : 0 < n.val then a ⟨n.val - 1, by omega⟩ else (0:ℝ)) a n) ^ 2 - lam ^ (n.val + 1) * a n * (fun (a : Fin N → ℝ) (n : Fin N) => if h : n.val + 1 < N then a ⟨n.val + 1, h⟩ else (0:ℝ)) a n) lam a n) nu lam (a t)) t) nu lam a T → AntitoneOn (fun s => (fun (a : Fin N → ℝ) => (1/2 : ℝ) * ∑ n : Fin N, (a n) ^ 2) (a s)) (Set.Ico (0:ℝ) T)",
+ "frozen_utc": "2026-08-15T20:49:43Z"
+}

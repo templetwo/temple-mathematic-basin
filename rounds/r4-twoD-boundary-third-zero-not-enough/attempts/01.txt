@@ -1,0 +1,11 @@
+by
+  let L : EuclideanSpace ℝ (Fin 3) →L[ℝ] EuclideanSpace ℝ (Fin 3) :=
+    LinearMap.toContinuousLinearMap
+      { toFun := fun x => WithLp.toLp 2 ![x 2, 0, 0]
+        map_add' := by intro x y; ext i; fin_cases i <;> simp
+        map_smul' := by intro c x; ext i; fin_cases i <;> simp }
+  refine ⟨⇑L, L.differentiable, ?_, 0, ?_⟩
+  · intro x; simp [L]
+  · have hf : fderiv ℝ (⇑L) 0 = L := L.fderiv
+    simp only [hf]
+    simp [L]

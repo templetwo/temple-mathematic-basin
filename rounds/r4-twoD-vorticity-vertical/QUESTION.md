@@ -1,0 +1,2 @@
+# r4-twoD-vorticity-vertical
+Rung 4 · phase 3 constriction — **in 2D the vorticity is vertical**: for a differentiable field with u₂ ≡ 0 and ∂₂u = 0, curl u has zero horizontal components at every point (ω = (0,0,ω₂)). This is the mechanism BEHIND r4-twoD-zero-stretching — a scalar vorticity has nothing to stretch along — and it is the fact that turns the 2D vorticity equation into pure transport (Ladyzhenskaya's mechanism; the theorem itself is CITED, outside the fence, rung4/FENCE_BOUNDARY.md). Machine-checked. Toward the trunk, not the trunk.

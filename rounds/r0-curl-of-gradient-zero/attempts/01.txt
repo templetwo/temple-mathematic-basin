@@ -1,0 +1,34 @@
+by
+  intro p hp x
+  have h1 : Differentiable ℝ (fderiv ℝ p) :=
+    (hp.fderiv_right (m := 1) (by norm_num)).differentiable (by norm_num)
+  have hpdd : ∀ k : Fin 3, Differentiable ℝ (fun y => fderiv ℝ p y ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) k)) :=
+    fun k y => ((h1 y).clm_apply (differentiableAt_const _))
+  -- Clairaut: ∂ⱼ∂ᵢp = ∂ᵢ∂ⱼp
+  have hsymm : ∀ i j : Fin 3, fderiv ℝ (fun y => fderiv ℝ p y ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) j) = fderiv ℝ (fun y => fderiv ℝ p y ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) j)) x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i) := by
+    intro i j
+    have hclm : ∀ k : Fin 3, fderiv ℝ (fun y => fderiv ℝ p y ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) k)) x = (fderiv ℝ (fderiv ℝ p) x).flip ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) k) := by
+      intro k
+      rw [fderiv_clm_apply (h1 x) (differentiableAt_const _)]
+      simp
+    rw [hclm i, hclm j]
+    simp only [ContinuousLinearMap.flip_apply]
+    exact (hp.contDiffAt.isSymmSndFDerivAt (by simp [minSmoothness_of_isRCLikeNormedField])) ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) j) ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)
+  -- coordinate of the derivative of the gradient field = mixed partial
+  have hcoord : ∀ i j : Fin 3, (fderiv ℝ (fun y => (WithLp.toLp 2 ![fderiv ℝ p y ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) 0), fderiv ℝ p y ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) 1), fderiv ℝ p y ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) 2)] : EuclideanSpace ℝ (Fin 3))) x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) j)) i = fderiv ℝ (fun y => fderiv ℝ p y ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) j) := by
+    intro i j
+    let L : (Fin 3 → ℝ) →L[ℝ] EuclideanSpace ℝ (Fin 3) := (PiLp.continuousLinearEquiv 2 ℝ (fun _ : Fin 3 => ℝ)).symm
+    have hL : (fun y => (WithLp.toLp 2 ![fderiv ℝ p y ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) 0), fderiv ℝ p y ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) 1), fderiv ℝ p y ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) 2)] : EuclideanSpace ℝ (Fin 3)))
+        = ⇑L ∘ (fun y (k : Fin 3) => fderiv ℝ p y ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) k)) := by
+      funext y
+      show (WithLp.toLp 2 ![fderiv ℝ p y ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) 0), fderiv ℝ p y ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) 1), fderiv ℝ p y ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) 2)] : EuclideanSpace ℝ (Fin 3)) = WithLp.toLp 2 (fun k : Fin 3 => fderiv ℝ p y ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) k))
+      congr 1; funext k; fin_cases k <;> rfl
+    have hpi : DifferentiableAt ℝ (fun y (k : Fin 3) => fderiv ℝ p y ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) k)) x :=
+      differentiableAt_pi.mpr (fun k => hpdd k x)
+    rw [hL, fderiv_comp x L.differentiableAt hpi, L.fderiv]
+    simp only [ContinuousLinearMap.comp_apply]
+    have hd' : ∀ k : Fin 3, DifferentiableAt ℝ (fun y => fderiv ℝ p y ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) k)) x := fun k => hpdd k x
+    rw [fderiv_pi hd']
+    simp [L]
+  ext i
+  fin_cases i <;> simp [hcoord, hsymm]

@@ -1,0 +1,2 @@
+# r4-twoD-boundary-third-zero-not-enough
+Rung 4 · phase 3 boundary — **u₂ ≡ 0 alone does NOT make vorticity vertical**: the shear u(x) = (x₂, 0, 0) is differentiable, has third component identically zero, and has curl u = (0, 1, 0) ≠ 0 horizontally at x = 0. So the ∂₂u = 0 half of IsTwoD is load-bearing in r4-twoD-vorticity-vertical (and hence in zero stretching). Kernel-checked positive negative control (PREREG §2.4). Toward the trunk, not the trunk.

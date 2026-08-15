@@ -1,0 +1,2 @@
+# r0-curl-of-gradient-zero
+Rung 0 · phase 3 constriction — **the curl of a gradient is zero, for EVERY C² scalar field p**: curl(∇p) ≡ 0. Generalizes r0-curl-C3 (one gradient) to the whole class, via Clairaut symmetry of second partials (Mathlib `isSymmSndFDerivAt`). This is why the pressure term drops out of the vorticity equation, and why the trunk pits stretching against pressure only through the NON-LOCAL Biot–Savart coupling. Machine-checked. Toward the trunk, not the trunk. Rung 0 / instrument.

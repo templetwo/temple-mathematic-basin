@@ -1,0 +1,7 @@
+{
+ "status": "REJECT",
+ "reject_reason": "compile_error",
+ "elaborated": true,
+ "universe_error": false,
+ "log_tail": "ideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)),\n        Differentiable ℝ u →\n          ∫ (x : EuclideanSpace ℝ (Fin 3)), ‖fderiv ℝ ((fun lam u x => lam • u (lam • x)) lam u) x‖ ^ 2 =\n            lam ^ 4 * (lam ^ 3)⁻¹ * ∫ (x : EuclideanSpace ℝ (Fin 3)), ‖fderiv ℝ u x‖ ^ 2\n'basin_target' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_3pla7au9/BasinAttempt_3pla7au9.lean:9:0: warning: declaration uses `sorry`\n"
+}

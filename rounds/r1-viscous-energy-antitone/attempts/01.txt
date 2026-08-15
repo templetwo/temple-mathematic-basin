@@ -1,0 +1,65 @@
+by
+  intro N nu lam a T hnu hsol
+  have hE : ∀ t ∈ Set.Ico (0:ℝ) T, HasDerivAt (fun s => (fun (a : Fin N → ℝ) => (1/2 : ℝ) * ∑ n : Fin N, (a n) ^ 2) (a s)) ((1/2 : ℝ) * ∑ n, 2 * a t n * (fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => (fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => - nu * lam ^ (2 * n.val) * a n) nu lam a n + (fun (lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => lam ^ n.val * ((fun (a : Fin N → ℝ) (n : Fin N) => if h : 0 < n.val then a ⟨n.val - 1, by omega⟩ else (0:ℝ)) a n) ^ 2 - lam ^ (n.val + 1) * a n * (fun (a : Fin N → ℝ) (n : Fin N) => if h : n.val + 1 < N then a ⟨n.val + 1, h⟩ else (0:ℝ)) a n) lam a n) nu lam (a t) n) t := by
+    intro t ht
+    have hd := hsol t ht
+    have hcoord : ∀ n : Fin N, HasDerivAt (fun s => a s n) ((fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => (fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => - nu * lam ^ (2 * n.val) * a n) nu lam a n + (fun (lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => lam ^ n.val * ((fun (a : Fin N → ℝ) (n : Fin N) => if h : 0 < n.val then a ⟨n.val - 1, by omega⟩ else (0:ℝ)) a n) ^ 2 - lam ^ (n.val + 1) * a n * (fun (a : Fin N → ℝ) (n : Fin N) => if h : n.val + 1 < N then a ⟨n.val + 1, h⟩ else (0:ℝ)) a n) lam a n) nu lam (a t) n) t :=
+      fun n => (hasDerivAt_pi.mp hd) n
+    have hsq : ∀ n : Fin N, HasDerivAt (fun s => (a s n) ^ 2) (2 * a t n * (fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => (fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => - nu * lam ^ (2 * n.val) * a n) nu lam a n + (fun (lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => lam ^ n.val * ((fun (a : Fin N → ℝ) (n : Fin N) => if h : 0 < n.val then a ⟨n.val - 1, by omega⟩ else (0:ℝ)) a n) ^ 2 - lam ^ (n.val + 1) * a n * (fun (a : Fin N → ℝ) (n : Fin N) => if h : n.val + 1 < N then a ⟨n.val + 1, h⟩ else (0:ℝ)) a n) lam a n) nu lam (a t) n) t := by
+      intro n
+      have h := (hcoord n).mul (hcoord n)
+      have hf : ((fun s => a s n) * fun s => a s n : ℝ → ℝ) = fun s => (a s n) ^ 2 := by
+        funext s; simp [sq]
+      rw [hf] at h
+      exact h.congr_deriv (by ring)
+    have hsum : HasDerivAt (fun s => ∑ n, (a s n) ^ 2) (∑ n, 2 * a t n * (fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => (fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => - nu * lam ^ (2 * n.val) * a n) nu lam a n + (fun (lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => lam ^ n.val * ((fun (a : Fin N → ℝ) (n : Fin N) => if h : 0 < n.val then a ⟨n.val - 1, by omega⟩ else (0:ℝ)) a n) ^ 2 - lam ^ (n.val + 1) * a n * (fun (a : Fin N → ℝ) (n : Fin N) => if h : n.val + 1 < N then a ⟨n.val + 1, h⟩ else (0:ℝ)) a n) lam a n) nu lam (a t) n) t := by
+      have h := HasDerivAt.sum (u := Finset.univ) (fun n _ => hsq n)
+      have hf : (∑ n : Fin N, fun s => (a s n) ^ 2 : ℝ → ℝ) = fun s => ∑ n, (a s n) ^ 2 := by
+        funext s; simp [Finset.sum_apply]
+      rw [hf] at h
+      exact h
+    exact hsum.const_mul (1/2 : ℝ)
+  have horth : ∀ (b : Fin N → ℝ), ∑ n : Fin N, b n * (fun (lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => lam ^ n.val * ((fun (a : Fin N → ℝ) (n : Fin N) => if h : 0 < n.val then a ⟨n.val - 1, by omega⟩ else (0:ℝ)) a n) ^ 2 - lam ^ (n.val + 1) * a n * (fun (a : Fin N → ℝ) (n : Fin N) => if h : n.val + 1 < N then a ⟨n.val + 1, h⟩ else (0:ℝ)) a n) lam b n = 0 := by
+    induction N with
+    | zero => intro b; simp
+    | succ M ih =>
+      intro b
+      simp only [mul_sub, Finset.sum_sub_distrib]
+      rw [Fin.sum_univ_succ, Fin.sum_univ_castSucc]
+      have hbot : (fun (a : Fin (M+1) → ℝ) (n : Fin (M+1)) => if h : 0 < n.val then a ⟨n.val - 1, by omega⟩ else (0:ℝ)) b (0 : Fin (M+1)) = 0 := by simp
+      have htop : (fun (a : Fin (M+1) → ℝ) (n : Fin (M+1)) => if h : n.val + 1 < M+1 then a ⟨n.val + 1, h⟩ else (0:ℝ)) b (Fin.last M) = 0 := by simp
+      have hp : ∀ i : Fin M, (fun (a : Fin (M+1) → ℝ) (n : Fin (M+1)) => if h : 0 < n.val then a ⟨n.val - 1, by omega⟩ else (0:ℝ)) b i.succ = b i.castSucc := by
+        intro i; simp only [Fin.val_succ, Nat.add_sub_cancel]
+        rw [dif_pos (Nat.succ_pos _)]; rfl
+      have hn : ∀ i : Fin M, (fun (a : Fin (M+1) → ℝ) (n : Fin (M+1)) => if h : n.val + 1 < M+1 then a ⟨n.val + 1, h⟩ else (0:ℝ)) b i.castSucc = b i.succ := by
+        intro i; simp only [Fin.val_castSucc]
+        rw [dif_pos (by omega)]; rfl
+      simp only [hbot, htop, hp, hn, mul_zero, zero_pow (two_ne_zero), zero_add, add_zero]
+      rw [sub_eq_zero]
+      apply Finset.sum_congr rfl
+      intro i _
+      simp only [Fin.val_succ, Fin.val_castSucc]
+      ring
+  have hrate : ∀ t ∈ Set.Ico (0:ℝ) T, (1/2 : ℝ) * ∑ n, 2 * a t n * (fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => (fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => - nu * lam ^ (2 * n.val) * a n) nu lam a n + (fun (lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => lam ^ n.val * ((fun (a : Fin N → ℝ) (n : Fin N) => if h : 0 < n.val then a ⟨n.val - 1, by omega⟩ else (0:ℝ)) a n) ^ 2 - lam ^ (n.val + 1) * a n * (fun (a : Fin N → ℝ) (n : Fin N) => if h : n.val + 1 < N then a ⟨n.val + 1, h⟩ else (0:ℝ)) a n) lam a n) nu lam (a t) n ≤ 0 := by
+    intro t ht
+    have h1 : ∑ n, 2 * a t n * (fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => (fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => - nu * lam ^ (2 * n.val) * a n) nu lam a n + (fun (lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => lam ^ n.val * ((fun (a : Fin N → ℝ) (n : Fin N) => if h : 0 < n.val then a ⟨n.val - 1, by omega⟩ else (0:ℝ)) a n) ^ 2 - lam ^ (n.val + 1) * a n * (fun (a : Fin N → ℝ) (n : Fin N) => if h : n.val + 1 < N then a ⟨n.val + 1, h⟩ else (0:ℝ)) a n) lam a n) nu lam (a t) n = 2 * (∑ n, a t n * (- nu * lam ^ (2 * n.val) * a t n) + ∑ n, a t n * (fun (lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => lam ^ n.val * ((fun (a : Fin N → ℝ) (n : Fin N) => if h : 0 < n.val then a ⟨n.val - 1, by omega⟩ else (0:ℝ)) a n) ^ 2 - lam ^ (n.val + 1) * a n * (fun (a : Fin N → ℝ) (n : Fin N) => if h : n.val + 1 < N then a ⟨n.val + 1, h⟩ else (0:ℝ)) a n) lam (a t) n) := by
+      rw [← Finset.sum_add_distrib, Finset.mul_sum]; apply Finset.sum_congr rfl; intro n _; ring
+    rw [h1, horth (a t), add_zero]
+    have hdiss : ∑ n, a t n * (- nu * lam ^ (2 * n.val) * a t n) ≤ 0 := by
+      apply Finset.sum_nonpos
+      intro n _
+      have : a t n * (- nu * lam ^ (2 * n.val) * a t n) = - (nu * (lam ^ n.val * a t n) ^ 2) := by ring
+      rw [this]
+      exact neg_nonpos.mpr (mul_nonneg hnu (sq_nonneg _))
+    linarith
+  apply antitoneOn_of_deriv_nonpos (convex_Ico (0:ℝ) T)
+  · intro t ht
+    exact (hE t ht).continuousAt.continuousWithinAt
+  · intro t ht
+    rw [interior_Ico] at ht
+    exact (hE t (Set.Ioo_subset_Ico_self ht)).differentiableAt.differentiableWithinAt
+  · intro t ht
+    rw [interior_Ico] at ht
+    have ht' := Set.Ioo_subset_Ico_self ht
+    rw [(hE t ht').deriv]
+    exact hrate t ht'

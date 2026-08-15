@@ -1,0 +1,2 @@
+# r2-gronwall-integral-form
+Rung 2 · phase 3 constriction — **Grönwall with the literal integral**: for continuous K, if y ≥ 0 satisfies y' ≤ K·y on [a,b] then y(t) ≤ y(a)·exp(∫ₐᵗ K). Tightens r2-gronwall-engine-of-bkm (which took an antiderivative I as a hypothesis) by supplying I from the fundamental theorem of calculus. This is the BKM criterion's SHAPE — a finite ∫ of the stretching rate forces boundedness — not its engine (rung2/SCOPE.md: the engine is the vorticity-stretching commutator estimate, outside the fence). Machine-checked. Toward the trunk, not the trunk.
