@@ -1,0 +1,6 @@
+{
+ "question_sha256": "0f728cf170a7726eb5b39426d184394d9b1512ae240248ca99225b1c29657acb",
+ "statement_sha256": "95640e63ab548f819018ddba4b154e32f402e5d3bee3f45f71ef132d06fcc7ea",
+ "statement": "∀ s : ℝ, ((s - 1/2 = 0) ↔ s = 1/2)",
+ "frozen_utc": "2026-08-15T19:13:46Z"
+}

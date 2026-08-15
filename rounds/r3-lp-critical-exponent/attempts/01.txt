@@ -1,0 +1,5 @@
+by
+  intro p hp
+  constructor
+  · intro h; field_simp at h; linarith
+  · intro h; subst h; norm_num

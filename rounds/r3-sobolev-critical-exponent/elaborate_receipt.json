@@ -1,0 +1,7 @@
+{
+ "status": "REJECT",
+ "reject_reason": "compile_error",
+ "elaborated": true,
+ "universe_error": false,
+ "log_tail": "/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_6liehrwu/BasinAttempt_6liehrwu.lean:1:0: error: Type mismatch\n  True.intro\nhas type\n  True\nbut is expected to have type\n  ∀ (s : ℝ), s - 1 / 2 = 0 ↔ s = 1 / 2\n'basin_target' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_6liehrwu/BasinAttempt_6liehrwu.lean:9:0: warning: declaration uses `sorry`\n"
+}

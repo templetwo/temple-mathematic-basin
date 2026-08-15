@@ -1,0 +1,9 @@
+by
+  intro lam hlam u
+  have hlp : ∫ x, ‖(fun (lam : ℝ) (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (x : EuclideanSpace ℝ (Fin 3)) => lam • u (lam • x)) lam u x‖ ^ 3 ∂(MeasureTheory.volume : MeasureTheory.Measure (EuclideanSpace ℝ (Fin 3))) = lam ^ 3 * (lam ^ 3)⁻¹ * ∫ x, ‖u x‖ ^ 3 ∂(MeasureTheory.volume : MeasureTheory.Measure (EuclideanSpace ℝ (Fin 3))) := by
+    simp only [norm_smul, Real.norm_eq_abs, abs_of_pos hlam, mul_pow]
+    rw [MeasureTheory.integral_const_mul]
+    have h := (MeasureTheory.volume : MeasureTheory.Measure (EuclideanSpace ℝ (Fin 3))).integral_comp_smul_of_nonneg (fun x => ‖u x‖ ^ 3) lam (hR := hlam.le)
+    rw [h, finrank_euclideanSpace, Fintype.card_fin]
+    simp [smul_eq_mul]; ring
+  rw [hlp, mul_inv_cancel₀ (pow_ne_zero 3 hlam.ne'), one_mul]

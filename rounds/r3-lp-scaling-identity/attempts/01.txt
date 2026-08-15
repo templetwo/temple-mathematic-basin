@@ -1,0 +1,7 @@
+by
+  intro lam hlam u p
+  simp only [norm_smul, Real.norm_eq_abs, abs_of_pos hlam, mul_pow]
+  rw [MeasureTheory.integral_const_mul]
+  have h := (MeasureTheory.volume : MeasureTheory.Measure (EuclideanSpace ℝ (Fin 3))).integral_comp_smul_of_nonneg (fun x => ‖u x‖ ^ p) lam (hR := hlam.le)
+  rw [h, finrank_euclideanSpace, Fintype.card_fin]
+  simp [smul_eq_mul]; ring

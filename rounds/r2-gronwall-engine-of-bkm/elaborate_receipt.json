@@ -1,0 +1,7 @@
+{
+ "status": "REJECT",
+ "reject_reason": "compile_error",
+ "elaborated": true,
+ "universe_error": false,
+ "log_tail": "ℝ) (a b : ℝ),\n    a ≤ b →\n      (∀ t ∈ Set.Icc a b, HasDerivAt y (y' t) t) →\n        (∀ t ∈ Set.Icc a b, HasDerivAt I (K t) t) →\n          (∀ t ∈ Set.Icc a b, y' t ≤ K t * y t) →\n            (∀ t ∈ Set.Icc a b, 0 ≤ y t) → ∀ t ∈ Set.Icc a b, y t ≤ y a * Real.exp (I t - I a)\n'basin_target' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_d0_mdmrz/BasinAttempt_d0_mdmrz.lean:9:0: warning: declaration uses `sorry`\n"
+}
