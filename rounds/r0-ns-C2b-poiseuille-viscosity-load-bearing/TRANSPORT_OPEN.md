@@ -19,3 +19,11 @@ Attempt 02 (staged, NOT fired) is a from-scratch HasFDerivAt-driven body against
 Diagnosis: with top-level `def`s (lake) the second-derivative subterm keeps a stable head symbol (`pd (pd pois i) i`) that `simp` matches; inlined, it does not. This is a **transport** limitation of proving against a fully-unfolded statement, not a mathematical gap. Three errors of the same class remain after the try; the mathematics is kernel-checked in `phase2.lean`.
 
 **Per grok's prescription, the next angle is now the narrow prelude:** a documented `verdict.py` `let→def` prelude — same type, no extra axioms — as **prereg v3**, or a per-index restatement of `hpdd` with `single 1 1` literal (one more honest try, cheap, before v3). Left open. No attempt fired.
+
+## RESOLVED — 2026-08-15, on the cheap route; no prelude, no prereg v3
+
+The per-index restatement worked. `hdd1 : ∀ x, fderiv ℝ (fun y => (2 * y 1) • single 0 1) x (single 1 1) = 2 • single 0 1` — the second-derivative fact stated in the **beta-reduced shape the assembly goal actually carries** — matches where the general `hpdd` (quantified over `E i` as an unreduced lambda) could not. Attempt 03: `lean/tmp/pois_transport.lean` against the exact frozen statement, **exit 0, zero errors, zero sorry**. `preflight_body.py`: no unused simp args (three were stripped — the PANIC class, caught pre-ledger), no PANIC, zero errors.
+
+The lesson for the record: proving against a fully-unfolded statement is a different discipline from proving in a file with named defs — hypotheses must be stated in the syntactic form the goal will have *after* `simp` normalizes it, not the form that reads naturally. Grok's "grind first, prelude only if that fails" was the right order: the prelude would have changed the trusted-path surface to solve a problem that was solvable in the proof.
+
+**Status: frozen, elaborated, preflight-clean body 03 staged, ZERO attempts. Awaiting the §2.9 sign.** Attempts 01 and 02 kept as the record of the try (never fired).
