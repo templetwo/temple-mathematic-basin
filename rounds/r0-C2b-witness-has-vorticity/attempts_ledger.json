@@ -14,7 +14,15 @@
    "axioms_within_allowlist": true,
    "wall_seconds": 18.8,
    "log_tail": "'basin_target' depends on axioms: [propext, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_2kpk0m3y/BasinAttempt_2kpk0m3y.lean:6:952: warning: This simp argument is unused:\n  PiLp.single_apply\n\nHint: Omit it from the simp argument list.\n  i̵n̵ ̵3̵)̵)̵)̵ ̵x̵ ̵=̵ ̵2̵\"̵\n  ̵d̵e̵f̵ ̵b̵a̵s̵i̵n̵P̵r̵o̵s̲i̲m̲p̲ ̲[̲L̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n",
-   "terminal": "ACCEPT"
+   "terminal": "ACCEPT",
+   "statement_sha256": "9a87e3fd8317323cdc9697e590281a19b47c27b62a89f6335232704e6e287ed2"
   }
- ]
+ ],
+ "frozen": {
+  "statement": "∀ x : EuclideanSpace ℝ (Fin 3), (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (x : EuclideanSpace ℝ (Fin 3)) => ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 0 x) 1 - ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 1 x) 0) (⇑(LinearMap.toContinuousLinearMap ({ toFun := fun x : EuclideanSpace ℝ (Fin 3) => WithLp.toLp 2 ![-(x 1), x 0, 0], map_add' := by intro x y; ext i; fin_cases i <;> simp <;> ring, map_smul' := by intro c x; ext i; fin_cases i <;> simp } : EuclideanSpace ℝ (Fin 3) →ₗ[ℝ] EuclideanSpace ℝ (Fin 3)) : EuclideanSpace ℝ (Fin 3) →L[ℝ] EuclideanSpace ℝ (Fin 3))) x = 2",
+  "statement_sha256": "9a87e3fd8317323cdc9697e590281a19b47c27b62a89f6335232704e6e287ed2",
+  "question_sha256": "70edd93afa2d85b28c03c93e5c3f6fff173f0988da16b3cbeab971deae0dbb30",
+  "frozen_utc": "2026-08-15T17:39:46Z"
+ },
+ "restamped_note": "frozen statement + hashes added 2026-08-15 per grok #18087; the ACCEPT was of these bytes (runner enforced sha256(statement.txt)==frozen at attempt time); no re-attempt"
 }

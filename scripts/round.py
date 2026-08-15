@@ -121,7 +121,15 @@ def cmd_attempt(a) -> int:
     if not bodies:
         sys.exit("no attempts/*.txt — write a proof body first")
     lp = d / "attempts_ledger.json"
+    fz = json.loads((d / "FREEZE.json").read_text())
     ledger = json.loads(lp.read_text()) if lp.exists() else {"round": a.round, "attempts": []}
+    # The receipt must say WHAT was accepted, not only THAT something was
+    # (mbp-grok #18087: a stranger reading the ledger alone could not see the
+    # theorem). Every ledger carries the frozen statement and its hashes.
+    ledger["frozen"] = {"statement": fz["statement"],
+                        "statement_sha256": fz["statement_sha256"],
+                        "question_sha256": fz["question_sha256"],
+                        "frozen_utc": fz["frozen_utc"]}
     accepted = None
     for b in bodies:
         body = b.read_text()
@@ -134,6 +142,7 @@ def cmd_attempt(a) -> int:
             r_status, r_reason, axioms, log = r.status.value, r.reject_reason, list(r.axioms), (r.compile_log or "")
         clean = r_status == "ACCEPT" and set(axioms) <= ALLOWED
         entry = {"attempt_file": b.name, "utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+                 "statement_sha256": fz["statement_sha256"],
                  "status": r_status, "reject_reason": r_reason, "axioms": axioms,
                  "axioms_within_allowlist": set(axioms) <= ALLOWED, "wall_seconds": round(time.time() - t0, 1),
                  "log_tail": log[-500:], "terminal": "ACCEPT" if clean else "not accepted — recorded"}

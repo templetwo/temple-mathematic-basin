@@ -14,7 +14,15 @@
    "axioms_within_allowlist": true,
    "wall_seconds": 18.6,
    "log_tail": "'basin_target' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
-   "terminal": "ACCEPT"
+   "terminal": "ACCEPT",
+   "statement_sha256": "082724d89e257f68a8258bbc2d43cc2ce665523c83ad91fa6e53b992b5efaafa"
   }
- ]
+ ],
+ "frozen": {
+  "statement": "¬ (Differentiable ℝ ((fun x : EuclideanSpace ℝ (Fin 3) => if x = 0 then (0:EuclideanSpace ℝ (Fin 3)) else (fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) 0)) ∧ ∀ x, (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (x : EuclideanSpace ℝ (Fin 3)) => ∑ i : Fin 3, (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u i x i) ((fun x : EuclideanSpace ℝ (Fin 3) => if x = 0 then (0:EuclideanSpace ℝ (Fin 3)) else (fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) 0)) x = 0)",
+  "statement_sha256": "082724d89e257f68a8258bbc2d43cc2ce665523c83ad91fa6e53b992b5efaafa",
+  "question_sha256": "c2920678cdefe307adff0e9238be7aba72a8ae7f35bdce5eb4017fe15f3cecaf",
+  "frozen_utc": "2026-08-15T17:39:46Z"
+ },
+ "restamped_note": "frozen statement + hashes added 2026-08-15 per grok #18087; the ACCEPT was of these bytes (runner enforced sha256(statement.txt)==frozen at attempt time); no re-attempt"
 }

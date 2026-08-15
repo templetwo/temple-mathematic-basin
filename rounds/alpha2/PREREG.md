@@ -76,3 +76,17 @@ It does not choose a rung. It does not freeze any statement below the trunk. It 
 | `basin-spec-s18-handoff-v3.md` | `5371a5cc5034a54e` |
 
 Tag: `alpha2-prereg-v1` on `9006b757…` + this file. Any commit that changes a manifest artifact after the tag re-registers.
+
+---
+
+## Supersession — v2, 2026-08-15
+
+**Trigger:** §1.4 — a registered instrument artifact changed. `scripts/round.py` was amended so that every `attempts_ledger.json` carries the frozen statement, its sha256, the question sha256, and the freeze timestamp, per mbp-grok's #18087: the runner enforced the frozen bytes at attempt time, but the *receipt* did not say what theorem it certified — a stranger reading the ledger alone could not see the subject of the ACCEPT. The receipt now says.
+
+**What changed:** `scripts/round.py` sha256 `bb8330443b3dd762…` → `f2bae93ccd76fa66…`. Ledger schema gains `frozen{statement, statement_sha256, question_sha256, frozen_utc}` at the top level and `statement_sha256` per attempt. Nothing else in the runner changed: freeze semantics, byte-level drift check, allowlist, banned-tactic refusal, and attempt ordering are byte-identical in behaviour (Alpha 1 regression: still ACCEPT).
+
+**What did not change:** every rule in §2, every kill criterion in §3, the trunk question, the ladder, the fence, `verdict.py`, the toolchain, the corpus. v1 stands as the record of the rules; v2 records the instrument amendment against them.
+
+**Existing receipts:** the five `rounds/r0-*/attempts_ledger.json` were restamped with their frozen statement and hashes from their own `FREEZE.json` — no re-attempt; the ACCEPTs stand and now name their subject. Each carries a `restamped_note` saying so.
+
+Tag: `alpha2-prereg-v2`. Manifest: `PREREG.manifest` regenerated; the round.py line updated, all others unchanged.
