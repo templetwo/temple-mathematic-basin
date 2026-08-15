@@ -1,0 +1,27 @@
+{
+ "round": "r3-lp-critical-exponent",
+ "attempts": [
+  {
+   "attempt_file": "01.txt",
+   "utc": "2026-08-15T19:22:42Z",
+   "statement_sha256": "4262585207ae80f5a3f576c86a3bd0772c01232aa431d06a10e259e4aa822941",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "wall_seconds": 11.0,
+   "log_tail": "'basin_target' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+   "terminal": "ACCEPT"
+  }
+ ],
+ "frozen": {
+  "statement": "∀ p : ℝ, 0 < p → ((1 - 3 / p = 0) ↔ p = 3)",
+  "statement_sha256": "4262585207ae80f5a3f576c86a3bd0772c01232aa431d06a10e259e4aa822941",
+  "question_sha256": "aae2c790e49bd30b7fe3768a15502ac7d1e090882469a3404c3b32c78198baaa",
+  "frozen_utc": "2026-08-15T19:13:46Z"
+ }
+}

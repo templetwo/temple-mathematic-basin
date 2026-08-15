@@ -1,0 +1,112 @@
+{
+ "round": "r4-twoD-zero-stretching",
+ "attempts": [
+  {
+   "attempt_file": "01.txt",
+   "utc": "2026-08-15T19:23:06Z",
+   "statement_sha256": "d80ba2fd8c1fd3bfb3b1e93b86fa9e0ddc75b77c3ebddbde14cb2dff35747b5f",
+   "status": "REJECT",
+   "reject_reason": "compile_error",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": false,
+   "wall_seconds": 12.0,
+   "log_tail": "_ishg5j4c/BasinAttempt_ishg5j4c.lean:7:1740: warning: This simp argument is unused:\n  zero_smul\n\nHint: Omit it from the simp argument list.\n  c̵e̵ ̵ℝ̵ ̵(̵F̵i̵n̵ ̵3̵)̵)̵ ̵(̵i̵ ̵:̵ ̵F̵i̵n̵ ̵3̵)̵ ̵(̵x̵ ̵:̵ ̵E̵u̵c̵l̵i̵d̵e̵a̵n̵S̵p̵a̵c̵e̵ ̵ℝ̵ ̵(̵F̵i̵n̵ ̵3̵)̵)̵ ̵=̵>̵ ̵f̵d̵e̵r̵i̵v̵ ̵ℝ̵ ̵u̵s̲i̲m̲p̲ ̲o̲n̲l̲y̲ ̲[̲F̲i̲n̲.̲s̲u̲m̲_̲u̲n̲i̲v̲_̲t̲h̲r̲e̲e̲,̲\n  ̲ ̲ ̲h̲0̲,̲ ̲h̲1̲,̲ ̲h̲p̲d̲2̲,̲ ̲s̲m̲u̲l̲_̲z̲e̲r̲o̲,̲ ̲a̲d̲d̲_̲z̲e̲r̲o̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n",
+   "terminal": "not accepted — recorded"
+  },
+  {
+   "attempt_file": "01.txt",
+   "utc": "2026-08-15T19:23:58Z",
+   "statement_sha256": "d80ba2fd8c1fd3bfb3b1e93b86fa9e0ddc75b77c3ebddbde14cb2dff35747b5f",
+   "status": "REJECT",
+   "reject_reason": "compile_error",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": false,
+   "wall_seconds": 18.9,
+   "log_tail": "_axr_sdbl/BasinAttempt_axr_sdbl.lean:7:1740: warning: This simp argument is unused:\n  zero_smul\n\nHint: Omit it from the simp argument list.\n  c̵e̵ ̵ℝ̵ ̵(̵F̵i̵n̵ ̵3̵)̵)̵ ̵(̵i̵ ̵:̵ ̵F̵i̵n̵ ̵3̵)̵ ̵(̵x̵ ̵:̵ ̵E̵u̵c̵l̵i̵d̵e̵a̵n̵S̵p̵a̵c̵e̵ ̵ℝ̵ ̵(̵F̵i̵n̵ ̵3̵)̵)̵ ̵=̵>̵ ̵f̵d̵e̵r̵i̵v̵ ̵ℝ̵ ̵u̵s̲i̲m̲p̲ ̲o̲n̲l̲y̲ ̲[̲F̲i̲n̲.̲s̲u̲m̲_̲u̲n̲i̲v̲_̲t̲h̲r̲e̲e̲,̲\n  ̲ ̲ ̲h̲0̲,̲ ̲h̲1̲,̲ ̲h̲p̲d̲2̲,̲ ̲s̲m̲u̲l̲_̲z̲e̲r̲o̲,̲ ̲a̲d̲d̲_̲z̲e̲r̲o̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n",
+   "terminal": "not accepted — recorded"
+  },
+  {
+   "attempt_file": "02.txt",
+   "utc": "2026-08-15T19:24:11Z",
+   "statement_sha256": "d80ba2fd8c1fd3bfb3b1e93b86fa9e0ddc75b77c3ebddbde14cb2dff35747b5f",
+   "status": "REJECT",
+   "reject_reason": "compile_error",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": false,
+   "wall_seconds": 12.5,
+   "log_tail": "nSpace.single 2 1)).ofLp 0 - ((fderiv ℝ u x) (EuclideanSpace.single 0 1)).ofLp 2,\n            ((fderiv ℝ u x) (EuclideanSpace.single 0 1)).ofLp 1 - ((fderiv ℝ u x) (EuclideanSpace.single 1 1)).ofLp 0]\n          2 •\n        (fderiv ℝ u x) (EuclideanSpace.single 2 1) =\n    0\n'basin_target' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_7mbj2t7u/BasinAttempt_7mbj2t7u.lean:9:0: warning: declaration uses `sorry`\n",
+   "terminal": "not accepted — recorded"
+  },
+  {
+   "attempt_file": "01.txt",
+   "utc": "2026-08-15T19:25:30Z",
+   "statement_sha256": "d80ba2fd8c1fd3bfb3b1e93b86fa9e0ddc75b77c3ebddbde14cb2dff35747b5f",
+   "status": "REJECT",
+   "reject_reason": "compile_error",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": false,
+   "wall_seconds": 14.5,
+   "log_tail": "_zl2hfq3l/BasinAttempt_zl2hfq3l.lean:7:1740: warning: This simp argument is unused:\n  zero_smul\n\nHint: Omit it from the simp argument list.\n  c̵e̵ ̵ℝ̵ ̵(̵F̵i̵n̵ ̵3̵)̵)̵ ̵(̵i̵ ̵:̵ ̵F̵i̵n̵ ̵3̵)̵ ̵(̵x̵ ̵:̵ ̵E̵u̵c̵l̵i̵d̵e̵a̵n̵S̵p̵a̵c̵e̵ ̵ℝ̵ ̵(̵F̵i̵n̵ ̵3̵)̵)̵ ̵=̵>̵ ̵f̵d̵e̵r̵i̵v̵ ̵ℝ̵ ̵u̵s̲i̲m̲p̲ ̲o̲n̲l̲y̲ ̲[̲F̲i̲n̲.̲s̲u̲m̲_̲u̲n̲i̲v̲_̲t̲h̲r̲e̲e̲,̲\n  ̲ ̲ ̲h̲0̲,̲ ̲h̲1̲,̲ ̲h̲p̲d̲2̲,̲ ̲s̲m̲u̲l̲_̲z̲e̲r̲o̲,̲ ̲a̲d̲d̲_̲z̲e̲r̲o̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n",
+   "terminal": "not accepted — recorded"
+  },
+  {
+   "attempt_file": "02.txt",
+   "utc": "2026-08-15T19:25:55Z",
+   "statement_sha256": "d80ba2fd8c1fd3bfb3b1e93b86fa9e0ddc75b77c3ebddbde14cb2dff35747b5f",
+   "status": "REJECT",
+   "reject_reason": "compile_error",
+   "axioms": [
+    "propext",
+    "sorryAx",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": false,
+   "wall_seconds": 25.4,
+   "log_tail": "nSpace.single 2 1)).ofLp 0 - ((fderiv ℝ u x) (EuclideanSpace.single 0 1)).ofLp 2,\n            ((fderiv ℝ u x) (EuclideanSpace.single 0 1)).ofLp 1 - ((fderiv ℝ u x) (EuclideanSpace.single 1 1)).ofLp 0]\n          2 •\n        (fderiv ℝ u x) (EuclideanSpace.single 2 1) =\n    0\n'basin_target' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_nzfzpqwg/BasinAttempt_nzfzpqwg.lean:9:0: warning: declaration uses `sorry`\n",
+   "terminal": "not accepted — recorded"
+  },
+  {
+   "attempt_file": "03.txt",
+   "utc": "2026-08-15T19:26:08Z",
+   "statement_sha256": "d80ba2fd8c1fd3bfb3b1e93b86fa9e0ddc75b77c3ebddbde14cb2dff35747b5f",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "wall_seconds": 13.2,
+   "log_tail": "'basin_target' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+   "terminal": "ACCEPT"
+  }
+ ],
+ "frozen": {
+  "statement": "∀ (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)), (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) => (∀ x, u x 2 = 0) ∧ (∀ x, (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 2 x = 0)) u → Differentiable ℝ u → ∀ x : EuclideanSpace ℝ (Fin 3), (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (x : EuclideanSpace ℝ (Fin 3)) => ∑ i : Fin 3, ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (x : EuclideanSpace ℝ (Fin 3)) => (WithLp.toLp 2 ![ ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 1 x) 2 - ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 2 x) 1, ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 2 x) 0 - ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 0 x) 2, ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 0 x) 1 - ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u 1 x) 0 ] : EuclideanSpace ℝ (Fin 3))) u x i) • (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u i x) u x = 0",
+  "statement_sha256": "d80ba2fd8c1fd3bfb3b1e93b86fa9e0ddc75b77c3ebddbde14cb2dff35747b5f",
+  "question_sha256": "df09bc7fed49ec9cf74c82c17a581b71ac669bbc824734b6ac986d48e775dbce",
+  "frozen_utc": "2026-08-15T19:17:21Z"
+ }
+}

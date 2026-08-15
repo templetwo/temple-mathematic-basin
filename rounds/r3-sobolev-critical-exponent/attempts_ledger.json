@@ -1,0 +1,27 @@
+{
+ "round": "r3-sobolev-critical-exponent",
+ "attempts": [
+  {
+   "attempt_file": "01.txt",
+   "utc": "2026-08-15T19:22:53Z",
+   "statement_sha256": "95640e63ab548f819018ddba4b154e32f402e5d3bee3f45f71ef132d06fcc7ea",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "wall_seconds": 11.1,
+   "log_tail": "'basin_target' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+   "terminal": "ACCEPT"
+  }
+ ],
+ "frozen": {
+  "statement": "∀ s : ℝ, ((s - 1/2 = 0) ↔ s = 1/2)",
+  "statement_sha256": "95640e63ab548f819018ddba4b154e32f402e5d3bee3f45f71ef132d06fcc7ea",
+  "question_sha256": "0f728cf170a7726eb5b39426d184394d9b1512ae240248ca99225b1c29657acb",
+  "frozen_utc": "2026-08-15T19:13:46Z"
+ }
+}

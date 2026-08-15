@@ -1,0 +1,27 @@
+{
+ "round": "r3-l3-invariant",
+ "attempts": [
+  {
+   "attempt_file": "01.txt",
+   "utc": "2026-08-15T19:22:31Z",
+   "statement_sha256": "2209c263e9ac5eca28321d5744309bc1a11503b0ba09bcf63465f49a99403e55",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "wall_seconds": 12.6,
+   "log_tail": "'basin_target' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+   "terminal": "ACCEPT"
+  }
+ ],
+ "frozen": {
+  "statement": "∀ (lam : ℝ), 0 < lam → ∀ (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)), ∫ x, ‖(fun (lam : ℝ) (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (x : EuclideanSpace ℝ (Fin 3)) => lam • u (lam • x)) lam u x‖ ^ 3 ∂(MeasureTheory.volume : MeasureTheory.Measure (EuclideanSpace ℝ (Fin 3))) = ∫ x, ‖u x‖ ^ 3 ∂(MeasureTheory.volume : MeasureTheory.Measure (EuclideanSpace ℝ (Fin 3)))",
+  "statement_sha256": "2209c263e9ac5eca28321d5744309bc1a11503b0ba09bcf63465f49a99403e55",
+  "question_sha256": "e63f143d382bb90d8f52dae1313cdcc8d0120ff2902e8f6ad1abc80df29b2af5",
+  "frozen_utc": "2026-08-15T19:13:45Z"
+ }
+}
