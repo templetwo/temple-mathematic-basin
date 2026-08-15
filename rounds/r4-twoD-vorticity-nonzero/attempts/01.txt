@@ -1,0 +1,14 @@
+by
+  let L : EuclideanSpace ℝ (Fin 3) →L[ℝ] EuclideanSpace ℝ (Fin 3) :=
+    LinearMap.toContinuousLinearMap
+      { toFun := fun x => WithLp.toLp 2 ![-(x 1), x 0, 0]
+        map_add' := by intro x y; ext i; fin_cases i <;> simp <;> ring
+        map_smul' := by intro c x; ext i; fin_cases i <;> simp }
+  have hf : ∀ x, fderiv ℝ (⇑L) x = L := fun x => L.fderiv
+  refine ⟨⇑L, ⟨?_, ?_⟩, L.differentiable, 0, ?_⟩
+  · intro x; simp [L]
+  · intro x; simp only [hf]; ext i; fin_cases i <;> simp [L]
+  · intro h
+    have := congrArg (fun v : EuclideanSpace ℝ (Fin 3) => v 2) h
+    simp only [hf] at this
+    simp [L] at this

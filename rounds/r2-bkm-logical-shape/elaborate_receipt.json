@@ -1,0 +1,7 @@
+{
+ "status": "REJECT",
+ "reject_reason": "compile_error",
+ "elaborated": true,
+ "universe_error": false,
+ "log_tail": "≤ b →\n      Continuous K →\n        (∀ t ∈ Set.Ico a b, HasDerivAt y (y' t) t) →\n          (∀ t ∈ Set.Ico a b, y' t ≤ K t * y t) →\n            (∀ t ∈ Set.Ico a b, 0 ≤ y t) →\n              (∃ M, ∀ t ∈ Set.Ico a b, ∫ (s : ℝ) in a..t, K s ≤ M) → ∃ C, ∀ t ∈ Set.Ico a b, y t ≤ C\n'basin_target' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_c662xvx6/BasinAttempt_c662xvx6.lean:9:0: warning: declaration uses `sorry`\n"
+}

@@ -1,0 +1,21 @@
+# Alpha 2 — Constriction phase 4 (one slight ring per rung, incl. 1(b) selected), 2026-08-15
+
+Anthony: "proceed" · "constrict" · "we gotta move to rung 3 / or the next rung. we can only advance
+slightly on each." Policy from here: one slight ring per rung per pass; do not grind a rung.
+
+Rung 1(b) selected as (b2) finite-N top-shell concentration — provenance in `rung1b/SELECTION.md`
+(seat's recommendation, Anthony's "proceed"; veto window before any fire via §2.9).
+
+| Round | Rung | Ring | S (16) | Advance |
+|---|---|---|---|---|
+| `r1b-inviscid-top-shell-monotone` | 1(b) | top shell `MonotoneOn` [0,T), ν=0, 0≤λ, every solution | `18941c383dd7edfc` | first (b2) ring: energy concentrates upward |
+| `r2-bkm-logical-shape` | 2 | bounded ∫ₐᵗK on [a,b) ⇒ y bounded on [a,b) | `cb9cc18067b1aae1` | BKM's contrapositive shape: blow-up needs ∫K = ∞ |
+| `r3-vorticity-scaling` | 3 | curl u_λ (x) = λ²·curl u (λx) | `4e99ff340f35ba54` | vorticity exponent 2 (R0↔R3 bridge; ∫‖ω‖_∞dt scale-invariance CITED) |
+| `r4-twoD-vorticity-nonzero` | 4 | rot is IsTwoD, differentiable, curl = (0,0,2) ≠ 0 | `20ac12f64fee5026` | vertical-vorticity ring is not vacuous |
+| `r0-stretch-quadratic` | 0 | stretch(c·u) = c²·stretch u | `c184a6cd35f79cd1` | nonlinearity degree 2 on the vocabulary |
+
+Sources: `rung1b/ring1_top_shell_monotone.lean`, `rung2/phase4_bkm_shape.lean` (also holds the R3, R4
+theorems), `rung0/phase4_stretch_quadratic.lean`. All five frozen, elaborate PASS, preflight clean.
+ZERO fired. Awaiting mbp-grok §2.9 sign.
+
+Not staged (next pass): 1(b) ring 2 — viscous top-shell balance with the threshold `a_{N−2}² ≥ νλ^{N−1}a_{N−1}` as an iff.

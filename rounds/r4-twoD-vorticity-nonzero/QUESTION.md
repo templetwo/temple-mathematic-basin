@@ -1,0 +1,2 @@
+# r4-twoD-vorticity-nonzero
+Rung 4 · phase 4 slight advance — **2D vorticity is not vacuous**: rot(x) = (−x₁, x₀, 0) is differentiable, IsTwoD (u₂ ≡ 0, ∂₂u = 0), and has curl = (0,0,2) ≠ 0. So the vertical-vorticity ring (r4-twoD-vorticity-vertical) and the zero-stretching ring both have content: nonzero vorticity, zero stretching, in the same field. Kernel witness (C2-style). Machine-checked. Toward the trunk, not the trunk.

@@ -1,0 +1,1 @@
+∀ (y y' K : ℝ → ℝ) (a b : ℝ), a ≤ b → Continuous K → (∀ t ∈ Set.Ico a b, HasDerivAt y (y' t) t) → (∀ t ∈ Set.Ico a b, y' t ≤ K t * y t) → (∀ t ∈ Set.Ico a b, 0 ≤ y t) → (∃ M : ℝ, ∀ t ∈ Set.Ico a b, ∫ s in a..t, K s ≤ M) → ∃ C : ℝ, ∀ t ∈ Set.Ico a b, y t ≤ C

@@ -1,0 +1,45 @@
+by
+  intro y y' K a b hab hK hy hineq hy0 ⟨M, hM⟩
+  refine ⟨y a * Real.exp M, ?_⟩
+  intro t ht
+  -- Grönwall on [a,t] ⊂ [a,b)
+  set I : ℝ → ℝ := fun u => ∫ s in a..u, K s with hIdef
+  have hI : ∀ s, HasDerivAt I (K s) s := by
+    intro s
+    exact intervalIntegral.integral_hasDerivAt_right (hK.intervalIntegrable a s)
+      (hK.stronglyMeasurableAtFilter MeasureTheory.volume (nhds s)) hK.continuousAt
+  have hIa : I a = 0 := by simp [hIdef]
+  set g : ℝ → ℝ := fun s => y s * Real.exp (-(I s)) with hg
+  have hsub : Set.Icc a t ⊆ Set.Ico a b := fun u hu => ⟨hu.1, lt_of_le_of_lt hu.2 ht.2⟩
+  have hg' : ∀ s ∈ Set.Icc a t, HasDerivAt g ((y' s - K s * y s) * Real.exp (-(I s))) s := by
+    intro s hs
+    have h1 := (hy s (hsub hs)).mul (((hI s).neg).exp)
+    have hfun : (y * fun x => Real.exp ((-I) x) : ℝ → ℝ) = g := by
+      funext x; simp [hg]
+    rw [hfun] at h1
+    exact h1.congr_deriv (by simp only [Pi.neg_apply]; ring)
+  have hle : ∀ u ∈ interior (Set.Icc a t), deriv g u ≤ 0 := by
+    rw [interior_Icc]
+    intro u hu
+    have hu' : u ∈ Set.Icc a t := Set.Ioo_subset_Icc_self hu
+    rw [(hg' u hu').deriv]
+    apply mul_nonpos_of_nonpos_of_nonneg
+    · linarith [hineq u (hsub hu')]
+    · exact (Real.exp_pos _).le
+  have hcont : ContinuousOn g (Set.Icc a t) := fun u hu => (hg' u hu).continuousAt.continuousWithinAt
+  have hdiff : DifferentiableOn ℝ g (interior (Set.Icc a t)) := by
+    rw [interior_Icc]
+    exact fun u hu => (hg' u (Set.Ioo_subset_Icc_self hu)).differentiableAt.differentiableWithinAt
+  have hmono := antitoneOn_of_deriv_nonpos (convex_Icc a t) hcont hdiff hle ⟨le_refl a, ht.1⟩ ⟨ht.1, le_refl t⟩ ht.1
+  simp only [hg] at hmono
+  have hyt : y t ≤ y a * Real.exp (I t) := by
+    calc y t = (y t * Real.exp (-(I t))) * Real.exp (I t) := by
+            rw [mul_assoc, ← Real.exp_add]; simp
+      _ ≤ (y a * Real.exp (-(I a))) * Real.exp (I t) := by
+            apply mul_le_mul_of_nonneg_right hmono (Real.exp_pos _).le
+      _ = y a * Real.exp (I t) := by rw [hIa]; simp
+  have hIM : I t ≤ M := hM t ht
+  have hya : 0 ≤ y a := hy0 a ⟨le_refl a, lt_of_le_of_lt (le_refl a) (lt_of_le_of_lt ht.1 ht.2)⟩
+  calc y t ≤ y a * Real.exp (I t) := hyt
+    _ ≤ y a * Real.exp M := by
+          apply mul_le_mul_of_nonneg_left (Real.exp_le_exp.mpr hIM) hya

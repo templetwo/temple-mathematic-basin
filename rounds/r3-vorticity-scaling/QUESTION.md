@@ -1,0 +1,2 @@
+# r3-vorticity-scaling
+Rung 3 · phase 4 slight advance — **vorticity scales with exponent 2 under the NS dilation**: for differentiable u and u_λ(x) = λ·u(λx), curl u_λ (x) = λ²·(curl u)(λx) at every point. Bridges Rung 0 (curl) to Rung 3 (scaling): under the parabolic scaling t ↦ λ²t the BKM quantity ∫‖ω‖_∞ dt is scale-invariant — that consequence is CITED; only the pointwise identity is checked. Machine-checked. Toward the trunk, not the trunk.

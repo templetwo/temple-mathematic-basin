@@ -1,0 +1,19 @@
+by
+  intro lam u hu x
+  have hpt : fderiv ℝ (fun x => lam • u (lam • x)) x = (lam * lam) • fderiv ℝ u (lam • x) := by
+    have hs : HasFDerivAt (fun y : EuclideanSpace ℝ (Fin 3) => lam • y)
+        (lam • ContinuousLinearMap.id ℝ (EuclideanSpace ℝ (Fin 3))) x :=
+      (hasFDerivAt_id x).const_smul lam
+    have hc : HasFDerivAt (fun y => u (lam • y))
+        ((fderiv ℝ u (lam • x)).comp (lam • ContinuousLinearMap.id ℝ (EuclideanSpace ℝ (Fin 3)))) x :=
+      (hu (lam • x)).hasFDerivAt.comp x hs
+    have h : HasFDerivAt (fun y => lam • u (lam • y))
+        (lam • ((fderiv ℝ u (lam • x)).comp (lam • ContinuousLinearMap.id ℝ (EuclideanSpace ℝ (Fin 3))))) x :=
+      hc.const_smul lam
+    rw [h.fderiv]
+    ext v
+    simp only [smul_apply, ContinuousLinearMap.comp_apply,
+      ContinuousLinearMap.id_apply, map_smul, smul_smul]
+  simp only [hpt]
+  ext i
+  fin_cases i <;> simp <;> ring

@@ -1,0 +1,7 @@
+by
+  intro c u hu x
+  have hfd : ∀ y : EuclideanSpace ℝ (Fin 3), fderiv ℝ (c • u) y = c • fderiv ℝ u y := fun y => fderiv_const_smul (hu y) c
+  simp only [hfd, Fin.sum_univ_three]
+  simp only [smul_apply, PiLp.smul_apply, smul_eq_mul, smul_smul]
+  ext i
+  fin_cases i <;> simp <;> ring

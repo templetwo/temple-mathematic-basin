@@ -1,0 +1,2 @@
+# r2-bkm-logical-shape
+Rung 2 · phase 4 slight advance — **BKM's logical shape**: with continuous K and y' ≤ K·y, y ≥ 0 on [a,b), if ∫ₐᵗK is bounded on [a,b) then y is bounded on [a,b). Contrapositive: y unbounded as t → b forces ∫K unbounded — blow-up needs an infinite integral of the rate. Corollary of r2-gronwall-integral-form on the half-open interval. Still the SHAPE of BKM, not its engine (rung2/SCOPE.md). Machine-checked. Toward the trunk, not the trunk.
