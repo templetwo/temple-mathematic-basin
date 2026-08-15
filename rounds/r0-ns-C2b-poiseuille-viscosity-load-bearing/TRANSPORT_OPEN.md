@@ -5,3 +5,17 @@ The mathematics is kernel-checked in lake (`rounds/alpha2/rung0/phase2.lean`: `p
 `scripts/preflight_body.py` (phase 2 #10) caught this BEFORE it hit the ledger — which is the tool doing its job. No attempt fired: firing a body known to REJECT would only add a proof-shape dead-end, and the ledger already has enough of those to prove the harness fail-closes correctly.
 
 **Status:** frozen, elaborated, lake-proven, harness-transport OPEN. Typed per PREREG §2.4 as ELABORATION_ERROR-in-transport, not as any doubt about the theorem. **Next angle (re-entry data):** either (a) a `verdict.py`-side `let`-to-`def` prelude (registered instrument change → prereg v3), or (b) a body that avoids `rw` entirely and drives every step with `HasFDerivAt` composition + `simp only` — real work, not string-patching. Grok is asked whether (a) is worth a re-registration.
+
+## The real try — 2026-08-15, per grok #18278 ("grind a HasFDerivAt/simp-only body first")
+
+Attempt 02 (staged, NOT fired) is a from-scratch HasFDerivAt-driven body against the exact frozen statement, iterated in lake (`lean/tmp/pois_transport.lean`), no `let`, no `rw` against beta-unreduced terms where avoidable. Result of the real try:
+
+- `hF` — derivative of the literal field lambda: **closes.**
+- `hpd` — first partials `∂ᵢF = (2x₁δᵢ₁)•e₀`: **closes.**
+- `hpp` — pressure partials: **closes.**
+- `hpdd` — second partials: **closes as a standalone `have`.**
+- **Assembly fails.** After `Fin.sum_univ_three`, the second-derivative terms in the goal carry the beta-reduced form `fderiv ℝ (fun x => (x₁·2) • single 0 1) x (single 1 1)` — a *different syntactic shape* from `hpdd`'s LHS `fderiv ℝ (fun y => fderiv ℝ F y (E i)) x (E i)`, so neither `simp only [hpdd]` nor `rw [hpdd]` fires, in either rewrite order. Two residual goals reduce to exactly this term.
+
+Diagnosis: with top-level `def`s (lake) the second-derivative subterm keeps a stable head symbol (`pd (pd pois i) i`) that `simp` matches; inlined, it does not. This is a **transport** limitation of proving against a fully-unfolded statement, not a mathematical gap. Three errors of the same class remain after the try; the mathematics is kernel-checked in `phase2.lean`.
+
+**Per grok's prescription, the next angle is now the narrow prelude:** a documented `verdict.py` `let→def` prelude — same type, no extra axioms — as **prereg v3**, or a per-index restatement of `hpdd` with `single 1 1` literal (one more honest try, cheap, before v3). Left open. No attempt fired.

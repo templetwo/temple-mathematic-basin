@@ -1,0 +1,64 @@
+by
+  intro nu
+  have hF : ∀ x : EuclideanSpace ℝ (Fin 3), HasFDerivAt (fun x : EuclideanSpace ℝ (Fin 3) => (WithLp.toLp 2 ![x 1 ^ 2, 0, 0] : EuclideanSpace ℝ (Fin 3))) ((EuclideanSpace.proj (1:Fin 3) : EuclideanSpace ℝ (Fin 3) →L[ℝ] ℝ).smulRight ((2 * x 1) • (EuclideanSpace.single (0:Fin 3) (1:ℝ) : EuclideanSpace ℝ (Fin 3)))) x := by
+    intro x
+    have h1 : HasFDerivAt (fun y : EuclideanSpace ℝ (Fin 3) => y 1) (EuclideanSpace.proj (1:Fin 3) : EuclideanSpace ℝ (Fin 3) →L[ℝ] ℝ) x := (EuclideanSpace.proj (1:Fin 3) : EuclideanSpace ℝ (Fin 3) →L[ℝ] ℝ).hasFDerivAt
+    have hsq : HasFDerivAt (fun y : EuclideanSpace ℝ (Fin 3) => y 1 * y 1) (x 1 • (EuclideanSpace.proj (1:Fin 3) : EuclideanSpace ℝ (Fin 3) →L[ℝ] ℝ) + x 1 • (EuclideanSpace.proj (1:Fin 3) : EuclideanSpace ℝ (Fin 3) →L[ℝ] ℝ)) x := h1.mul h1
+    have hsm := hsq.smul_const (EuclideanSpace.single (0:Fin 3) (1:ℝ) : EuclideanSpace ℝ (Fin 3))
+    have heq : (fun y : EuclideanSpace ℝ (Fin 3) => (y 1 * y 1) • (EuclideanSpace.single (0:Fin 3) (1:ℝ) : EuclideanSpace ℝ (Fin 3))) = (fun x : EuclideanSpace ℝ (Fin 3) => (WithLp.toLp 2 ![x 1 ^ 2, 0, 0] : EuclideanSpace ℝ (Fin 3))) := by
+      funext y; ext i; fin_cases i <;> simp [sq]
+    rw [heq] at hsm
+    refine hsm.congr_fderiv ?_
+    ext v i
+    simp [ContinuousLinearMap.smulRight_apply, smul_smul, PiLp.single_apply]
+    split_ifs <;> ring
+  -- first partials of F: ∂ᵢF x = (2 x₁ δᵢ₁) • e₀
+  have hpd : ∀ (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)), fderiv ℝ (fun x : EuclideanSpace ℝ (Fin 3) => (WithLp.toLp 2 ![x 1 ^ 2, 0, 0] : EuclideanSpace ℝ (Fin 3))) x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i) = (2 * x 1 * ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i) 1) • (EuclideanSpace.single (0:Fin 3) (1:ℝ) : EuclideanSpace ℝ (Fin 3)) := by
+    intro i x
+    rw [(hF x).fderiv]
+    simp [ContinuousLinearMap.smulRight_apply, smul_smul]
+  -- the pressure's partials: ∂ᵢP x = 2ν δᵢ₀
+  have hpp : ∀ (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)), fderiv ℝ (fun x : EuclideanSpace ℝ (Fin 3) => 2 * (nu) * x 0) x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i) = 2 * nu * ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i) 0 := by
+    intro i x
+    have h0 : HasFDerivAt (fun y : EuclideanSpace ℝ (Fin 3) => y 0) (EuclideanSpace.proj (0:Fin 3) : EuclideanSpace ℝ (Fin 3) →L[ℝ] ℝ) x := (EuclideanSpace.proj (0:Fin 3) : EuclideanSpace ℝ (Fin 3) →L[ℝ] ℝ).hasFDerivAt
+    have hpe : (fun x : EuclideanSpace ℝ (Fin 3) => 2 * (nu) * x 0) = fun y : EuclideanSpace ℝ (Fin 3) => (2 * nu) * y 0 := by funext y; ring
+    rw [hpe, (h0.const_mul (2 * nu)).fderiv]
+    simp
+  -- second partials of F: ∂ᵢ(∂ᵢF) x = (2 δᵢ₁ δᵢ₁) • e₀
+  have hpdd : ∀ (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)), fderiv ℝ (fun y => fderiv ℝ (fun x : EuclideanSpace ℝ (Fin 3) => (WithLp.toLp 2 ![x 1 ^ 2, 0, 0] : EuclideanSpace ℝ (Fin 3))) y ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i) = (2 * ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i) 1 * ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i) 1) • (EuclideanSpace.single (0:Fin 3) (1:ℝ) : EuclideanSpace ℝ (Fin 3)) := by
+    intro i x
+    have hthis : (fun y => fderiv ℝ (fun x : EuclideanSpace ℝ (Fin 3) => (WithLp.toLp 2 ![x 1 ^ 2, 0, 0] : EuclideanSpace ℝ (Fin 3))) y ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) = fun y : EuclideanSpace ℝ (Fin 3) => (2 * y 1 * ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i) 1) • (EuclideanSpace.single (0:Fin 3) (1:ℝ) : EuclideanSpace ℝ (Fin 3)) := funext (fun y => hpd i y)
+    rw [hthis]
+    have h1 : HasFDerivAt (fun y : EuclideanSpace ℝ (Fin 3) => y 1) (EuclideanSpace.proj (1:Fin 3) : EuclideanSpace ℝ (Fin 3) →L[ℝ] ℝ) x := (EuclideanSpace.proj (1:Fin 3) : EuclideanSpace ℝ (Fin 3) →L[ℝ] ℝ).hasFDerivAt
+    have hl : HasFDerivAt (fun y : EuclideanSpace ℝ (Fin 3) => (2 * y 1 * ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i) 1) • (EuclideanSpace.single (0:Fin 3) (1:ℝ) : EuclideanSpace ℝ (Fin 3))) ((EuclideanSpace.proj (1:Fin 3) : EuclideanSpace ℝ (Fin 3) →L[ℝ] ℝ).smulRight ((2 * ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i) 1) • (EuclideanSpace.single (0:Fin 3) (1:ℝ) : EuclideanSpace ℝ (Fin 3)))) x := by
+      have := ((h1.const_mul 2).mul_const (((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i) 1)).smul_const (EuclideanSpace.single (0:Fin 3) (1:ℝ) : EuclideanSpace ℝ (Fin 3))
+      refine this.congr_fderiv ?_
+      ext v j
+      simp [ContinuousLinearMap.smulRight_apply, smul_smul, PiLp.single_apply]
+    rw [hl.fderiv]
+    simp [ContinuousLinearMap.smulRight_apply, smul_smul]
+  refine ⟨⟨?_, ?_, ?_⟩, ?_, ?_⟩
+  · -- ContDiff 2
+    have heq : (fun x : EuclideanSpace ℝ (Fin 3) => (WithLp.toLp 2 ![x 1 ^ 2, 0, 0] : EuclideanSpace ℝ (Fin 3))) = fun y : EuclideanSpace ℝ (Fin 3) => (y 1 * y 1) • (EuclideanSpace.single (0:Fin 3) (1:ℝ) : EuclideanSpace ℝ (Fin 3)) := by
+      funext y; ext i; fin_cases i <;> simp [sq]
+    rw [heq]
+    exact ((EuclideanSpace.proj (1:Fin 3) : EuclideanSpace ℝ (Fin 3) →L[ℝ] ℝ).contDiff.mul (EuclideanSpace.proj (1:Fin 3) : EuclideanSpace ℝ (Fin 3) →L[ℝ] ℝ).contDiff).smul_const (EuclideanSpace.single (0:Fin 3) (1:ℝ) : EuclideanSpace ℝ (Fin 3))
+  · -- Differentiable P
+    have hpe : (fun x : EuclideanSpace ℝ (Fin 3) => 2 * (nu) * x 0) = fun y : EuclideanSpace ℝ (Fin 3) => (2 * nu) * y 0 := by funext y; ring
+    rw [hpe]; exact ((EuclideanSpace.proj (0:Fin 3) : EuclideanSpace ℝ (Fin 3) →L[ℝ] ℝ).differentiable).const_mul _
+  · -- N = 0
+    intro x
+    simp only [Fin.sum_univ_three, hpdd, hpd, hpp]
+    ext i; fin_cases i <;> simp <;> ring
+  · -- Δ ≠ 0
+    intro h
+    have := congrArg (fun v : EuclideanSpace ℝ (Fin 3) => v 0) h
+    simp only [Fin.sum_univ_three, hpdd] at this
+    simp at this
+  · -- wrong viscosity
+    intro nu' hne ⟨_, _, hs⟩
+    have hx := hs 0
+    simp only [Fin.sum_univ_three, hpdd, hpd, hpp] at hx
+    have := congrArg (fun v : EuclideanSpace ℝ (Fin 3) => v 0) hx
+    simp at this
+    exact hne (by linarith)
