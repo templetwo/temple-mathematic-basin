@@ -21,7 +21,7 @@ The stationary operator, built ONLY from the already-certified primitive
   Δu      := Σᵢ ∂ᵢ(∂ᵢu)
 
 Time is deliberately absent: the fence has no ODE/PDE solution concept
-(FENCE.md). A steady solution is a pair (u,p) with N(u,p) = 0 and DivFree u.
+(FENCE.md). A steady solution is a pair (u,p) with IsSteadyNS (smoothness + N=0); DivFree is a SEPARATE certified fact composed with it where incompressibility is meant.
 This is where PRESSURE enters the record for the first time.
 
 C2 witness — an EXACT STEADY SOLUTION: rigid rotation u = (−x₁, x₀, 0) with

@@ -1,0 +1,59 @@
+{
+ "round": "r0-ns-C1-steady-consistent-v2",
+ "attempts": [
+  {
+   "attempt_file": "01.txt",
+   "utc": "2026-08-15T19:03:33Z",
+   "statement_sha256": "5a2f565161f5b6d0ef9598cc6fd60cf6fb4810149103b8bdd459e65ba7ad64b5",
+   "status": "REJECT",
+   "reject_reason": "panic",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "wall_seconds": 15.4,
+   "log_tail": "shared.dylib                 0x00000001149bee7c _ZN4lean12task_manager8run_taskERNSt3__111unique_lockINS1_5mutexEEEP9lean_task + 152\n54  libleanshared.dylib                 0x00000001149bfdbc _ZZN4lean12task_manager12spawn_workerEvENKUlvE_clEv + 304\n55  libleanshared.dylib                 0x00000001149b2044 _ZN4lean7lthread3imp5_mainEPv + 52\n56  libsystem_pthread.dylib             0x000000018fbf9c58 _pthread_start + 136\n57  libsystem_pthread.dylib             0x000000018fbf4c1c thread_start + 8\n",
+   "terminal": "not accepted — recorded"
+  },
+  {
+   "attempt_file": "01.txt",
+   "utc": "2026-08-15T19:04:46Z",
+   "statement_sha256": "5a2f565161f5b6d0ef9598cc6fd60cf6fb4810149103b8bdd459e65ba7ad64b5",
+   "status": "REJECT",
+   "reject_reason": "panic",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "wall_seconds": 18.4,
+   "log_tail": "shared.dylib                 0x0000000110f32e7c _ZN4lean12task_manager8run_taskERNSt3__111unique_lockINS1_5mutexEEEP9lean_task + 152\n54  libleanshared.dylib                 0x0000000110f33dbc _ZZN4lean12task_manager12spawn_workerEvENKUlvE_clEv + 304\n55  libleanshared.dylib                 0x0000000110f26044 _ZN4lean7lthread3imp5_mainEPv + 52\n56  libsystem_pthread.dylib             0x000000018fbf9c58 _pthread_start + 136\n57  libsystem_pthread.dylib             0x000000018fbf4c1c thread_start + 8\n",
+   "terminal": "not accepted — recorded"
+  },
+  {
+   "attempt_file": "02.txt",
+   "utc": "2026-08-15T19:05:04Z",
+   "statement_sha256": "5a2f565161f5b6d0ef9598cc6fd60cf6fb4810149103b8bdd459e65ba7ad64b5",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "wall_seconds": 17.4,
+   "log_tail": "'basin_target' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+   "terminal": "ACCEPT"
+  }
+ ],
+ "frozen": {
+  "statement": "∀ nu : ℝ, ¬ (∀ (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (p : EuclideanSpace ℝ (Fin 3) → ℝ), (ContDiff ℝ 2 (u) ∧ Differentiable ℝ (p) ∧ ∀ x : EuclideanSpace ℝ (Fin 3), (fun (nu : ℝ) (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (p : EuclideanSpace ℝ (Fin 3) → ℝ) (x : EuclideanSpace ℝ (Fin 3)) => (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (x : EuclideanSpace ℝ (Fin 3)) => ∑ i : Fin 3, (u x i) • (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u i x) u x + (fun (p : EuclideanSpace ℝ (Fin 3) → ℝ) (x : EuclideanSpace ℝ (Fin 3)) => (WithLp.toLp 2 ![(fun (p : EuclideanSpace ℝ (Fin 3) → ℝ) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ p x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) p 0 x, (fun (p : EuclideanSpace ℝ (Fin 3) → ℝ) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ p x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) p 1 x, (fun (p : EuclideanSpace ℝ (Fin 3) → ℝ) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ p x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) p 2 x] : EuclideanSpace ℝ (Fin 3))) p x - nu • (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (x : EuclideanSpace ℝ (Fin 3)) => ∑ i : Fin 3, (fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) ((fun (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (i : Fin 3) (x : EuclideanSpace ℝ (Fin 3)) => fderiv ℝ u x ((fun i : Fin 3 => (EuclideanSpace.single i (1:ℝ) : EuclideanSpace ℝ (Fin 3))) i)) u i) i x) u x) nu (u) (p) x = 0) → False)",
+  "statement_sha256": "5a2f565161f5b6d0ef9598cc6fd60cf6fb4810149103b8bdd459e65ba7ad64b5",
+  "question_sha256": "acede998e10f91e49e7720fdddfcec263901461f3a9338c72eb3082744ff418d",
+  "frozen_utc": "2026-08-15T18:56:22Z"
+ }
+}
