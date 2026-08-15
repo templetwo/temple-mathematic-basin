@@ -1,0 +1,7 @@
+{
+ "status": "REJECT",
+ "reject_reason": "compile_error",
+ "elaborated": false,
+ "universe_error": false,
+ "log_tail": "juzwgb_.lean:6:1443: error: Application type mismatch: The argument\n  EuclideanSpace\nhas type\n  Type ?u.235 → Type ?u.234 → Type (max ?u.235 ?u.234)\nbut is expected to have type\n  Type (max ?u.234 ?u.235)\nin the application\n  @ContinuousLinearMap.id ℝ ?m.231 EuclideanSpace\n'basin_target' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_hjuzwgb_/BasinAttempt_hjuzwgb_.lean:9:0: warning: declaration uses `sorry`\n"
+}

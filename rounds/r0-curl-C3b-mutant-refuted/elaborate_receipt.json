@@ -1,0 +1,7 @@
+{
+ "status": "REJECT",
+ "reject_reason": "compile_error",
+ "elaborated": true,
+ "universe_error": false,
+ "log_tail": "i 1) i)) u 0 x).ofLp 1 -\n              ((fun u i x => (fderiv ℝ u x) ((fun i => EuclideanSpace.single i 1) i)) u 1 x).ofLp 0])\n        (⇑(LinearMap.toContinuousLinearMap\n            { toFun := fun x => !₂[-x.ofLp 1, x.ofLp 0, 0], map_add' := ⋯, map_smul' := ⋯ }))\n        x\n'basin_target' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_477bkkhd/BasinAttempt_477bkkhd.lean:9:0: warning: declaration uses `sorry`\n"
+}
