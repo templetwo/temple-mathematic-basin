@@ -2,7 +2,11 @@
 
 See [`basin-spec-v2.md`](basin-spec-v2.md), the authoritative v2 specification.
 
-STATUS: phase=P3 gate=closed events=0 spec=v2 updated=2026-08-11
+STATUS: line=statement-validity(§18) trunk=alpha-1 result=9-cap-dual-signed corpus=dc3cde90 spec=v2+§17/§18 updated=2026-08-15
+
+**First result:** [`t1/RESULT.md`](t1/RESULT.md) — a 9-cap in (ℤ/3ℤ)³, kernel-checked through trusted `verdict.py`, dual-signed at scope. Maximality cited, not checked. New mathematics: none. The receipt is the product.
+
+E3 (the dissent estimand, §7) is set down, not killed — see §17 entry of 2026-08-12 and `basin-spec-s18-handoff-v3.md`.
 
 ## P0 acceptance surface
 

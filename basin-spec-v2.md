@@ -472,18 +472,31 @@ The first calibration made the ambiguity load-bearing rather than academic. Run 
 
 **The two readings prescribe opposite corpus surgery on the same data.** Acting on either without pinning the term first would have reshaped the instrument on a coin-flip, and the direction of the error would have been invisible afterward, because a wrongly-tuned corpus still produces a plausible number.
 
-**RESOLVED FROM THE SPEC'S OWN DOWNSTREAM USAGE, not from taste.** The band governs **CLAIMED** accuracy. Four independent lines in §5 and §7 converge:
+**RULED BY ANTHONY VASQUEZ SR., 2026-08-11. The band governs CLAIMED accuracy.**
+
+Provenance matters here more than the reading does, so it is stated first. A seat surfaced the ambiguity, assembled the evidence below, and — in an earlier revision of this entry — wrote the resolution up as though it had made the call. It had not, and could not. The reading is POST-OBSERVATION: it was arrived at after the first calibration returned 0.5758, and a reading reached after seeing the number is exactly the kind that needs an authority outside the data. What separates discovery from convenience is that the person with design authority signed it against a spec he wrote before the data existed. A ruling inherited from a model has no such provenance, and recording one that way would have destroyed the thing that makes it defensible. The evidence is the seat's; the ruling is Anthony's.
+
+Five independent lines in §5 and §7 converge, the strongest of them named by Anthony:
 
 1. §7 designates the two observations explicitly: "**claimed stance** — what the search kernel believes. **Primary**, because the Feb 11 phenomenon was epistemic disagreement" and "**certified stance** — ... **Secondary**." A calibration band that tuned the corpus against the SECONDARY observation would tune the instrument away from the phenomenon it was built for.
 2. §5's rationale for the band is split structure: "the frequency of 4-1 splits is a function of per-arm accuracy. Too easy and every item is 5-0; too hard and every arm answers UNKNOWN." 4-1 splits are E3's eligibility condition, and E3 is the primary estimand.
 3. E3 eligibility is defined over **committed stance**, and §7's primary committed stance is the claimed one.
 4. §7 states the claimed-versus-certified gap is **itself a finding**, not a defect: "the gap between the two is itself a finding: it measures confident assertion without demonstration, which is the VDAC1 failure in miniature." A quantity the spec pre-registers as a finding cannot also be the quantity the corpus is tuned to eliminate.
+5. **The strongest line, and the one the seat missed.** §7's eligibility clause frames its exclusion as "an UNKNOWN singleton is **uncertainty, not dissent**." That sentence opposes COMMITMENT to ABSTENTION. It does not oppose demonstration to assertion. Had "committed" meant certified, the excluded case the spec chose to write about would have been the FAILED PROOF — an arm that claims correctly and cannot demonstrate — and it is not. The spec tells you what "committed" means by naming what falls outside it.
 
 **CONSEQUENCE, AND IT REVERSES THE READING TAKEN ON THE NIGHT OF 2026-08-11.** Under the resolved term the first calibration reads **0.9242, ABOVE the band**, and §5 prescribes: "add mutations that break a deep invariant rather than a surface inequality." The indicated action is to **HARDEN the mutations**, not to soften the parents. Every seat that night — including the one that ran the sweep — read the band as certified and concluded the corpus was too hard. It is too EASY on the measure the band governs. The arms hold the correct committed stance on 61 of 66 items.
 
 **And the 0.3484 gap stops being a problem to explain.** Four hypotheses were advanced for it on 2026-08-11 and all four died. Under this resolution the gap is not an anomaly requiring explanation — it is the pre-registered VDAC1 signature, measured: confident assertion at 0.9242 without demonstration at 0.5758, on a frontier model, with receipts.
 
-**Residual uncertainty, named rather than buried.** §7 defines E3 eligibility over "committed stance" without repeating which of the two it means; the primary/secondary designation is what carries the reading. If Anthony intends E3 to run on certified stance, this resolution flips and so does the tuning direction. That is the one question worth his ruling, and it is narrower than the one it replaces.
+**THE CONSEQUENCE THE RULING CARRIES, traced here rather than discovered later.** Binding E3 to claimed stance binds ELIGIBILITY to commitment: an item qualifies only if all five arms commit, four one way and one the other, so eligible yield scales as **commit rate to the fifth**.
+
+On this corpus commit rate and claimed accuracy are the SAME NUMBER, because zero of 66 items were claimed wrong — every non-correct item was an abstention. So every point of accuracy removed by the only route yet observed removes a point of commitment with it. Measured cost of entering the band at 52 of 66: the commit⁵ factor falls from 0.674 to 0.304, a 55% loss of eligibility.
+
+**So the band's prescribed route to its own target destroys the thing the target exists to produce.** §5 wants accuracy in 0.75–0.80 because that is where 4-1 splits are frequent; the only observed mechanism for lowering accuracy here raises abstention, and abstention is precisely what §7 excludes from eligibility. This is not a tuning difficulty. Under the ruling it is STRUCTURAL, and it is the reason the live question is corpus construction rather than corpus tuning.
+
+The ruling did not create this. It made it visible: under the certified reading the coupling is invisible, because certified accuracy and commit rate are different numbers and the collision never surfaces.
+
+**Residual, named rather than buried.** §7 defines E3 eligibility over "committed stance" without repeating which of the two it means; line 5 above is what carries the reading, and it is inference from an exclusion clause rather than an explicit definition. If a later reading takes E3 on certified stance, this entry flips and so does the tuning direction — but the abstention coupling above would then also dissolve, so the two stand or fall together.
 
 **Binding on whoever tunes:** §7's yield model uses accuracy `p` and commit rate as separate parameters (`0.85⁵ × 0.41`). Both must be pinned to the claimed reading, or the projection is incoherent.
 
@@ -514,6 +527,22 @@ If claimed stance is ever split out as a headline measurement, it needs a contam
 **Supersedes §16's "Repo `basin`."**
 
 The repository is **`temple-mathematic-basin`**, remote `https://github.com/templetwo/temple-mathematic-basin` (private). §16 named it `basin` before the working directory existed. The directory, all twelve commits, the Sovereign Stack chronicle domain, and every cross-reference written to date use `temple-mathematic-basin`; renaming now forks every existing reference to save a word. The metaphor §16 defends — the acceptance basin as the fixed object — is untouched by the longer name.
+
+### 2026-08-12 — §12 and §2: the trunk pivot; E3 set down, statement validity taken up
+
+**Supersedes §12's phase ladder as the project's active line, and narrows §2's question for the trunk track. Direction, adopted by Anthony 2026-08-12 (Stack domain `temple-mathematic-basin,direction,trunk`); mechanics in §18 (`basin-spec-s18-handoff-v3.md`).**
+
+Three days of measurement established that this corpus cannot produce the counter-consensus phenomenon §2 asks about: zero item-level wrong commitments across 132 item-observations on two vendors, and no route into the §5 calibration band that does not destroy the commitment rate the band exists to serve (commit rate and claimed accuracy are the same number here, so hardening collapses commit⁵ from 0.67 to 0.30). E3 is **set down — held, not killed**, with its re-entry data named. What is carried: the acceptance surface, the mutation operators, the frozen corpus as a test fixture, receipts and provenance discipline, and the cross-vendor claimed-versus-certified gap (grok-4.5 0.9242/0.5758; deepseek-v4-pro 0.9848/0.4848 — one auditable arm, one opaque, `proof_body` never persisted on the primary run).
+
+The trunk is unchanged: **one checkable mathematical result, however small, with a complete provenance record.** The active line is statement validity, and the trunk track runs *concurrent* with it (§18.7): T1 target selection, then the attempt. §12's P4–P7 remain in the record as the E3 ladder, not as the live phases.
+
+### 2026-08-15 — first result: Alpha 1, a 9-cap in (ℤ/3ℤ)³, dual-signed at scope
+
+**Adds to the record; supersedes nothing. Full statement in `t1/RESULT.md`.**
+
+Frozen question (`t1/QUESTION.md`, `090ac7b`): does a 9-point cap exist in (ℤ/3ℤ)³? **Yes.** W = graph of q(x,y)=x²+y² over F₃², nine points summing to (0,0,0), a cap because q is anisotropic over F₃ and q(a)+q(b)+q(−a−b) ≡ 2·q(a−b) in char 3. Through trusted `verdict.py`: `ACCEPT`, first attempt, axioms exactly {`propext`, `Classical.choice`, `Quot.sound`}. The identical proof shape against a 9-set containing a line: `REJECT`, `sorryAx` named. Two seats compiled the witness on two kernels; mbp-grok counter-signed with scope, and the scope is binding: the certificate is three labeled `decide`s (existence, not structural proof); maximality of 9 is **cited** (Bose 1947), not checked; new mathematics **none**. Corpus untouched at `dc3cde90`. Zero model calls in the round.
+
+Section 13 gains one line by this result: **Basin cannot see why an accepted proof is a good proof** was already there. It now also has a demonstration that a `decide`-certified existence is exactly that and nothing more, recorded before anyone was tempted to cite it as more.
 
 ---
 
