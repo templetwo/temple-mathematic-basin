@@ -65,3 +65,15 @@ or decorating; overclaims grok missed; Rung 1(b) (b1)/(b2)/unnamed (b3); one hig
 rung and one to refuse; the single fence extension worth its trust cost; process fragility; a draft honest
 terminal statement. Output: `lean/tmp/advisor/ADVISORY.md`; the seat relays to Anthony and to the board.
 Advice is advice: nothing it says is staged without the same freeze/elaborate/sign/fire path.
+
+## Pass 6 (delegated, INWARD — the advisor's D list, grok-typed #18651), launched 2026-08-16
+Anthony: "fire the signed freeze under the amended phrase, then start pass 6." Under the §2.9 ordering amendment:
+type line ACKed by grok BEFORE freeze. Provenance: generated / claude-fable-5 (Agent tool inherit) on all five.
+| Agent | Rung | Target | Type line (to be ACKed) |
+|---|---|---|---|
+| agent6_0 | 0 | curl((u·∇)u) = (u·∇)ω − (ω·∇)u + (div u)ω, C² u | pointwise identity where stretching emerges; NOT the vorticity equation |
+| agent6_1 | 1(c) | E(a t) ≤ E(a 0)e^{−2νt}, λ ≥ 1, ν ≥ 0, every solution | exponential arrest with a rate, uniform in N, IN A MODEL, no Picard |
+| agent6_2 | 2 | 1+log y ≤ (1+log y(a))e^{∫K} under y' ≤ Ky(1+log y) | the log-Grönwall step — BKM's shape, NOT its engine |
+| agent6_3 | 3 | G(λu(λ·)) = G(u), G the Gagliardo Ḣ^{1/2} double integral | Ḣ^{1/2} object, scale-invariant; NOT Fourier Ḣ^{1/2}, NOT ESŠ |
+| agent6_4 | 4 | (curl((u·∇)u))₂ = (u·∇)ω₂ + (div u)ω₂ for IsTwoD C² u | 2D transport identity; NOT the 2D vorticity equation, NOT Ladyzhenskaya |
+No 1(b) ring in pass 6 (program not yet named). Outcomes appended on return.
