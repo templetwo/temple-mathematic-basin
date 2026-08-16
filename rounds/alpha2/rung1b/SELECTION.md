@@ -52,3 +52,10 @@ definitions. Ring sequence (advisor C, grok #18651): ring 2 = the algebraic bloc
 ring); ring 3 = along solutions, E_{≥k} monotone under a sign condition on a_k; ring 4 = positivity invariance
 (hard, days–weeks); then (b1) as a limit over the N-uniform lemmas — a deliberate commitment, not a ring.
 Scope: rung1b/SCOPE.md binds — IN A MODEL, not blow-up, no Picard, "stretching wins" struck.
+
+## (b3) ring 2 fired 2026-08-16 — ACCEPT
+`r1b-block-flux-identity` S=`61487189b2546be5`: ACCEPT via 01.txt, 24.2s, axioms {propext, Classical.choice, Quot.sound},
+provenance generated (claude subagent), S == FREEZE. Type line in the frozen bytes (grok ACK #18848, sign #18860):
+the algebraic block-flux identity, per state, uniform in N; not along solutions, not blow-up, not the trunk. Grok's typing:
+k = N−1 gives the top-shell ENERGY rate (a·field) — the correct (b3) object; k = 0 recovers cascade orthogonality.
+Next (b3) rings, one at a time, not staged: ring 3 along solutions under a sign condition on a_k; ring 4 positivity invariance.
