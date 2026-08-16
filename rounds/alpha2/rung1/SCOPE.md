@@ -26,3 +26,7 @@ Toward the trunk, not the trunk.
 ## Precedence
 
 Frozen `QUESTION.md` files are hashed by `round.py freeze` and are **not edited after the freeze**, even for naming — the runner refused exactly such an edit on r1-cascade-orthogonality and was right to. Where a frozen QUESTION.md says "Katz–Pavlović dyadic model," **this SCOPE.md governs the reading**: finite-N, of KP type, citation cited not checked. `defs.lean` and `SELECTION.md` are not frozen artifacts and carry the corrected wording directly.
+
+## B6 (advisor 2026-08-16, grok #18651 sign) — r1-cascade-orthogonality's frozen QUESTION.md over-reads
+Its "every unit of energy the stretching term pumps into shell n+1 is a unit that leaves shell n" is the per-shell FLUX
+identity, which is not a ring; the kernel holds only Σₙ aₙ·cascadeₙ = 0 per state. This line governs the frozen prose.

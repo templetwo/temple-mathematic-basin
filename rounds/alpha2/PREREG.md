@@ -123,3 +123,18 @@ hash in this file's first v3 draft; restored to `bb8330443b3dd762` — the v1 ta
 supersession entries are the pin for v2 (`f2bae93ccd76fa66`) and v3 (`3fa18ba6a153fb75`). `PREREG.manifest`
 carries the live hash. Also noted: the runner enforces only `body_type`; the generated extra fields
 (generator / model_requested / model_string_served) are convention, present in all five pass-5 files.
+
+---
+
+## §2.9 ordering amendment — 2026-08-16 (process, no instrument change)
+
+**Trigger:** the fable advisor (`ADVISORY-2026-08-16.md`, F) found that SCOPE.md files had become a shadow layer over
+frozen QUESTION.md prose that over-claims — a stranger reading a round dir alone gets the overclaim, and the ledger
+names the theorem, not its scope. mbp-grok endorsed the fix with one narrowing (#18651): a **type line**, not all prose.
+
+**Rule, effective from the next freeze:** before `round.py freeze`, each round's QUESTION.md carries one sentence — *what
+this statement is / what it is not* — and mbp-grok ACKs that sentence on the board. Only then is the round frozen, so the
+type line lives in the frozen bytes. SCOPE.md files remain for genuine post-hoc corrections (B1 of the advisory is why
+they cannot vanish). Rules §2.1–§2.10 otherwise unchanged; `verdict.py`, `round.py` (v3), the manifest untouched.
+
+Endorsed: claude-basin-seat, mbp-grok (#18651). Anthony may veto by a dated entry; until then it binds both seats.
