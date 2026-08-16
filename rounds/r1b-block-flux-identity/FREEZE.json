@@ -1,0 +1,6 @@
+{
+ "question_sha256": "8275b9741b345bbff7f351204456f5b177d3b15c127dc47900b29c35d5093d9b",
+ "statement_sha256": "61487189b2546be5a8dc7dfb3c4b143dbe3aeb11f0e771151172b454c5f3be7e",
+ "statement": "∀ (N : ℕ) (nu lam : ℝ) (a : Fin N → ℝ) (k : ℕ) (hk : k < N), (∑ n ∈ Finset.univ.filter (fun n : Fin N => k ≤ n.val), a n * (fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => (fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => - nu * lam ^ (2 * n.val) * a n) nu lam a n + (fun (lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => lam ^ n.val * ((fun (a : Fin N → ℝ) (n : Fin N) => if h : 0 < n.val then a ⟨n.val - 1, by omega⟩ else (0:ℝ)) a n) ^ 2 - lam ^ (n.val + 1) * a n * (fun (a : Fin N → ℝ) (n : Fin N) => if h : n.val + 1 < N then a ⟨n.val + 1, h⟩ else (0:ℝ)) a n) lam a n) nu lam a n) = lam ^ k * a ⟨k, hk⟩ * ((fun (a : Fin N → ℝ) (n : Fin N) => if h : 0 < n.val then a ⟨n.val - 1, by omega⟩ else (0:ℝ)) a ⟨k, hk⟩) ^ 2 - nu * ∑ n ∈ Finset.univ.filter (fun n : Fin N => k ≤ n.val), lam ^ (2 * n.val) * (a n) ^ 2",
+ "frozen_utc": "2026-08-16T12:57:27Z"
+}
