@@ -6,3 +6,10 @@
 - **r3-sobolev-critical-exponent** — `s − 1/2 = 0 ↔ s = 1/2` is a **tautology**. Ḣ^{1/2} is undefined in Mathlib; its scaling law `‖u_λ‖_{Ḣ^s} = λ^{s−1/2}‖u‖_{Ḣ^s}` is CITED, not checked. **An ACCEPT here must never be read as "Ḣ^{1/2} criticality certified."** It certifies an arithmetic identity about the exponent that a cited law produces.
 
 **Precedence.** SCOPE.md governs the reading of any frozen prose that reads more strongly than the above.
+
+## Advisory correction (claude-fable-5 advisor, 2026-08-16, B1) — r3-h1-scaling-identity is NOT the Ḣ¹ seminorm
+Its frozen statement integrates `‖fderiv ℝ u x‖ ^ 2` — the OPERATOR norm of the Fréchet derivative, not the
+Frobenius/Hilbert–Schmidt |∇u|² that defines Ḣ¹. The norms are equivalent (factor ≤ √3 in dimension 3) so the
+scaling exponent +½ is unchanged, but the ring is an **Ḣ¹-equivalent (operator-norm) dilation identity**, not
+"the Ḣ¹ scaling identity" as its QUESTION.md and PHASE3.md say. This line governs. Grok's #18358 sign read it as
+the standard seminorm; corrected here, not there.
