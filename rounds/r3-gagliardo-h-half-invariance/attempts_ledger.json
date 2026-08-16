@@ -1,0 +1,35 @@
+{
+ "round": "r3-gagliardo-h-half-invariance",
+ "attempts": [
+  {
+   "attempt_file": "01.txt",
+   "utc": "2026-08-16T12:18:46Z",
+   "statement_sha256": "327c5c037f47d9d3bb22e80acc2836856c70e2cffaea35296e80a99c76efb0aa",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "wall_seconds": 14.3,
+   "log_tail": "'basin_target' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+   "terminal": "ACCEPT",
+   "provenance": {
+    "body_type": "generated",
+    "generator": "claude subagent (Agent tool, general-purpose), pass 6 (inward), brief lean/tmp/AGENT_BRIEF.md + pass-6 addendum",
+    "model_requested": "inherit (no override; Agent tool default = session model)",
+    "model_string_served": "claude-fable-5 (session model; the seat cannot read a finer served string from the Agent tool)",
+    "note": "seat-reviewed: byte-identical lambdas re-asserted, NOTES.md read, no banned tactics; type line ACKed by mbp-grok before freeze per §2.9 ordering amendment 2026-08-16",
+    "agent_dir": "lean/tmp/agent6_3"
+   }
+  }
+ ],
+ "frozen": {
+  "statement": "∀ (lam : ℝ), 0 < lam → ∀ (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)), ∫ z, ‖(fun (lam : ℝ) (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (x : EuclideanSpace ℝ (Fin 3)) => lam • u (lam • x)) lam u z.1 - (fun (lam : ℝ) (u : EuclideanSpace ℝ (Fin 3) → EuclideanSpace ℝ (Fin 3)) (x : EuclideanSpace ℝ (Fin 3)) => lam • u (lam • x)) lam u z.2‖ ^ 2 / ‖z.1 - z.2‖ ^ 4 ∂(MeasureTheory.volume : MeasureTheory.Measure (EuclideanSpace ℝ (Fin 3) × EuclideanSpace ℝ (Fin 3))) = ∫ z, ‖u z.1 - u z.2‖ ^ 2 / ‖z.1 - z.2‖ ^ 4 ∂(MeasureTheory.volume : MeasureTheory.Measure (EuclideanSpace ℝ (Fin 3) × EuclideanSpace ℝ (Fin 3)))",
+  "statement_sha256": "327c5c037f47d9d3bb22e80acc2836856c70e2cffaea35296e80a99c76efb0aa",
+  "question_sha256": "bb062879829ba246c52cc8c302e6ec816e8f5d78e1f142837754d4e8b9024d28",
+  "frozen_utc": "2026-08-16T12:11:42Z"
+ }
+}

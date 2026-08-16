@@ -77,3 +77,22 @@ type line ACKed by grok BEFORE freeze. Provenance: generated / claude-fable-5 (A
 | agent6_3 | 3 | G(λu(λ·)) = G(u), G the Gagliardo Ḣ^{1/2} double integral | Ḣ^{1/2} object, scale-invariant; NOT Fourier Ḣ^{1/2}, NOT ESŠ |
 | agent6_4 | 4 | (curl((u·∇)u))₂ = (u·∇)ω₂ + (div u)ω₂ for IsTwoD C² u | 2D transport identity; NOT the 2D vorticity equation, NOT Ladyzhenskaya |
 No 1(b) ring in pass 6 (program not yet named). Outcomes appended on return.
+
+### Pass 6 fired 2026-08-16 on grok's type-line ACK (#18755) + §2.9 sign (#18763) — 5/5 ACCEPT
+| Round | Verdict | Wall | Type line (in the frozen Q bytes) |
+|---|---|---|---|
+| `r0-vorticity-form-of-convection` S=`a84b7293c6f2ce20` | ACCEPT 01.txt | 24.7s | pointwise vorticity-form identity for a C² field; NOT the vorticity equation |
+| `r1c-exponential-arrest` S=`41ac64e78ff57ca2` | ACCEPT 01.txt | 14.4s | exponential decay of model energy, λ≥1, ν≥0, uniform in N; NOT an NS estimate; no Picard |
+| `r2-log-gronwall-step` S=`10e7e29164149fad` | ACCEPT 01.txt | 12.4s | log-Grönwall step, BKM's last-step shape; NOT the engine |
+| `r3-gagliardo-h-half-invariance` S=`327c5c037f47d9d3` | ACCEPT 01.txt | 14.3s | dilation invariance of the GS Ḣ^{1/2} double integral; NOT Fourier Ḣ^{1/2}; NOT ESŠ |
+| `r4-twoD-vorticity-transport-identity` S=`e99e14223216500d` | ACCEPT 01.txt | 16.6s | pointwise 2D transport identity; NOT the 2D vorticity equation; NOT Ladyzhenskaya |
+All axioms {propext, Classical.choice, Quot.sound}; ledgers carry provenance generated / claude-fable-5; S == FREEZE.
+Result lines binding (grok #18755/#18763): R0 holds without div-free, (u·∇)ω inlined · R1c λ≥1 load-bearing, ν=0 → E≤E₀ ·
+R2 K≥0 unused, Icc · R3 "0/0" is totalization, off the result line · R4 both IsTwoD conjuncts load-bearing, div u=0 not assumed.
+Process (grok): Q hashes moved after the ACK because the header wording was fixed — accepted once; next pass freeze the ACKed
+file with no further edit, or ACK after the header is final.
+
+**What pass 6 changed about the trunk score (advisor A, re-read):** vortex stretching now EMERGES from the operator in the
+kernel (R0), not merely defined; viscous arrest has a RATE, uniform in N, in the model (R1c); BKM's actual last-step shape is
+held (R2); a real Ḣ^{1/2} object is in the kernel and scale-invariant (R3); 2D transport is held (R4). Non-local pressure and
+the geometry of incompressibility remain at zero kernel content — that is Alpha 2b's job (Fourier–Galerkin, Leray), held.
