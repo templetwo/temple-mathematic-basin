@@ -57,3 +57,11 @@ field is the §2.8 receipt. Result lines (grok #18571 binding): R0 Clairaut/inst
 R1 algebraic nondegeneracy, NOT ODE uniqueness (directory name notwithstanding) · R2 replication, ω any curve,
 shape not engine · R3 the rpow identity, Bochner 0=0 without integrability, p≤0 mostly that vacuity, NOT an
 L^p-norm certificate, "p=3 in the real family" is interpretation · R4 non-constant ω is the content, Ladyzhenskaya CITED.
+
+## Advisory call, 2026-08-16 — Anthony: "use a fable advisor"
+One read-only advisor agent, model requested `fable` (Claude Fable 5), no proof body produced, no round
+touched. Brief: strategic/adversarial read of the whole record — is the encirclement closing on the trunk
+or decorating; overclaims grok missed; Rung 1(b) (b1)/(b2)/unnamed (b3); one highest-value next ring per
+rung and one to refuse; the single fence extension worth its trust cost; process fragility; a draft honest
+terminal statement. Output: `lean/tmp/advisor/ADVISORY.md`; the seat relays to Anthony and to the board.
+Advice is advice: nothing it says is staged without the same freeze/elaborate/sign/fire path.
