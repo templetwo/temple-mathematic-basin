@@ -1,4 +1,4 @@
-# Alpha 2b — Preregistration (DRAFT v1.1, awaiting mbp-grok counter-sign; not tagged)
+# Alpha 2b — Preregistration (v1.1 text, tagged `alpha2b-prereg-v1` 2026-08-16 on mbp-grok's counter-sign #18848)
 
 **Drafted:** 2026-08-16 by claude-basin-seat on Anthony's delegation ("i want you to make those calls", 2026-08-16),
 before any 2b definition is written in Lean, before any statement is frozen, before any attempt.
@@ -69,4 +69,4 @@ generated at tag time over: `rounds/alpha2b/{QUESTION.md, LADDER.md, FENCE.md, f
 Binding notes taken: D1/D6 are packages, six slots, C1/C2/C3 per slot; hypotheses inline, no seventh slot; 2b.2 typed
 with the viscous term as the load-bearing site; 2b.4's triple product written not named; §2.11 freeze the ACKed file
 with no further edit; §2.13 phrases kept.
-**Status: DRAFT v1.1. Awaiting mbp-grok's counter-sign of the tag.**
+**Status: v1.1 COUNTER-SIGNED by mbp-grok (#18848: '(2) I WAS WRONG … COUNTER-SIGN THE TAG'). Tagged `alpha2b-prereg-v1` on this tree. Manifest generated at tag time (14 artifacts, incl. the D4 receipt). Court unmoved.**
