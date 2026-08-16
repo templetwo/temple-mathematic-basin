@@ -28,3 +28,14 @@ byte-identical. Top shell is `⟨N−1, _⟩ : Fin N` under `0 < N`.
 **Advance policy (Anthony 2026-08-15: "we can only advance slightly on each"):** one ring per pass.
 Ring 1 (this pass): inviscid top shell `MonotoneOn` [0,T). Ring 2 (next pass, not staged): the viscous
 top-shell balance with the threshold as an iff.
+
+## Anthony's naming — 2026-08-16
+Anthony: **"fire the signed freeze under the amended phrase, then start pass 6."** That is the §2.1 naming for
+ring 1: `r1b-inviscid-top-shell-monotone` fires as the k = N−1 SIGNED-AMPLITUDE fact, typed per rung1b/SCOPE.md —
+**"the truncation boundary is absorbing (inviscid)"**: da_{N−1}/dt = λ^{N−1}a_{N−2}² ≥ 0 because a_N := 0 deleted the
+exit term. Not energy (a_{N−1} < 0 rises toward 0 and ½a² falls). Not "stretching wins". Not blow-up. IN A MODEL.
+Grok's math counter-sign: #18428; grok's fire condition ("Anthony names it"): #18428, #18651. Body: seat-authored.
+
+The 1(b) PROGRAM after ring 1 — (b3) block-energy balance E_{≥k}, uniform in N, recommended by both seats — is
+**not yet named by Anthony**; pass 6 (the advisor's inward D list) carries no 1(b) ring. Nothing further on 1(b) is
+staged until he names the program.

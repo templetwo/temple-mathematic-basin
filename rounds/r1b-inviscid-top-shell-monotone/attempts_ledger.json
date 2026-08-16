@@ -1,0 +1,30 @@
+{
+ "round": "r1b-inviscid-top-shell-monotone",
+ "attempts": [
+  {
+   "attempt_file": "01.txt",
+   "utc": "2026-08-16T11:55:51Z",
+   "statement_sha256": "18941c383dd7edfc6d55d19d7a4b728ecea7cc3cee4da794008c9c4b336de0cd",
+   "status": "ACCEPT",
+   "reject_reason": null,
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "axioms_within_allowlist": true,
+   "wall_seconds": 105.4,
+   "log_tail": "'basin_target' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+   "terminal": "ACCEPT",
+   "provenance": {
+    "body_type": "seat-authored"
+   }
+  }
+ ],
+ "frozen": {
+  "statement": "∀ (N : ℕ) (hN : 0 < N) (lam : ℝ) (a : ℝ → (Fin N → ℝ)) (T : ℝ), 0 ≤ lam → (fun (nu lam : ℝ) (a : ℝ → (Fin N → ℝ)) (T : ℝ) => ∀ t ∈ Set.Ico (0:ℝ) T, HasDerivAt a ((fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => (fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => - nu * lam ^ (2 * n.val) * a n) nu lam a n + (fun (lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => lam ^ n.val * ((fun (a : Fin N → ℝ) (n : Fin N) => if h : 0 < n.val then a ⟨n.val - 1, by omega⟩ else (0:ℝ)) a n) ^ 2 - lam ^ (n.val + 1) * a n * (fun (a : Fin N → ℝ) (n : Fin N) => if h : n.val + 1 < N then a ⟨n.val + 1, h⟩ else (0:ℝ)) a n) lam a n) nu lam (a t)) t) 0 lam a T → MonotoneOn (fun s => a s (⟨N - 1, by omega⟩ : Fin N)) (Set.Ico (0:ℝ) T)",
+  "statement_sha256": "18941c383dd7edfc6d55d19d7a4b728ecea7cc3cee4da794008c9c4b336de0cd",
+  "question_sha256": "b2e9bc400fee338b39258da9275432ea8d5dd5d37d6b8a2f0eb2544b6cc5b7f8",
+  "frozen_utc": "2026-08-15T22:01:56Z"
+ }
+}

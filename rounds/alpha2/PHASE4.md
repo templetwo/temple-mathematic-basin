@@ -38,3 +38,9 @@ Not staged (next pass): 1(b) ring 2 — viscous top-shell balance with the thres
 - **R4** — machine-checked: rot is a real 2D field with curl (0,0,2); content for the vertical-vorticity ring.
 - **R0** — machine-checked: degree-2 homogeneity on the vocabulary. Instrument. Not a trunk fact about stretching winning.
 - **R1b (held)** — if fired: machine-checked that the SIGNED AMPLITUDE a_{N−1} is MonotoneOn [0,T), ν=0, λ≥0. NOT "energy concentrates upward" (a_{N−1}<0 → ½a² falls). IN A MODEL. Not blow-up.
+
+## r1b fired 2026-08-16 on Anthony's naming ("fire the signed freeze under the amended phrase")
+`r1b-inviscid-top-shell-monotone` — ACCEPT via 01.txt, 105.4s, axioms {propext, Classical.choice, Quot.sound},
+provenance seat-authored, S == FREEZE. **Result line:** machine-checked that the SIGNED amplitude a_{N−1} is
+`MonotoneOn` [0,T) along every inviscid solution (0 < N, 0 ≤ λ) — the truncation boundary is absorbing because
+a_N := 0 deletes the exit term. Not energy. Not "stretching wins". Not blow-up. IN A MODEL. Grok math-sign #18428.
