@@ -1,0 +1,72 @@
+by
+  intro u hu x
+  simp only [Fin.sum_univ_three]
+  have h1 : Differentiable ℝ (fderiv ℝ u) :=
+    (hu.fderiv_right (m := 1) (by norm_num)).differentiable (by norm_num)
+  have hu1 : Differentiable ℝ u := hu.differentiable (by norm_num)
+  have hfk : ∀ k : Fin 3, Differentiable ℝ (fun y => fderiv ℝ u y (EuclideanSpace.single k (1:ℝ))) :=
+    fun k y => ((h1 y).clm_apply (differentiableAt_const _))
+  have hpdd : ∀ k m : Fin 3, Differentiable ℝ (fun y => fderiv ℝ u y (EuclideanSpace.single k (1:ℝ)) m) :=
+    fun k m => (differentiable_piLp 2).mp (hfk k) m
+  have hum : ∀ m : Fin 3, Differentiable ℝ (fun y => u y m) :=
+    fun m => (differentiable_piLp 2).mp hu1 m
+  have hclm : ∀ k : Fin 3, fderiv ℝ (fun y => fderiv ℝ u y (EuclideanSpace.single k (1:ℝ))) x = (fderiv ℝ (fderiv ℝ u) x).flip (EuclideanSpace.single k (1:ℝ)) := by
+    intro k
+    rw [fderiv_clm_apply (h1 x) (differentiableAt_const _)]
+    simp
+  have hcomp : ∀ k m : Fin 3, fderiv ℝ (fun y => fderiv ℝ u y (EuclideanSpace.single k (1:ℝ)) m) x = (PiLp.proj 2 (fun _ : Fin 3 => ℝ) m).comp (fderiv ℝ (fun y => fderiv ℝ u y (EuclideanSpace.single k (1:ℝ))) x) := by
+    intro k m
+    have hg := PiLp.hasFDerivAt_apply (𝕜 := ℝ) 2 (fderiv ℝ u x (EuclideanSpace.single k (1:ℝ))) m
+    exact (hg.comp x (hfk k x).hasFDerivAt).fderiv
+  have hsymm : ∀ i j m : Fin 3, fderiv ℝ (fun y => fderiv ℝ u y (EuclideanSpace.single i (1:ℝ)) m) x (EuclideanSpace.single j (1:ℝ)) = fderiv ℝ (fun y => fderiv ℝ u y (EuclideanSpace.single j (1:ℝ)) m) x (EuclideanSpace.single i (1:ℝ)) := by
+    intro i j m
+    rw [hcomp i, hcomp j, hclm i, hclm j]
+    simp only [ContinuousLinearMap.comp_apply, ContinuousLinearMap.flip_apply, PiLp.proj_apply]
+    rw [(hu.contDiffAt.isSymmSndFDerivAt (by simp [minSmoothness_of_isRCLikeNormedField])) (EuclideanSpace.single j (1:ℝ)) (EuclideanSpace.single i (1:ℝ))]
+  have hcoord1 : ∀ j m : Fin 3, fderiv ℝ (fun y => u y m) x (EuclideanSpace.single j (1:ℝ)) = fderiv ℝ u x (EuclideanSpace.single j (1:ℝ)) m := by
+    intro j m
+    have hg := PiLp.hasFDerivAt_apply (𝕜 := ℝ) 2 (u x) m
+    have h2 := (hg.comp (f := u) x (hu1 x).hasFDerivAt).fderiv
+    exact congrArg (fun L => L (EuclideanSpace.single j (1:ℝ))) h2
+  have hcoord2 : ∀ i j m : Fin 3, (fderiv ℝ (fun y => fderiv ℝ u y (EuclideanSpace.single i (1:ℝ))) x (EuclideanSpace.single j (1:ℝ))) m = fderiv ℝ (fun y => fderiv ℝ u y (EuclideanSpace.single i (1:ℝ)) m) x (EuclideanSpace.single j (1:ℝ)) := by
+    intro i j m
+    rw [hcomp i m]
+    simp only [ContinuousLinearMap.comp_apply, PiLp.proj_apply]
+  have hconv : ∀ j k : Fin 3, (fderiv ℝ (fun y => u y 0 • fderiv ℝ u y (EuclideanSpace.single 0 (1:ℝ)) + u y 1 • fderiv ℝ u y (EuclideanSpace.single 1 (1:ℝ)) + u y 2 • fderiv ℝ u y (EuclideanSpace.single 2 (1:ℝ))) x (EuclideanSpace.single j (1:ℝ))) k = (u x 0 * fderiv ℝ (fun y => fderiv ℝ u y (EuclideanSpace.single 0 (1:ℝ)) k) x (EuclideanSpace.single j (1:ℝ)) + fderiv ℝ u x (EuclideanSpace.single j (1:ℝ)) 0 * fderiv ℝ u x (EuclideanSpace.single 0 (1:ℝ)) k) + (u x 1 * fderiv ℝ (fun y => fderiv ℝ u y (EuclideanSpace.single 1 (1:ℝ)) k) x (EuclideanSpace.single j (1:ℝ)) + fderiv ℝ u x (EuclideanSpace.single j (1:ℝ)) 1 * fderiv ℝ u x (EuclideanSpace.single 1 (1:ℝ)) k) + (u x 2 * fderiv ℝ (fun y => fderiv ℝ u y (EuclideanSpace.single 2 (1:ℝ)) k) x (EuclideanSpace.single j (1:ℝ)) + fderiv ℝ u x (EuclideanSpace.single j (1:ℝ)) 2 * fderiv ℝ u x (EuclideanSpace.single 2 (1:ℝ)) k) := by
+    intro j k
+    have hs : ∀ i : Fin 3, HasFDerivAt (fun y => u y i • fderiv ℝ u y (EuclideanSpace.single i (1:ℝ))) (u x i • fderiv ℝ (fun y => fderiv ℝ u y (EuclideanSpace.single i (1:ℝ))) x + (fderiv ℝ (fun y => u y i) x).smulRight (fderiv ℝ u x (EuclideanSpace.single i (1:ℝ)))) x :=
+      fun i => (hum i x).hasFDerivAt.smul (hfk i x).hasFDerivAt
+    have hF : HasFDerivAt (fun y => u y 0 • fderiv ℝ u y (EuclideanSpace.single 0 (1:ℝ)) + u y 1 • fderiv ℝ u y (EuclideanSpace.single 1 (1:ℝ)) + u y 2 • fderiv ℝ u y (EuclideanSpace.single 2 (1:ℝ))) ((u x 0 • fderiv ℝ (fun y => fderiv ℝ u y (EuclideanSpace.single 0 (1:ℝ))) x + (fderiv ℝ (fun y => u y 0) x).smulRight (fderiv ℝ u x (EuclideanSpace.single 0 (1:ℝ)))) + (u x 1 • fderiv ℝ (fun y => fderiv ℝ u y (EuclideanSpace.single 1 (1:ℝ))) x + (fderiv ℝ (fun y => u y 1) x).smulRight (fderiv ℝ u x (EuclideanSpace.single 1 (1:ℝ)))) + (u x 2 • fderiv ℝ (fun y => fderiv ℝ u y (EuclideanSpace.single 2 (1:ℝ))) x + (fderiv ℝ (fun y => u y 2) x).smulRight (fderiv ℝ u x (EuclideanSpace.single 2 (1:ℝ))))) x := ((hs 0).add (hs 1)).add (hs 2)
+    rw [hF.fderiv]
+    simp only [add_apply, smul_apply, ContinuousLinearMap.smulRight_apply, PiLp.add_apply, PiLp.smul_apply, smul_eq_mul, hcoord1, hcoord2]
+  have hsub : ∀ a b c d j : Fin 3, fderiv ℝ (fun y => fderiv ℝ u y (EuclideanSpace.single a (1:ℝ)) b - fderiv ℝ u y (EuclideanSpace.single c (1:ℝ)) d) x (EuclideanSpace.single j (1:ℝ)) = fderiv ℝ (fun y => fderiv ℝ u y (EuclideanSpace.single a (1:ℝ)) b) x (EuclideanSpace.single j (1:ℝ)) - fderiv ℝ (fun y => fderiv ℝ u y (EuclideanSpace.single c (1:ℝ)) d) x (EuclideanSpace.single j (1:ℝ)) := by
+    intro a b c d j
+    rw [fderiv_fun_sub (hpdd a b x) (hpdd c d x)]
+    rfl
+  have hF : DifferentiableAt ℝ (fun y => (WithLp.toLp 2 ![fderiv ℝ u y (EuclideanSpace.single 1 (1:ℝ)) 2 - fderiv ℝ u y (EuclideanSpace.single 2 (1:ℝ)) 1, fderiv ℝ u y (EuclideanSpace.single 2 (1:ℝ)) 0 - fderiv ℝ u y (EuclideanSpace.single 0 (1:ℝ)) 2, fderiv ℝ u y (EuclideanSpace.single 0 (1:ℝ)) 1 - fderiv ℝ u y (EuclideanSpace.single 1 (1:ℝ)) 0] : EuclideanSpace ℝ (Fin 3))) x := by
+    refine (differentiableAt_piLp 2).mpr ?_
+    intro k
+    fin_cases k
+    · exact (hpdd 1 2 x).sub (hpdd 2 1 x)
+    · exact (hpdd 2 0 x).sub (hpdd 0 2 x)
+    · exact (hpdd 0 1 x).sub (hpdd 1 0 x)
+  have hc : ∀ j i : Fin 3, (fderiv ℝ (fun y => (WithLp.toLp 2 ![fderiv ℝ u y (EuclideanSpace.single 1 (1:ℝ)) 2 - fderiv ℝ u y (EuclideanSpace.single 2 (1:ℝ)) 1, fderiv ℝ u y (EuclideanSpace.single 2 (1:ℝ)) 0 - fderiv ℝ u y (EuclideanSpace.single 0 (1:ℝ)) 2, fderiv ℝ u y (EuclideanSpace.single 0 (1:ℝ)) 1 - fderiv ℝ u y (EuclideanSpace.single 1 (1:ℝ)) 0] : EuclideanSpace ℝ (Fin 3))) x (EuclideanSpace.single j (1:ℝ))) i = fderiv ℝ (fun y => (![fderiv ℝ u y (EuclideanSpace.single 1 (1:ℝ)) 2 - fderiv ℝ u y (EuclideanSpace.single 2 (1:ℝ)) 1, fderiv ℝ u y (EuclideanSpace.single 2 (1:ℝ)) 0 - fderiv ℝ u y (EuclideanSpace.single 0 (1:ℝ)) 2, fderiv ℝ u y (EuclideanSpace.single 0 (1:ℝ)) 1 - fderiv ℝ u y (EuclideanSpace.single 1 (1:ℝ)) 0] : Fin 3 → ℝ) i) x (EuclideanSpace.single j (1:ℝ)) := by
+    intro j i
+    have hg := PiLp.hasFDerivAt_apply (𝕜 := ℝ) 2 ((fun y => (WithLp.toLp 2 ![fderiv ℝ u y (EuclideanSpace.single 1 (1:ℝ)) 2 - fderiv ℝ u y (EuclideanSpace.single 2 (1:ℝ)) 1, fderiv ℝ u y (EuclideanSpace.single 2 (1:ℝ)) 0 - fderiv ℝ u y (EuclideanSpace.single 0 (1:ℝ)) 2, fderiv ℝ u y (EuclideanSpace.single 0 (1:ℝ)) 1 - fderiv ℝ u y (EuclideanSpace.single 1 (1:ℝ)) 0] : EuclideanSpace ℝ (Fin 3))) x) i
+    have h2 := (hg.comp (f := (fun y => (WithLp.toLp 2 ![fderiv ℝ u y (EuclideanSpace.single 1 (1:ℝ)) 2 - fderiv ℝ u y (EuclideanSpace.single 2 (1:ℝ)) 1, fderiv ℝ u y (EuclideanSpace.single 2 (1:ℝ)) 0 - fderiv ℝ u y (EuclideanSpace.single 0 (1:ℝ)) 2, fderiv ℝ u y (EuclideanSpace.single 0 (1:ℝ)) 1 - fderiv ℝ u y (EuclideanSpace.single 1 (1:ℝ)) 0] : EuclideanSpace ℝ (Fin 3)))) x hF.hasFDerivAt).fderiv
+    exact (congrArg (fun L => L (EuclideanSpace.single j (1:ℝ))) h2).symm
+  have hcurlpd : ∀ j k : Fin 3, (fderiv ℝ (fun y => (WithLp.toLp 2 ![fderiv ℝ u y (EuclideanSpace.single 1 (1:ℝ)) 2 - fderiv ℝ u y (EuclideanSpace.single 2 (1:ℝ)) 1, fderiv ℝ u y (EuclideanSpace.single 2 (1:ℝ)) 0 - fderiv ℝ u y (EuclideanSpace.single 0 (1:ℝ)) 2, fderiv ℝ u y (EuclideanSpace.single 0 (1:ℝ)) 1 - fderiv ℝ u y (EuclideanSpace.single 1 (1:ℝ)) 0] : EuclideanSpace ℝ (Fin 3))) x (EuclideanSpace.single j (1:ℝ))) k = ![fderiv ℝ (fun y => fderiv ℝ u y (EuclideanSpace.single 1 (1:ℝ)) 2) x (EuclideanSpace.single j (1:ℝ)) - fderiv ℝ (fun y => fderiv ℝ u y (EuclideanSpace.single 2 (1:ℝ)) 1) x (EuclideanSpace.single j (1:ℝ)), fderiv ℝ (fun y => fderiv ℝ u y (EuclideanSpace.single 2 (1:ℝ)) 0) x (EuclideanSpace.single j (1:ℝ)) - fderiv ℝ (fun y => fderiv ℝ u y (EuclideanSpace.single 0 (1:ℝ)) 2) x (EuclideanSpace.single j (1:ℝ)), fderiv ℝ (fun y => fderiv ℝ u y (EuclideanSpace.single 0 (1:ℝ)) 1) x (EuclideanSpace.single j (1:ℝ)) - fderiv ℝ (fun y => fderiv ℝ u y (EuclideanSpace.single 1 (1:ℝ)) 0) x (EuclideanSpace.single j (1:ℝ))] k := by
+    intro j k
+    rw [hc j k]
+    fin_cases k
+    · exact hsub 1 2 2 1 j
+    · exact hsub 2 0 0 2 j
+    · exact hsub 0 1 1 0 j
+  ext k
+  fin_cases k
+  · simp only [Fin.reduceFinMk, PiLp.add_apply, PiLp.sub_apply, PiLp.smul_apply, Matrix.cons_val, smul_eq_mul, hconv, hcurlpd]
+    linear_combination (u x 0) * hsymm 0 1 2 + (u x 1) * hsymm 1 1 2 + (u x 2) * hsymm 2 1 2 - (u x 0) * hsymm 0 2 1 - (u x 1) * hsymm 1 2 1 - (u x 2) * hsymm 2 2 1
+  · simp only [Fin.reduceFinMk, PiLp.add_apply, PiLp.sub_apply, PiLp.smul_apply, Matrix.cons_val, smul_eq_mul, hconv, hcurlpd]
+    linear_combination (u x 0) * hsymm 0 2 0 + (u x 1) * hsymm 1 2 0 + (u x 2) * hsymm 2 2 0 - (u x 0) * hsymm 0 0 2 - (u x 1) * hsymm 1 0 2 - (u x 2) * hsymm 2 0 2
+  · simp only [Fin.reduceFinMk, PiLp.add_apply, PiLp.sub_apply, PiLp.smul_apply, Matrix.cons_val, smul_eq_mul, hconv, hcurlpd]
+    linear_combination (u x 0) * hsymm 0 0 1 + (u x 1) * hsymm 1 0 1 + (u x 2) * hsymm 2 0 1 - (u x 0) * hsymm 0 1 0 - (u x 1) * hsymm 1 1 0 - (u x 2) * hsymm 2 1 0

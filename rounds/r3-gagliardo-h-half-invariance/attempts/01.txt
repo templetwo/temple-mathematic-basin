@@ -1,0 +1,20 @@
+by
+  intro lam hlam u
+  have hpt : ∀ z : EuclideanSpace ℝ (Fin 3) × EuclideanSpace ℝ (Fin 3),
+      ‖lam • u (lam • z.1) - lam • u (lam • z.2)‖ ^ 2 / ‖z.1 - z.2‖ ^ 4
+        = lam ^ 6 * ((fun w : EuclideanSpace ℝ (Fin 3) × EuclideanSpace ℝ (Fin 3) =>
+            ‖u w.1 - u w.2‖ ^ 2 / ‖w.1 - w.2‖ ^ 4) (lam • z)) := by
+    intro z
+    simp only [Prod.smul_fst, Prod.smul_snd]
+    rw [← smul_sub, ← smul_sub, norm_smul, norm_smul, Real.norm_eq_abs, abs_of_pos hlam, mul_pow, mul_pow]
+    rcases eq_or_ne (‖z.1 - z.2‖ ^ 4) 0 with h | h
+    · simp [h]
+    · field_simp
+  simp only [hpt]
+  rw [MeasureTheory.integral_const_mul]
+  haveI : (MeasureTheory.volume : MeasureTheory.Measure (EuclideanSpace ℝ (Fin 3) × EuclideanSpace ℝ (Fin 3))).IsAddHaarMeasure :=
+    MeasureTheory.Measure.prod.instIsAddHaarMeasure _ _
+  rw [MeasureTheory.Measure.integral_comp_smul (MeasureTheory.volume : MeasureTheory.Measure (EuclideanSpace ℝ (Fin 3) × EuclideanSpace ℝ (Fin 3)))
+    (fun w : EuclideanSpace ℝ (Fin 3) × EuclideanSpace ℝ (Fin 3) => ‖u w.1 - u w.2‖ ^ 2 / ‖w.1 - w.2‖ ^ 4) lam,
+    Module.finrank_prod, finrank_euclideanSpace_fin, smul_eq_mul, abs_of_pos (inv_pos.mpr (pow_pos hlam 6)),
+    ← mul_assoc, mul_inv_cancel₀ (pow_ne_zero 6 hlam.ne'), one_mul]

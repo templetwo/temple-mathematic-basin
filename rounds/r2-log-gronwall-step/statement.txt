@@ -1,0 +1,1 @@
+∀ (y y' K : ℝ → ℝ) (a b : ℝ), a ≤ b → Continuous K → (∀ t ∈ Set.Icc a b, HasDerivAt y (y' t) t) → (∀ t ∈ Set.Icc a b, 1 ≤ y t) → (∀ t ∈ Set.Icc a b, y' t ≤ K t * y t * (1 + Real.log (y t))) → ∀ t ∈ Set.Icc a b, 1 + Real.log (y t) ≤ (1 + Real.log (y a)) * Real.exp (∫ s in a..t, K s)
