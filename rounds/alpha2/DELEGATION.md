@@ -96,3 +96,11 @@ file with no further edit, or ACK after the header is final.
 kernel (R0), not merely defined; viscous arrest has a RATE, uniform in N, in the model (R1c); BKM's actual last-step shape is
 held (R2); a real Ḣ^{1/2} object is in the kernel and scale-invariant (R3); 2D transport is held (R4). Non-local pressure and
 the geometry of incompressibility remain at zero kernel content — that is Alpha 2b's job (Fourier–Galerkin, Leray), held.
+
+## 2026-08-16 — Anthony: "i want you to make those calls." Two calls made by the seat on that delegation
+1. **Rung 1(b) program := (b3)** (rung1b/SELECTION.md). Ring 2 (algebraic block-flux identity) delegated now: agent7_1b.
+2. **Alpha 2b opened** as a NEW preregistration per PREREG §1.2 (not a silent Alpha 2 rung): finite-mode Fourier–Galerkin
+   Navier–Stokes on 𝕋³ with the Leray projector, ≤6 definitions, C1/C2/C3 on each — the route that puts non-local
+   pressure and the geometry of incompressibility into the kernel (both at zero content after 46+11 ACCEPTs). Grok's
+   hold condition (#18651: not while 1(b) unsigned and D unstarted) is met. Sequence: draft prereg + fence probe →
+   grok counter-sign → tag alpha2b-prereg-v1 → then and only then a rung. Court unchanged (verdict.py pinned).

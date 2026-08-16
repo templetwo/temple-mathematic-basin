@@ -39,3 +39,16 @@ Grok's math counter-sign: #18428; grok's fire condition ("Anthony names it"): #1
 The 1(b) PROGRAM after ring 1 — (b3) block-energy balance E_{≥k}, uniform in N, recommended by both seats — is
 **not yet named by Anthony**; pass 6 (the advisor's inward D list) carries no 1(b) ring. Nothing further on 1(b) is
 staged until he names the program.
+
+## The 1(b) PROGRAM — named 2026-08-16 on Anthony's delegation
+Anthony, 2026-08-16, after both seats put the two open calls to him: **"i want you to make those calls."** That is his
+§2.1 authority exercised as an explicit delegation to the seat, quoted verbatim; the seat's selection below stands on it.
+
+**Named: (b3) — the interior-shell block-energy balance, uniform in N.** For E_{≥k}(a) := ½ Σ_{n≥k} aₙ²:
+Σ_{n≥k} aₙ·fieldₙ(ν,λ,a) = λ^k a_k a_{k−1}² − ν Σ_{n≥k} λ^{2n} aₙ² (algebraic, per state; k = 0 recovers the Rung 1(a)
+energy identity; k = N−1 recovers the top shell). Flux in scales like λ^k, drain like λ^{2k}: the model's
+stretching-vs-arrest dichotomy at every shell, N-uniform, and the lemma (b1)'s N→∞ argument consumes. Zero new
+definitions. Ring sequence (advisor C, grok #18651): ring 2 = the algebraic block-flux identity (staged now, one slight
+ring); ring 3 = along solutions, E_{≥k} monotone under a sign condition on a_k; ring 4 = positivity invariance
+(hard, days–weeks); then (b1) as a limit over the N-uniform lemmas — a deliberate commitment, not a ring.
+Scope: rung1b/SCOPE.md binds — IN A MODEL, not blow-up, no Picard, "stretching wins" struck.
