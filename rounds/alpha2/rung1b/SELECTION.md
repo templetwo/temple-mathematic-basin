@@ -20,7 +20,7 @@ cited-from-argument (Picard not budgeted).
 `da_{N−1}/dt = λ^{N−1} a_{N−2}² − ν λ^{2(N−1)} a_{N−1}`. Inviscid, the signed amplitude a_{N−1} is monotone nondecreasing.
 **Not** "energy that reaches the top stays" — grok #18428: if a_{N−1} < 0, da/dt ≥ 0 drives it toward 0 and ½a² FALLS. The true statement is the amplitude one; the energy phrasing in this file's first draft and in the frozen QUESTION.md overclaims, and SCOPE.md governs. Viscous, it grows iff cascade input beats viscous drain,
 `a_{N−2}² ≥ ν λ^{N−1} a_{N−1}` — the trunk's dichotomy in the model with an explicit threshold.
-This is an honest finite-N "stretching wins": concentration, not blow-up.
+~~This is an honest finite-N "stretching wins": concentration, not blow-up.~~ **[Struck 2026-08-16 (grok #18667 nit): superseded by the naming section below and rung1b/SCOPE.md — the truncation boundary is absorbing; not "stretching wins".]**
 
 **Definition budget (PREREG §3):** zero new definitions — same field/solution lambdas as Rung 1(a),
 byte-identical. Top shell is `⟨N−1, _⟩ : Fin N` under `0 < N`.

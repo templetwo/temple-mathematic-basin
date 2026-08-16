@@ -1,0 +1,7 @@
+{
+ "status": "REJECT",
+ "reject_reason": "compile_error",
+ "elaborated": true,
+ "universe_error": false,
+ "log_tail": "else 0) a n)\n                          lam a n)\n                    nu lam (a t))\n                  t)\n            nu lam a T →\n          ∀ t ∈ Set.Ico 0 T,\n            (fun a => 1 / 2 * ∑ n, a n ^ 2) (a t) ≤ (fun a => 1 / 2 * ∑ n, a n ^ 2) (a 0) * Real.exp (-(2 * nu) * t)\n'basin_target' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_5f6c8rms/BasinAttempt_5f6c8rms.lean:9:0: warning: declaration uses `sorry`\n"
+}

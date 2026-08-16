@@ -1,0 +1,7 @@
+{
+ "status": "REJECT",
+ "reject_reason": "compile_error",
+ "elaborated": true,
+ "universe_error": false,
+ "log_tail": "eanSpace ℝ (Fin 3)),\n            ‖(fun lam u x => lam • u (lam • x)) lam u z.1 - (fun lam u x => lam • u (lam • x)) lam u z.2‖ ^ 2 /\n              ‖z.1 - z.2‖ ^ 4 =\n          ∫ (z : EuclideanSpace ℝ (Fin 3) × EuclideanSpace ℝ (Fin 3)), ‖u z.1 - u z.2‖ ^ 2 / ‖z.1 - z.2‖ ^ 4\n'basin_target' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_w33nf09j/BasinAttempt_w33nf09j.lean:9:0: warning: declaration uses `sorry`\n"
+}

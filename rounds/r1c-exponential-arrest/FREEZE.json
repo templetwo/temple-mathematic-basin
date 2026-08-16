@@ -1,0 +1,6 @@
+{
+ "question_sha256": "dd233936264adf11e679d1d9f1b173367ea82325a35bd00f5c3b807b2c3fe295",
+ "statement_sha256": "41ac64e78ff57ca2b4dce8f17dbe0bc1fb9918c2033989b54ac4a7bf762af3c6",
+ "statement": "∀ (N : ℕ) (nu lam : ℝ) (a : ℝ → (Fin N → ℝ)) (T : ℝ), 0 ≤ nu → 1 ≤ lam → (fun (nu lam : ℝ) (a : ℝ → (Fin N → ℝ)) (T : ℝ) => ∀ t ∈ Set.Ico (0:ℝ) T, HasDerivAt a ((fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => (fun (nu lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => - nu * lam ^ (2 * n.val) * a n) nu lam a n + (fun (lam : ℝ) (a : Fin N → ℝ) (n : Fin N) => lam ^ n.val * ((fun (a : Fin N → ℝ) (n : Fin N) => if h : 0 < n.val then a ⟨n.val - 1, by omega⟩ else (0:ℝ)) a n) ^ 2 - lam ^ (n.val + 1) * a n * (fun (a : Fin N → ℝ) (n : Fin N) => if h : n.val + 1 < N then a ⟨n.val + 1, h⟩ else (0:ℝ)) a n) lam a n) nu lam (a t)) t) nu lam a T → ∀ t ∈ Set.Ico (0:ℝ) T, (fun (a : Fin N → ℝ) => (1/2 : ℝ) * ∑ n : Fin N, (a n) ^ 2) (a t) ≤ (fun (a : Fin N → ℝ) => (1/2 : ℝ) * ∑ n : Fin N, (a n) ^ 2) (a 0) * Real.exp (-(2 * nu) * t)",
+ "frozen_utc": "2026-08-16T12:11:42Z"
+}

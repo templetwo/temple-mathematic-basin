@@ -1,0 +1,7 @@
+{
+ "status": "REJECT",
+ "reject_reason": "compile_error",
+ "elaborated": true,
+ "universe_error": false,
+ "log_tail": "                  ((fun u i x => (fderiv ℝ u x) ((fun i => EuclideanSpace.single i 1) i)) u 0 x).ofLp 1 -\n                            ((fun u i x => (fderiv ℝ u x) ((fun i => EuclideanSpace.single i 1) i)) u 1 x).ofLp 0])\n                      u x).ofLp\n                  2\n'basin_target' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_3k_l4t7n/BasinAttempt_3k_l4t7n.lean:9:0: warning: declaration uses `sorry`\n"
+}

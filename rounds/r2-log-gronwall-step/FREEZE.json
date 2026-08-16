@@ -1,0 +1,6 @@
+{
+ "question_sha256": "e5a379dc93c89d806ed503b3e8e945c54086de9c38f614437822a4ba724b9dfc",
+ "statement_sha256": "10e7e29164149fadad8d2914e747d2630702c6e4cc865c93f073a4f8d7cd1ca1",
+ "statement": "∀ (y y' K : ℝ → ℝ) (a b : ℝ), a ≤ b → Continuous K → (∀ t ∈ Set.Icc a b, HasDerivAt y (y' t) t) → (∀ t ∈ Set.Icc a b, 1 ≤ y t) → (∀ t ∈ Set.Icc a b, y' t ≤ K t * y t * (1 + Real.log (y t))) → ∀ t ∈ Set.Icc a b, 1 + Real.log (y t) ≤ (1 + Real.log (y a)) * Real.exp (∫ s in a..t, K s)",
+ "frozen_utc": "2026-08-16T12:11:42Z"
+}
