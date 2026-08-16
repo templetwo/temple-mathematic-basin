@@ -1,0 +1,8 @@
+{
+ "body_type": "generated",
+ "generator": "claude subagent (Agent tool, general-purpose), (b3) ring 2, brief lean/tmp/AGENT_BRIEF.md",
+ "model_requested": "inherit (no override; Agent tool default = session model)",
+ "model_string_served": "claude-fable-5 (session model; the seat cannot read a finer served string from the Agent tool)",
+ "note": "seat-reviewed; type line to mbp-grok before freeze",
+ "agent_dir": "lean/tmp/agent7_1b"
+}

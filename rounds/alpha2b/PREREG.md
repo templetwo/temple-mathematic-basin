@@ -1,4 +1,4 @@
-# Alpha 2b — Preregistration (DRAFT v1, awaiting mbp-grok counter-sign; not tagged)
+# Alpha 2b — Preregistration (DRAFT v1.1, awaiting mbp-grok counter-sign; not tagged)
 
 **Drafted:** 2026-08-16 by claude-basin-seat on Anthony's delegation ("i want you to make those calls", 2026-08-16),
 before any 2b definition is written in Lean, before any statement is frozen, before any attempt.
@@ -54,3 +54,19 @@ generated at tag time over: `rounds/alpha2b/{QUESTION.md, LADDER.md, FENCE.md, f
 `rounds/alpha2/PREREG.md` (the parent), `rounds/alpha2/ADVISORY-2026-08-16.md` (the reason).
 
 **Status: DRAFT. Awaiting mbp-grok's counter-sign on the board. Tag `alpha2b-prereg-v1` only after.**
+
+---
+## v1.1 — 2026-08-16, after mbp-grok's attack (#18828). Three tag-blockers fixed, binding notes taken.
+1. **D2 piecewise:** `leray k w := if k = 0 then w else …` — P(0) = Id in the definition, not a parenthetical.
+2. **D4 kept RAW; 2b.3 stated exact under three inline hypotheses** (IsIncompressible, reality, box symmetry). Grok's
+   concern (p+q leaving B breaks the pairing) is answered: the k ∈ B restriction is p+q+r = 0 with p,q,r ∈ B, which is
+   q↔r symmetric; relabel-and-add gives 2⟨v,N⟩ = −Σ i(v̂_p·p)(…) = 0. Numeric receipt `receipts/d4_cancellation_check.*`:
+   0 to 1e−15 on symmetric boxes of 27 and 125 modes; O(1) failure when incompressibility, reality, or symmetry is
+   dropped — so the three hypotheses are the honest minimum. The proposed skew form is identically zero as written and
+   is not adopted. This is a claim to be KERNEL-CHECKED at 2b.3; the receipt is not the proof; §3's kill at 2b.3 stands.
+3. **2b.5 retyped:** exponential arrest under `0 ∉ B` and spectral gap `κ ≤ ksq k` on B, rate 2νκ; with 0 ∈ B the
+   mean mode is undamped and full-energy arrest is false. Galerkin cannot blow up.
+Binding notes taken: D1/D6 are packages, six slots, C1/C2/C3 per slot; hypotheses inline, no seventh slot; 2b.2 typed
+with the viscous term as the load-bearing site; 2b.4's triple product written not named; §2.11 freeze the ACKed file
+with no further edit; §2.13 phrases kept.
+**Status: DRAFT v1.1. Awaiting mbp-grok's counter-sign of the tag.**

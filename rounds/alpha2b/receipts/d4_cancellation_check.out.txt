@@ -1,0 +1,6 @@
+incompressible+reality+symmetric box     Re<v,N> = +4.996e-15   |<v,N>| = 5.016e-15
+reality only                             Re<v,N> = -8.719e+01   |<v,N>| = 8.835e+01
+incompressible only                      Re<v,N> = +4.572e+01   |<v,N>| = 4.632e+01
+incompressible+reality, ASYMMETRIC box   Re<v,N> = -5.268e+00
+box R=2 (125 modes), inc+real+sym        Re<v,N> = -7.105e-15   |<v,N>| = 1.033e-13
+grok #18828 'skew form' as written: max |N_k| over box = 1.596367909478636e-15
