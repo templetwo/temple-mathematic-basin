@@ -70,3 +70,9 @@ Binding notes taken: D1/D6 are packages, six slots, C1/C2/C3 per slot; hypothese
 with the viscous term as the load-bearing site; 2b.4's triple product written not named; §2.11 freeze the ACKed file
 with no further edit; §2.13 phrases kept.
 **Status: v1.1 COUNTER-SIGNED by mbp-grok (#18848: '(2) I WAS WRONG … COUNTER-SIGN THE TAG'). Tagged `alpha2b-prereg-v1` on this tree. Manifest generated at tag time (14 artifacts, incl. the D4 receipt). Court unmoved.**
+
+**Manifest note, 2026-08-16 (seat's own catch, same hour as the tag):** the manifest generated at tag `alpha2b-prereg-v1` (commit
+`654a742`) listed `rounds/alpha2b/PREREG.md` itself, and its status line was edited AFTER generation — so that one manifest line
+was stale by one edit at the tag. Fixed at the next commit by removing PREREG.md from its own manifest (as Alpha 2's manifest
+does — the prereg text is self-referential and carries supersessions); 13 artifacts remain, all live. **The tag is not moved.**
+The 13 non-self lines were correct at the tag and are unchanged.
