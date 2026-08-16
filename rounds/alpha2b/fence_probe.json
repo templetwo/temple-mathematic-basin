@@ -1,0 +1,42 @@
+{
+ "leray_kills_gradient": {
+  "elaborates": true,
+  "universe_error": false,
+  "unknown_identifier": false,
+  "status": "REJECT",
+  "reason": "compile_error",
+  "log_tail": ") k w / (fun k => ∑ i, ↑(k i) * ↑(k i)) k) •\n                (fun k => WithLp.toLp 2 fun i => ↑(k i)) k)\n          k ((fun k => WithLp.toLp 2 fun i => ↑(k i)) k) =\n        0\n'basin_target' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_bwwdjlka/BasinAttempt_bwwdjlka.lean:9:0: warning: declaration uses `sorry`\n"
+ },
+ "leray_contraction": {
+  "elaborates": true,
+  "universe_error": false,
+  "unknown_identifier": false,
+  "status": "REJECT",
+  "reason": "compile_error",
+  "log_tail": "       ((fun k w => ∑ i, ↑(k i) * w.ofLp i) k w / (fun k => ∑ i, ↑(k i) * ↑(k i)) k) •\n                (fun k => WithLp.toLp 2 fun i => ↑(k i)) k)\n          k w‖ ≤\n      ‖w‖\n'basin_target' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_d_hnf_r2/BasinAttempt_d_hnf_r2.lean:9:0: warning: declaration uses `sorry`\n"
+ },
+ "galerkin_energy_shape": {
+  "elaborates": true,
+  "universe_error": false,
+  "unknown_identifier": false,
+  "status": "REJECT",
+  "reason": "compile_error",
+  "log_tail": "in 3 → ℤ)) (v : (Fin 3 → ℤ) → EuclideanSpace ℂ (Fin 3)) (nu : ℝ),\n    ∑ k ∈ B, (starRingEnd ℂ) ((fun k w => ∑ i, ↑(k i) * w.ofLp i) k (v k)) * 0 = 0 ∧ 0 ≤ ∑ k ∈ B, ‖v k‖ ^ 2\n'basin_target' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_j50_j6pu/BasinAttempt_j50_j6pu.lean:9:0: warning: declaration uses `sorry`\n"
+ },
+ "convolution_sum_shape": {
+  "elaborates": true,
+  "universe_error": false,
+  "unknown_identifier": false,
+  "status": "REJECT",
+  "reason": "compile_error",
+  "log_tail": "(fun k w => ∑ i, ↑(k i) * w.ofLp i) q (v p)) • v q else 0) =\n      ∑ p ∈ B, ∑ q ∈ B, if p + q = k then (Complex.I * (fun k w => ∑ i, ↑(k i) * w.ofLp i) q (v p)) • v q else 0\n'basin_target' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_1whzuo2u/BasinAttempt_1whzuo2u.lean:9:0: warning: declaration uses `sorry`\n"
+ },
+ "incompressible_predicate": {
+  "elaborates": true,
+  "universe_error": false,
+  "unknown_identifier": false,
+  "status": "REJECT",
+  "reason": "compile_error",
+  "log_tail": "inAttempt_70bd0cls.lean:1:0: error: Type mismatch\n  True.intro\nhas type\n  True\nbut is expected to have type\n  ∃ B v, ∀ k ∈ B, (fun k w => ∑ i, ↑(k i) * w.ofLp i) k (v k) = 0\n'basin_target' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n/Users/vaquez/Desktop/temple-mathematic-basin/lean/tmp/BasinAttempt_70bd0cls/BasinAttempt_70bd0cls.lean:9:0: warning: declaration uses `sorry`\n"
+ }
+}
